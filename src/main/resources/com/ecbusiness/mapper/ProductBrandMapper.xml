@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ecbusiness.mapper.ProductBrandMapper">
+    <resultMap id="BaseResultMap" type="com.ecbusiness.model.ProductBrand">
+        <id column="PRODUCT_BRAND_ID" property="productBrandId" jdbcType="INTEGER"/>
+        <result column="PRODUCT_BRAND_NAME" property="productBrandName" jdbcType="VARCHAR"/>
+        <result column="PRODUCT_BRAND_URL" property="productBrandUrl" jdbcType="VARCHAR"/>
+        <result column="PRODUCT_BRAND_IMG" property="productBrandImg" jdbcType="VARCHAR"/>
+        <result column="PRODUCT_BRAND_DESC_1" property="productBrandDesc1" jdbcType="VARCHAR"/>
+        <result column="PRODUCT_BRAND_DESC_2" property="productBrandDesc2" jdbcType="VARCHAR"/>
+        <result column="PRODUCT_BRAND_ORDER" property="productBrandOrder" jdbcType="INTEGER"/>
+        <result column="SEO_TITLE" property="seoTitle" jdbcType="VARCHAR"/>
+        <result column="SEO_META_KEY_WORD" property="seoMetaKeyWord" jdbcType="VARCHAR"/>
+        <result column="SEO_META_DESC" property="seoMetaDesc" jdbcType="VARCHAR"/>
+        <result column="IS_DELETE" property="isDelete" jdbcType="CHAR"/>
+        <result column="ADD_USER_ID" property="addUserId" jdbcType="INTEGER"/>
+        <result column="ADD_TIME" property="addTime" jdbcType="VARCHAR"/>
+        <result column="EDIT_USER_ID" property="editUserId" jdbcType="INTEGER"/>
+        <result column="EDIT_TIME" property="editTime" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+        PRODUCT_BRAND_ID, PRODUCT_BRAND_NAME, PRODUCT_BRAND_URL, PRODUCT_BRAND_IMG, PRODUCT_BRAND_DESC_1,
+        PRODUCT_BRAND_DESC_2, PRODUCT_BRAND_ORDER, SEO_TITLE, SEO_META_KEY_WORD, SEO_META_DESC,
+        IS_DELETE, ADD_USER_ID, ADD_TIME, EDIT_USER_ID, EDIT_TIME
+    </sql>
+    <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ecbusiness.model.ProductBrandCriteria">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        from product_brand
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from product_brand
+        where PRODUCT_BRAND_ID = #{productBrandId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from product_brand
+        where PRODUCT_BRAND_ID = #{productBrandId,jdbcType=INTEGER}
+    </delete>
+    <delete id="deleteByExample" parameterType="com.ecbusiness.model.ProductBrandCriteria">
+        delete from product_brand
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.ecbusiness.model.ProductBrand">
+        insert into product_brand (PRODUCT_BRAND_ID, PRODUCT_BRAND_NAME,
+        PRODUCT_BRAND_URL, PRODUCT_BRAND_IMG, PRODUCT_BRAND_DESC_1,
+        PRODUCT_BRAND_DESC_2, PRODUCT_BRAND_ORDER, SEO_TITLE,
+        SEO_META_KEY_WORD, SEO_META_DESC, IS_DELETE,
+        ADD_USER_ID, ADD_TIME, EDIT_USER_ID,
+        EDIT_TIME)
+        values (#{productBrandId,jdbcType=INTEGER}, #{productBrandName,jdbcType=VARCHAR},
+        #{productBrandUrl,jdbcType=VARCHAR}, #{productBrandImg,jdbcType=VARCHAR}, #{productBrandDesc1,jdbcType=VARCHAR},
+        #{productBrandDesc2,jdbcType=VARCHAR}, #{productBrandOrder,jdbcType=INTEGER}, #{seoTitle,jdbcType=VARCHAR},
+        #{seoMetaKeyWord,jdbcType=VARCHAR}, #{seoMetaDesc,jdbcType=VARCHAR}, #{isDelete,jdbcType=CHAR},
+        #{addUserId,jdbcType=INTEGER}, #{addTime,jdbcType=VARCHAR}, #{editUserId,jdbcType=INTEGER},
+        #{editTime,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.ecbusiness.model.ProductBrand">
+        insert into product_brand
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="productBrandId != null">
+                PRODUCT_BRAND_ID,
+            </if>
+            <if test="productBrandName != null">
+                PRODUCT_BRAND_NAME,
+            </if>
+            <if test="productBrandUrl != null">
+                PRODUCT_BRAND_URL,
+            </if>
+            <if test="productBrandImg != null">
+                PRODUCT_BRAND_IMG,
+            </if>
+            <if test="productBrandDesc1 != null">
+                PRODUCT_BRAND_DESC_1,
+            </if>
+            <if test="productBrandDesc2 != null">
+                PRODUCT_BRAND_DESC_2,
+            </if>
+            <if test="productBrandOrder != null">
+                PRODUCT_BRAND_ORDER,
+            </if>
+            <if test="seoTitle != null">
+                SEO_TITLE,
+            </if>
+            <if test="seoMetaKeyWord != null">
+                SEO_META_KEY_WORD,
+            </if>
+            <if test="seoMetaDesc != null">
+                SEO_META_DESC,
+            </if>
+            <if test="isDelete != null">
+                IS_DELETE,
+            </if>
+            <if test="addUserId != null">
+                ADD_USER_ID,
+            </if>
+            <if test="addTime != null">
+                ADD_TIME,
+            </if>
+            <if test="editUserId != null">
+                EDIT_USER_ID,
+            </if>
+            <if test="editTime != null">
+                EDIT_TIME,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="productBrandId != null">
+                #{productBrandId,jdbcType=INTEGER},
+            </if>
+            <if test="productBrandName != null">
+                #{productBrandName,jdbcType=VARCHAR},
+            </if>
+            <if test="productBrandUrl != null">
+                #{productBrandUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="productBrandImg != null">
+                #{productBrandImg,jdbcType=VARCHAR},
+            </if>
+            <if test="productBrandDesc1 != null">
+                #{productBrandDesc1,jdbcType=VARCHAR},
+            </if>
+            <if test="productBrandDesc2 != null">
+                #{productBrandDesc2,jdbcType=VARCHAR},
+            </if>
+            <if test="productBrandOrder != null">
+                #{productBrandOrder,jdbcType=INTEGER},
+            </if>
+            <if test="seoTitle != null">
+                #{seoTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="seoMetaKeyWord != null">
+                #{seoMetaKeyWord,jdbcType=VARCHAR},
+            </if>
+            <if test="seoMetaDesc != null">
+                #{seoMetaDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="isDelete != null">
+                #{isDelete,jdbcType=CHAR},
+            </if>
+            <if test="addUserId != null">
+                #{addUserId,jdbcType=INTEGER},
+            </if>
+            <if test="addTime != null">
+                #{addTime,jdbcType=VARCHAR},
+            </if>
+            <if test="editUserId != null">
+                #{editUserId,jdbcType=INTEGER},
+            </if>
+            <if test="editTime != null">
+                #{editTime,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.ecbusiness.model.ProductBrandCriteria"
+            resultType="java.lang.Integer">
+        select count(*) from product_brand
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update product_brand
+        <set>
+            <if test="record.productBrandId != null">
+                PRODUCT_BRAND_ID = #{record.productBrandId,jdbcType=INTEGER},
+            </if>
+            <if test="record.productBrandName != null">
+                PRODUCT_BRAND_NAME = #{record.productBrandName,jdbcType=VARCHAR},
+            </if>
+            <if test="record.productBrandUrl != null">
+                PRODUCT_BRAND_URL = #{record.productBrandUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="record.productBrandImg != null">
+                PRODUCT_BRAND_IMG = #{record.productBrandImg,jdbcType=VARCHAR},
+            </if>
+            <if test="record.productBrandDesc1 != null">
+                PRODUCT_BRAND_DESC_1 = #{record.productBrandDesc1,jdbcType=VARCHAR},
+            </if>
+            <if test="record.productBrandDesc2 != null">
+                PRODUCT_BRAND_DESC_2 = #{record.productBrandDesc2,jdbcType=VARCHAR},
+            </if>
+            <if test="record.productBrandOrder != null">
+                PRODUCT_BRAND_ORDER = #{record.productBrandOrder,jdbcType=INTEGER},
+            </if>
+            <if test="record.seoTitle != null">
+                SEO_TITLE = #{record.seoTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="record.seoMetaKeyWord != null">
+                SEO_META_KEY_WORD = #{record.seoMetaKeyWord,jdbcType=VARCHAR},
+            </if>
+            <if test="record.seoMetaDesc != null">
+                SEO_META_DESC = #{record.seoMetaDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="record.isDelete != null">
+                IS_DELETE = #{record.isDelete,jdbcType=CHAR},
+            </if>
+            <if test="record.addUserId != null">
+                ADD_USER_ID = #{record.addUserId,jdbcType=INTEGER},
+            </if>
+            <if test="record.addTime != null">
+                ADD_TIME = #{record.addTime,jdbcType=VARCHAR},
+            </if>
+            <if test="record.editUserId != null">
+                EDIT_USER_ID = #{record.editUserId,jdbcType=INTEGER},
+            </if>
+            <if test="record.editTime != null">
+                EDIT_TIME = #{record.editTime,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update product_brand
+        set PRODUCT_BRAND_ID = #{record.productBrandId,jdbcType=INTEGER},
+        PRODUCT_BRAND_NAME = #{record.productBrandName,jdbcType=VARCHAR},
+        PRODUCT_BRAND_URL = #{record.productBrandUrl,jdbcType=VARCHAR},
+        PRODUCT_BRAND_IMG = #{record.productBrandImg,jdbcType=VARCHAR},
+        PRODUCT_BRAND_DESC_1 = #{record.productBrandDesc1,jdbcType=VARCHAR},
+        PRODUCT_BRAND_DESC_2 = #{record.productBrandDesc2,jdbcType=VARCHAR},
+        PRODUCT_BRAND_ORDER = #{record.productBrandOrder,jdbcType=INTEGER},
+        SEO_TITLE = #{record.seoTitle,jdbcType=VARCHAR},
+        SEO_META_KEY_WORD = #{record.seoMetaKeyWord,jdbcType=VARCHAR},
+        SEO_META_DESC = #{record.seoMetaDesc,jdbcType=VARCHAR},
+        IS_DELETE = #{record.isDelete,jdbcType=CHAR},
+        ADD_USER_ID = #{record.addUserId,jdbcType=INTEGER},
+        ADD_TIME = #{record.addTime,jdbcType=VARCHAR},
+        EDIT_USER_ID = #{record.editUserId,jdbcType=INTEGER},
+        EDIT_TIME = #{record.editTime,jdbcType=VARCHAR}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.ecbusiness.model.ProductBrand">
+        update product_brand
+        <set>
+            <if test="productBrandName != null">
+                PRODUCT_BRAND_NAME = #{productBrandName,jdbcType=VARCHAR},
+            </if>
+            <if test="productBrandUrl != null">
+                PRODUCT_BRAND_URL = #{productBrandUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="productBrandImg != null">
+                PRODUCT_BRAND_IMG = #{productBrandImg,jdbcType=VARCHAR},
+            </if>
+            <if test="productBrandDesc1 != null">
+                PRODUCT_BRAND_DESC_1 = #{productBrandDesc1,jdbcType=VARCHAR},
+            </if>
+            <if test="productBrandDesc2 != null">
+                PRODUCT_BRAND_DESC_2 = #{productBrandDesc2,jdbcType=VARCHAR},
+            </if>
+            <if test="productBrandOrder != null">
+                PRODUCT_BRAND_ORDER = #{productBrandOrder,jdbcType=INTEGER},
+            </if>
+            <if test="seoTitle != null">
+                SEO_TITLE = #{seoTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="seoMetaKeyWord != null">
+                SEO_META_KEY_WORD = #{seoMetaKeyWord,jdbcType=VARCHAR},
+            </if>
+            <if test="seoMetaDesc != null">
+                SEO_META_DESC = #{seoMetaDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="isDelete != null">
+                IS_DELETE = #{isDelete,jdbcType=CHAR},
+            </if>
+            <if test="addUserId != null">
+                ADD_USER_ID = #{addUserId,jdbcType=INTEGER},
+            </if>
+            <if test="addTime != null">
+                ADD_TIME = #{addTime,jdbcType=VARCHAR},
+            </if>
+            <if test="editUserId != null">
+                EDIT_USER_ID = #{editUserId,jdbcType=INTEGER},
+            </if>
+            <if test="editTime != null">
+                EDIT_TIME = #{editTime,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where PRODUCT_BRAND_ID = #{productBrandId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.ecbusiness.model.ProductBrand">
+        update product_brand
+        set PRODUCT_BRAND_NAME = #{productBrandName,jdbcType=VARCHAR},
+        PRODUCT_BRAND_URL = #{productBrandUrl,jdbcType=VARCHAR},
+        PRODUCT_BRAND_IMG = #{productBrandImg,jdbcType=VARCHAR},
+        PRODUCT_BRAND_DESC_1 = #{productBrandDesc1,jdbcType=VARCHAR},
+        PRODUCT_BRAND_DESC_2 = #{productBrandDesc2,jdbcType=VARCHAR},
+        PRODUCT_BRAND_ORDER = #{productBrandOrder,jdbcType=INTEGER},
+        SEO_TITLE = #{seoTitle,jdbcType=VARCHAR},
+        SEO_META_KEY_WORD = #{seoMetaKeyWord,jdbcType=VARCHAR},
+        SEO_META_DESC = #{seoMetaDesc,jdbcType=VARCHAR},
+        IS_DELETE = #{isDelete,jdbcType=CHAR},
+        ADD_USER_ID = #{addUserId,jdbcType=INTEGER},
+        ADD_TIME = #{addTime,jdbcType=VARCHAR},
+        EDIT_USER_ID = #{editUserId,jdbcType=INTEGER},
+        EDIT_TIME = #{editTime,jdbcType=VARCHAR}
+        where PRODUCT_BRAND_ID = #{productBrandId,jdbcType=INTEGER}
+    </update>
+    <select resultMap="BaseResultMap" parameterType="com.ecbusiness.model.ProductBrandCriteria"
+            id="selectByExampleWithRowbounds">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        from product_brand
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <cache/>
+</mapper>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../iconfont/iconfont.css">
+    <style type="text/css">
+    @font-face {font-family: 'iconfont';
+        src: url('iconfont.eot'); /* IE9*/
+        src: url('iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+        url('iconfont.woff') format('woff'), /* chrome、firefox */
+        url('iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+        url('iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+    }
+    .iconfont{
+        font-family:"iconfont" !important;
+        font-size:16px;font-style:normal;
+        -webkit-font-smoothing: antialiased;
+        -webkit-text-stroke-width: 0.2px;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    .backStageLogo{width: 100%;height: 80px;background-color: #212f3a;}
+    .backStageLogoContent{position: relative;margin:0 auto;width: 1238px;height: 80px;background: url(../image/logo.png) no-repeat left 13px;}
+    .backStageLogoContent>h2{position: absolute;top: 35px;left: 153px;color: #fff;font-size: 20px;}
+
+    .mainBody{position: relative;margin:0 auto;width: 1238px;border:1px solid transparent;}
+    .sideBar{position: absolute;top: -11px;left: -16px;z-index: 1;width: 190px;}
+    .roundImpact{width: 170px;height: 10px;margin: 0 auto;background:#d9d9d9;border: #fff solid 5px;border-radius: 10px;box-shadow: 0 0 5px #999;}
+    .userInfo{position: absolute;z-index: 1;top: 11px;left: 15px;width: 160px;height: 834px;background-color: #f2f8fd;box-shadow: 0 0 5px #999;}
+    .userIcon{width: 66px;height: 66px;margin: 30px auto 16px auto;border: 5px solid #fff;border-radius: 66px;box-shadow: 0 0 5px #999;}
+    .userName{width: 160px;font-size: 16px;font-weight: bold;text-align: center;}
+
+    .pageList{position: absolute;top: 175px;left: 6px;z-index: 2;list-style-type: none;font-size: 13px;}
+    .listIconFont{font-size: 18px;}
+    .onePageList{height: 47px;width: 170px;text-align: center;cursor: pointer;}
+    .onePageList>p{display: inline-block;height: 40px;width: 120px;margin: 0 22px 7px 28px;line-height: 40px;border-bottom: 1px solid #c1cee0;}
+    .onePageList_active{background: url(../image/userInfoClickImpact.png) no-repeat;color: #fff;}
+    .onePageList_active>p{border-bottom: none;}
+
+    .orderArea{height: 1368px;width: 1055px;margin-left: 181px;margin-top: 20px;border: 1px solid #dcdcdc;background-color: #fff;}
+    .myMoney{margin-top: 30px;margin-left: 45px;font-size: 14px;}
+    .allCash{width: 1015px;height: 118px;margin-top: 18px;margin-left: 19px;background-color: #f6fbfe;border: solid 1px #b9ddf3;overflow: hidden;}
+    .oneCash{float: left;display: inline-block;width: 225px;height: 60px;margin-top: 27px;padding-left: 36px;margin-left: -2px;border-left: 1px dashed #b9ddf3;}
+    .oneCash>p{font-size: 14px;}
+    .cashNum{display: inline-block;margin-top: 12px;font-size: 36px;font-weight: bold;font-family: Arial;}
+
+    .oneOrder{position: relative;width: 1014px;height: 228px;margin: 0 auto 10px auto;border: #dcdcdc 1px solid;}
+    .orderHead{width: 756px;height: 30px;background-color: #f0f0f0;}
+    .orderHead span{display: inline-block;font-size: 12px;line-height: 30px;}
+    .orderTime{margin-left: 16px;color: #969696;margin-right: 68px;}
+    .cashHead{margin-left: 64px;margin-right: 109px;}
+    .orderItemInfo{float: left;display: inline-block;width: 362px;height: 100px;border-top: 1px solid #e5e5e5;border-bottom: 1px solid #e5e5e5;}
+    .orderItemPhoto{float: left;width: 60px;height: 60px;margin-top: 14px;margin-left: 14px;border: 1px solid #efefef;}
+    .orderItemPhoto img{width: 60px;height: 60px;}
+    .orderItemName{width: 240px;height: 60px;margin-top: 17px;margin-left: 90px;color: #333;}
+    .orderItemName p{font-size: 11px;margin-bottom: 15px;}
+    .orderItemName span{font-size: 11px;color: #969696;}
+    .orderItemPayInfo{float: left;display: inline-block;width: 122px;height: 90px;padding-top: 10px;border: 1px solid #e5e5e5;}
+    .orderItemPayInfo p{width: 93px;margin: 0 auto;font-size: 11px;color: #a5a5a5;text-align: center;line-height: 26px;}
+    .orderManInfo{display: inline-block;width: 270px;height: 100px;border-top: 1px solid #e5e5e5;border-bottom: 1px solid #e5e5e5;}
+    .orderManInfo p{width: 220px;margin-top: 10px;margin-left: 20px;font-size: 12px;line-height: 24px; }
+    .dzXuQiu{width: 756px;height: 30px;border-bottom: 1px solid #e5e5e5;line-height: 30px;font-size: 12px;background-color: #f0f0f0;text-align: center;}
+    .dzInfo{width: 756px;height: 65px;font-size: 12px;line-height: 20px;}
+    .dzInfo p{margin: 10px 20px 0;}
+    .orderEditForConfirm{position: absolute;top: -1px;left: 756px;width: 258px;height: 228px;border: 1px solid #5188c6;}
+    .orderEditHeadForConfirm{width: 258px;height: 31px;background-color: #5188c6;line-height: 31px;color: #fff;font-size: 12px;text-align: center;margin-bottom: 20px;}
+    .orderEditForConfirm p{margin-left: 40px;color: #828382;font-size: 12px;line-height: 24px;}
+    .orderEditForConfirm select{display: block;width: 178px;height: 22px;line-height: 22px;padding-left:10px;padding-right: 23px;margin-left:40px;margin-bottom: 10px;background: url(../image/arrow_down_blue.png) no-repeat right;border:1px solid #d9d9d9;appearance:none;-moz-appearance:none;-webkit-appearance:none;font-family: "Microsoft YaHei";font-size: 11px;}
+    .orderEditForConfirm input{display: block;margin-left:40px;width: 168px;height: 22px;margin-bottom: 10px;line-height: 22px;padding-left:10px;border:1px solid #d9d9d9;font-family: "Microsoft YaHei";font-size: 11px;appearance:none;-moz-appearance:none;-webkit-appearance:none;}
+    .tijiaoButton{display: block;width: 178px;height: 30px;margin: 0 auto;border-color: #f5f5f5;line-height: 30px;text-align: center;font-size: 14px;border: 1px solid #dcdcdc;border-radius: 3px;}
+
+    .orderEditConfirmed{position: absolute;top: -1px;left: 756px;width: 258px;height: 228px;border: 1px solid #5fc08b;background-color: #fafffc;}
+    .orderEditHeadConfirmed{width: 258px;height: 31px;margin-bottom: 40px;background-color: #5fc08b;line-height: 31px;color: #fff;font-size: 16px;text-align: center;}
+    .orderEditConfirmed p{margin-left: 40px;color: #828382;font-size: 12px;line-height: 24px;}
+    .orderEditConfirmed span{display: inline-block;margin-left: 40px;font-weight: bold;font-size: 16px;line-height: 24px;}
+
+    .orderEditConfirm{position: absolute;top: -1px;left: 756px;width: 258px;height: 228px;border: 1px solid #e5e5e5;}
+    .orderEditHeadConfirm{width: 258px;height: 31px;background-color: #f0f0f0;line-height: 31px;font-size: 12px;text-align: center;margin-bottom: 20px;}
+    .orderEditConfirm p{margin-left: 40px;color: #828382;font-size: 12px;line-height: 24px;}
+    .orderEditConfirm select{display: block;width: 178px;height: 22px;line-height: 22px;padding-left:10px;padding-right: 23px;margin-left:40px;margin-bottom: 10px;background: url(../image/arrow_down_grey.png) no-repeat right;border:1px solid #d9d9d9;appearance:none;-moz-appearance:none;-webkit-appearance:none;font-family: "Microsoft YaHei";font-size: 11px;}
+    .orderEditConfirm input{display: block;margin-left:40px;width: 168px;height: 22px;margin-bottom: 10px;line-height: 22px;padding-left:10px;border:1px solid #d9d9d9;font-family: "Microsoft YaHei";font-size: 11px;appearance:none;-moz-appearance:none;-webkit-appearance:none;}
+    .tijiaoButton{display: block;width: 178px;height: 30px;margin: 0 auto;border-color: #f5f5f5;line-height: 30px;text-align: center;font-size: 14px;border: 1px solid #dcdcdc;border-radius: 3px;}
+    </style>
+</head>
+<body>
+
+<div class="backStageLogo">
+    <div class="backStageLogoContent">
+        <h2>厂商后台</h2>
+    </div>
+</div>
+<div class="mainBody">
+    <div class="sideBar">
+        <div class="roundImpact"></div>
+        <div class="userInfo">
+            <div class="userIcon"></div>
+            <p class="userName">王新钢</p>
+        </div>
+        <ul class="pageList">
+            <li class="onePageList">
+                <p>
+                    <i class="iconfont listIconFont">&#xe80e;</i>
+                    订单管理
+                </p>
+            </li>
+            <li class="onePageList onePageList_active">
+                <p>
+                    <i class="iconfont listIconFont">&#xe715;</i>
+                    收入管理
+                </p>
+            </li>
+            <li class="onePageList">
+                <p>
+                    <i class="iconfont listIconFont">&#xe67f;</i>
+                    销售统计
+                </p>
+            </li>
+        </ul>
+    </div>
+    <div class="orderArea">
+        <p class="myMoney">我的收入</p>
+        <div class="allCash">
+            <div class="oneCash">
+                <p>未到账货款</p>
+                <span class="cashNum">8532.77</span><span>元</span>
+            </div>
+            <div class="oneCash">
+                <p>已到账货款</p>
+                <span class="cashNum">8532.77</span><span>元</span>
+            </div>
+            <div class="oneCash">
+                <p>累计货款总额</p>
+                <span class="cashNum">8532.77</span><span>元</span>
+            </div>
+        </div>
+
+        <div class="oneOrder">
+            <div class="orderHead">
+                <span class="orderTime">2016-01-29 12:44:15</span><span style="color: #969696">订单号：</span><span>11995926227</span><span class="cashHead">金额（元）</span><span>收货人信息</span>
+            </div>
+            <div class="orderItemInfo">
+                <div class="orderItemPhoto">
+                    <img src="" alt="">
+                </div>
+                <div class="orderItemName">
+                    <p>DM WFD015 32G 苹果手机无线U盘 无线存储器 无线分享器 电脑平板iphone安卓智能...</p>
+                    <span>×</span><span>1</span>
+                </div>
+            </div>
+            <div class="orderItemPayInfo">
+                    <p>总额：<span>31.60</span></p>
+                    <p>网银支付</p>
+            </div>
+            <div class="orderManInfo">
+                <p>北京市海淀区知春路49号西格玛公寓B座508</br>王新志  15678898764</p>
+            </div>
+            <div class="dzXuQiu">定制需求</div>
+            <div class="dzInfo">
+                <p>凭质保证书及京东商城发票，可享受全国联保服务（奢侈品、钟表除外；奢侈品、钟表由京东联系保修，享受法定三包售后服务），与您亲临商场选购的商品享受相同的质量保证。京东商城还为您提供具有竞争力的商品价格和运费政策，请您放心购买！</p>
+            </div>
+            <div class="orderEditForConfirm">
+                <div class="orderEditHeadForConfirm">确认物流信息</div>
+                <p>物流方式(客户已选择)</p>
+                <select name="" id="">
+                    <option value="">顺丰快递</option>
+                    <option value="">圆通快递</option>
+                    <option value="">中通快递</option>
+                    <option value="">EMS快递</option>
+                </select>
+                <p>运单编号</p>
+                <input type="text">
+                <div class="tijiaoButton">提 交</div>
+            </div>
+        </div>
+
+        <div class="oneOrder">
+            <div class="orderHead">
+                <span class="orderTime">2016-01-29 12:44:15</span><span style="color: #969696">订单号：</span><span>11995926227</span><span class="cashHead">金额（元）</span><span>收货人信息</span>
+            </div>
+            <div class="orderItemInfo">
+                <div class="orderItemPhoto">
+                    <img src="" alt="">
+                </div>
+                <div class="orderItemName">
+                    <p>DM WFD015 32G 苹果手机无线U盘 无线存储器 无线分享器 电脑平板iphone安卓智能...</p>
+                    <span>×</span><span>1</span>
+                </div>
+            </div>
+            <div class="orderItemPayInfo">
+                    <p>总额：<span>31.60</span></p>
+                    <p>网银支付</p>
+            </div>
+            <div class="orderManInfo">
+                <p>北京市海淀区知春路49号西格玛公寓B座508</br>王新志  15678898764</p>
+            </div>
+            <div class="dzXuQiu">定制需求</div>
+            <div class="dzInfo">
+                <p>凭质保证书及京东商城发票，可享受全国联保服务（奢侈品、钟表除外；奢侈品、钟表由京东联系保修，享受法定三包售后服务），与您亲临商场选购的商品享受相同的质量保证。京东商城还为您提供具有竞争力的商品价格和运费政策，请您放心购买！</p>
+            </div>
+            <div class="orderEditConfirmed">
+                <div class="orderEditHeadConfirmed">━━━ 已到账 ━━━</div>
+                <p>物流方式(客户已选择)</p><span>中通物流</span>
+                <p>运单编号</p><span>1156784647783889</span>
+            </div>
+        </div>
+        <div class="oneOrder">
+            <div class="orderHead">
+                <span class="orderTime">2016-01-29 12:44:15</span><span style="color: #969696">订单号：</span><span>11995926227</span><span class="cashHead">金额（元）</span><span>收货人信息</span>
+            </div>
+            <div class="orderItemInfo">
+                <div class="orderItemPhoto">
+                    <img src="" alt="">
+                </div>
+                <div class="orderItemName">
+                    <p>DM WFD015 32G 苹果手机无线U盘 无线存储器 无线分享器 电脑平板iphone安卓智能...</p>
+                    <span>×</span><span>1</span>
+                </div>
+            </div>
+            <div class="orderItemPayInfo">
+                    <p>总额：<span>31.60</span></p>
+                    <p>网银支付</p>
+            </div>
+            <div class="orderManInfo">
+                <p>北京市海淀区知春路49号西格玛公寓B座508</br>王新志  15678898764</p>
+            </div>
+            <div class="dzXuQiu">定制需求</div>
+            <div class="dzInfo">
+                <p>凭质保证书及京东商城发票，可享受全国联保服务（奢侈品、钟表除外；奢侈品、钟表由京东联系保修，享受法定三包售后服务），与您亲临商场选购的商品享受相同的质量保证。京东商城还为您提供具有竞争力的商品价格和运费政策，请您放心购买！</p>
+            </div>
+            <div class="orderEditConfirm">
+                <div class="orderEditHeadConfirm">物流信息</div>
+                <p>物流方式(客户已选择)</p>
+                <select name="" id="">
+                    <option value="">顺丰快递</option>
+                    <option value="">圆通快递</option>
+                    <option value="">中通快递</option>
+                    <option value="">EMS快递</option>
+                </select>
+                <p>运单编号</p>
+                <input type="text">
+                <div class="tijiaoButton">编 辑</div>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+
+
+</body>
+</html>

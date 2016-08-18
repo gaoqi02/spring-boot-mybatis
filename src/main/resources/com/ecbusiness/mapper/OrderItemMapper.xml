@@ -1,0 +1,813 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ecbusiness.mapper.OrderItemMapper" >
+  <resultMap id="BaseResultMap" type="com.ecbusiness.model.OrderItem" >
+    <id column="ORDER_ITEM_ID" property="orderItemId" jdbcType="INTEGER" />
+    <result column="ORDER_ID" property="orderId" jdbcType="VARCHAR" />
+    <result column="ORDER_GROUP_ID" property="orderGroupId" jdbcType="VARCHAR" />
+    <result column="ORDER_DELIVERY_ID" property="orderDeliveryId" jdbcType="INTEGER" />
+    <result column="GOODS_TYPE" property="goodsType" jdbcType="VARCHAR" />
+    <result column="GOODS_ID" property="goodsId" jdbcType="INTEGER" />
+    <result column="GOODS_NO" property="goodsNo" jdbcType="VARCHAR" />
+    <result column="GOODS_NAME" property="goodsName" jdbcType="VARCHAR" />
+    <result column="GOODS_UNIT" property="goodsUnit" jdbcType="VARCHAR" />
+    <result column="GOODS_COST_PRICE" property="goodsCostPrice" jdbcType="DECIMAL" />
+    <result column="GOODS_OLD_PRICE" property="goodsOldPrice" jdbcType="DECIMAL" />
+    <result column="GOODS_PRICE" property="goodsPrice" jdbcType="DECIMAL" />
+    <result column="GOODS_AMOUNT" property="goodsAmount" jdbcType="DECIMAL" />
+    <result column="GIFT_AMOUNT" property="giftAmount" jdbcType="INTEGER" />
+    <result column="CAN_RETURN_AMOUNT" property="canReturnAmount" jdbcType="DECIMAL" />
+    <result column="SUBSIDY" property="subsidy" jdbcType="DECIMAL" />
+    <result column="POINTS" property="points" jdbcType="DECIMAL" />
+    <result column="AWARD_MONEY" property="awardMoney" jdbcType="DECIMAL" />
+    <result column="GOODS_SUM_FEE" property="goodsSumFee" jdbcType="DECIMAL" />
+    <result column="PRODUCT_COMBINATION_ID" property="productCombinationId" jdbcType="INTEGER" />
+    <result column="EXECUTE_PRICE" property="executePrice" jdbcType="DECIMAL" />
+    <result column="IS_GIFT" property="isGift" jdbcType="CHAR" />
+    <result column="MAIN_GOODS_ID" property="mainGoodsId" jdbcType="INTEGER" />
+    <result column="PCG_GIFT_ID" property="pcgGiftId" jdbcType="INTEGER" />
+    <result column="ORDER_RULE_ID" property="orderRuleId" jdbcType="VARCHAR" />
+    <result column="PRODUCT_RULE_ID" property="productRuleId" jdbcType="VARCHAR" />
+    <result column="PRODUCT_DOWN" property="productDown" jdbcType="DECIMAL" />
+    <result column="CART_DOWN" property="cartDown" jdbcType="DECIMAL" />
+    <result column="CART_PRICE" property="cartPrice" jdbcType="DECIMAL" />
+    <result column="PRODUCT_COUPON_IDS" property="productCouponIds" jdbcType="VARCHAR" />
+    <result column="PRODUCT_COUPON_NUMS" property="productCouponNums" jdbcType="VARCHAR" />
+    <result column="ORDER_COUPON_IDS" property="orderCouponIds" jdbcType="VARCHAR" />
+    <result column="ORDER_COUPON_NUMS" property="orderCouponNums" jdbcType="VARCHAR" />
+    <result column="REPAIR_STATE" property="repairState" jdbcType="CHAR" />
+    <result column="IS_COMMENT" property="isComment" jdbcType="CHAR" />
+    <result column="IS_SHOW" property="isShow" jdbcType="CHAR" />
+    <result column="IS_DELETE" property="isDelete" jdbcType="CHAR" />
+    <result column="ADD_USER_ID" property="addUserId" jdbcType="INTEGER" />
+    <result column="ADD_TIME" property="addTime" jdbcType="VARCHAR" />
+    <result column="EDIT_USER_ID" property="editUserId" jdbcType="INTEGER" />
+    <result column="EDIT_TIME" property="editTime" jdbcType="VARCHAR" />
+    <result column="comments" property="comments" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ORDER_ITEM_ID, ORDER_ID, ORDER_GROUP_ID, ORDER_DELIVERY_ID, GOODS_TYPE, GOODS_ID, 
+    GOODS_NO, GOODS_NAME, GOODS_UNIT, GOODS_COST_PRICE, GOODS_OLD_PRICE, GOODS_PRICE, 
+    GOODS_AMOUNT, GIFT_AMOUNT, CAN_RETURN_AMOUNT, SUBSIDY, POINTS, AWARD_MONEY, GOODS_SUM_FEE, 
+    PRODUCT_COMBINATION_ID, EXECUTE_PRICE, IS_GIFT, MAIN_GOODS_ID, PCG_GIFT_ID, ORDER_RULE_ID, 
+    PRODUCT_RULE_ID, PRODUCT_DOWN, CART_DOWN, CART_PRICE, PRODUCT_COUPON_IDS, PRODUCT_COUPON_NUMS, 
+    ORDER_COUPON_IDS, ORDER_COUPON_NUMS, REPAIR_STATE, IS_COMMENT, IS_SHOW, IS_DELETE, 
+    ADD_USER_ID, ADD_TIME, EDIT_USER_ID, EDIT_TIME, comments
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ecbusiness.model.OrderItemCriteria" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from order_item
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from order_item
+    where ORDER_ITEM_ID = #{orderItemId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from order_item
+    where ORDER_ITEM_ID = #{orderItemId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ecbusiness.model.OrderItemCriteria" >
+    delete from order_item
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ecbusiness.model.OrderItem" >
+    insert into order_item (ORDER_ITEM_ID, ORDER_ID, ORDER_GROUP_ID, 
+      ORDER_DELIVERY_ID, GOODS_TYPE, GOODS_ID, 
+      GOODS_NO, GOODS_NAME, GOODS_UNIT, 
+      GOODS_COST_PRICE, GOODS_OLD_PRICE, GOODS_PRICE, 
+      GOODS_AMOUNT, GIFT_AMOUNT, CAN_RETURN_AMOUNT, 
+      SUBSIDY, POINTS, AWARD_MONEY, 
+      GOODS_SUM_FEE, PRODUCT_COMBINATION_ID, EXECUTE_PRICE, 
+      IS_GIFT, MAIN_GOODS_ID, PCG_GIFT_ID, 
+      ORDER_RULE_ID, PRODUCT_RULE_ID, PRODUCT_DOWN, 
+      CART_DOWN, CART_PRICE, PRODUCT_COUPON_IDS, 
+      PRODUCT_COUPON_NUMS, ORDER_COUPON_IDS, ORDER_COUPON_NUMS, 
+      REPAIR_STATE, IS_COMMENT, IS_SHOW, 
+      IS_DELETE, ADD_USER_ID, ADD_TIME, 
+      EDIT_USER_ID, EDIT_TIME, comments
+      )
+    values (#{orderItemId,jdbcType=INTEGER}, #{orderId,jdbcType=VARCHAR}, #{orderGroupId,jdbcType=VARCHAR}, 
+      #{orderDeliveryId,jdbcType=INTEGER}, #{goodsType,jdbcType=VARCHAR}, #{goodsId,jdbcType=INTEGER}, 
+      #{goodsNo,jdbcType=VARCHAR}, #{goodsName,jdbcType=VARCHAR}, #{goodsUnit,jdbcType=VARCHAR}, 
+      #{goodsCostPrice,jdbcType=DECIMAL}, #{goodsOldPrice,jdbcType=DECIMAL}, #{goodsPrice,jdbcType=DECIMAL}, 
+      #{goodsAmount,jdbcType=DECIMAL}, #{giftAmount,jdbcType=INTEGER}, #{canReturnAmount,jdbcType=DECIMAL}, 
+      #{subsidy,jdbcType=DECIMAL}, #{points,jdbcType=DECIMAL}, #{awardMoney,jdbcType=DECIMAL}, 
+      #{goodsSumFee,jdbcType=DECIMAL}, #{productCombinationId,jdbcType=INTEGER}, #{executePrice,jdbcType=DECIMAL}, 
+      #{isGift,jdbcType=CHAR}, #{mainGoodsId,jdbcType=INTEGER}, #{pcgGiftId,jdbcType=INTEGER}, 
+      #{orderRuleId,jdbcType=VARCHAR}, #{productRuleId,jdbcType=VARCHAR}, #{productDown,jdbcType=DECIMAL}, 
+      #{cartDown,jdbcType=DECIMAL}, #{cartPrice,jdbcType=DECIMAL}, #{productCouponIds,jdbcType=VARCHAR}, 
+      #{productCouponNums,jdbcType=VARCHAR}, #{orderCouponIds,jdbcType=VARCHAR}, #{orderCouponNums,jdbcType=VARCHAR}, 
+      #{repairState,jdbcType=CHAR}, #{isComment,jdbcType=CHAR}, #{isShow,jdbcType=CHAR}, 
+      #{isDelete,jdbcType=CHAR}, #{addUserId,jdbcType=INTEGER}, #{addTime,jdbcType=VARCHAR}, 
+      #{editUserId,jdbcType=INTEGER}, #{editTime,jdbcType=VARCHAR}, #{comments,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ecbusiness.model.OrderItem" >
+    insert into order_item
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderItemId != null" >
+        ORDER_ITEM_ID,
+      </if>
+      <if test="orderId != null" >
+        ORDER_ID,
+      </if>
+      <if test="orderGroupId != null" >
+        ORDER_GROUP_ID,
+      </if>
+      <if test="orderDeliveryId != null" >
+        ORDER_DELIVERY_ID,
+      </if>
+      <if test="goodsType != null" >
+        GOODS_TYPE,
+      </if>
+      <if test="goodsId != null" >
+        GOODS_ID,
+      </if>
+      <if test="goodsNo != null" >
+        GOODS_NO,
+      </if>
+      <if test="goodsName != null" >
+        GOODS_NAME,
+      </if>
+      <if test="goodsUnit != null" >
+        GOODS_UNIT,
+      </if>
+      <if test="goodsCostPrice != null" >
+        GOODS_COST_PRICE,
+      </if>
+      <if test="goodsOldPrice != null" >
+        GOODS_OLD_PRICE,
+      </if>
+      <if test="goodsPrice != null" >
+        GOODS_PRICE,
+      </if>
+      <if test="goodsAmount != null" >
+        GOODS_AMOUNT,
+      </if>
+      <if test="giftAmount != null" >
+        GIFT_AMOUNT,
+      </if>
+      <if test="canReturnAmount != null" >
+        CAN_RETURN_AMOUNT,
+      </if>
+      <if test="subsidy != null" >
+        SUBSIDY,
+      </if>
+      <if test="points != null" >
+        POINTS,
+      </if>
+      <if test="awardMoney != null" >
+        AWARD_MONEY,
+      </if>
+      <if test="goodsSumFee != null" >
+        GOODS_SUM_FEE,
+      </if>
+      <if test="productCombinationId != null" >
+        PRODUCT_COMBINATION_ID,
+      </if>
+      <if test="executePrice != null" >
+        EXECUTE_PRICE,
+      </if>
+      <if test="isGift != null" >
+        IS_GIFT,
+      </if>
+      <if test="mainGoodsId != null" >
+        MAIN_GOODS_ID,
+      </if>
+      <if test="pcgGiftId != null" >
+        PCG_GIFT_ID,
+      </if>
+      <if test="orderRuleId != null" >
+        ORDER_RULE_ID,
+      </if>
+      <if test="productRuleId != null" >
+        PRODUCT_RULE_ID,
+      </if>
+      <if test="productDown != null" >
+        PRODUCT_DOWN,
+      </if>
+      <if test="cartDown != null" >
+        CART_DOWN,
+      </if>
+      <if test="cartPrice != null" >
+        CART_PRICE,
+      </if>
+      <if test="productCouponIds != null" >
+        PRODUCT_COUPON_IDS,
+      </if>
+      <if test="productCouponNums != null" >
+        PRODUCT_COUPON_NUMS,
+      </if>
+      <if test="orderCouponIds != null" >
+        ORDER_COUPON_IDS,
+      </if>
+      <if test="orderCouponNums != null" >
+        ORDER_COUPON_NUMS,
+      </if>
+      <if test="repairState != null" >
+        REPAIR_STATE,
+      </if>
+      <if test="isComment != null" >
+        IS_COMMENT,
+      </if>
+      <if test="isShow != null" >
+        IS_SHOW,
+      </if>
+      <if test="isDelete != null" >
+        IS_DELETE,
+      </if>
+      <if test="addUserId != null" >
+        ADD_USER_ID,
+      </if>
+      <if test="addTime != null" >
+        ADD_TIME,
+      </if>
+      <if test="editUserId != null" >
+        EDIT_USER_ID,
+      </if>
+      <if test="editTime != null" >
+        EDIT_TIME,
+      </if>
+      <if test="comments != null" >
+        comments,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderItemId != null" >
+        #{orderItemId,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderGroupId != null" >
+        #{orderGroupId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderDeliveryId != null" >
+        #{orderDeliveryId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsType != null" >
+        #{goodsType,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsId != null" >
+        #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsNo != null" >
+        #{goodsNo,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsName != null" >
+        #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsUnit != null" >
+        #{goodsUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsCostPrice != null" >
+        #{goodsCostPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsOldPrice != null" >
+        #{goodsOldPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsPrice != null" >
+        #{goodsPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsAmount != null" >
+        #{goodsAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="giftAmount != null" >
+        #{giftAmount,jdbcType=INTEGER},
+      </if>
+      <if test="canReturnAmount != null" >
+        #{canReturnAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="subsidy != null" >
+        #{subsidy,jdbcType=DECIMAL},
+      </if>
+      <if test="points != null" >
+        #{points,jdbcType=DECIMAL},
+      </if>
+      <if test="awardMoney != null" >
+        #{awardMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsSumFee != null" >
+        #{goodsSumFee,jdbcType=DECIMAL},
+      </if>
+      <if test="productCombinationId != null" >
+        #{productCombinationId,jdbcType=INTEGER},
+      </if>
+      <if test="executePrice != null" >
+        #{executePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="isGift != null" >
+        #{isGift,jdbcType=CHAR},
+      </if>
+      <if test="mainGoodsId != null" >
+        #{mainGoodsId,jdbcType=INTEGER},
+      </if>
+      <if test="pcgGiftId != null" >
+        #{pcgGiftId,jdbcType=INTEGER},
+      </if>
+      <if test="orderRuleId != null" >
+        #{orderRuleId,jdbcType=VARCHAR},
+      </if>
+      <if test="productRuleId != null" >
+        #{productRuleId,jdbcType=VARCHAR},
+      </if>
+      <if test="productDown != null" >
+        #{productDown,jdbcType=DECIMAL},
+      </if>
+      <if test="cartDown != null" >
+        #{cartDown,jdbcType=DECIMAL},
+      </if>
+      <if test="cartPrice != null" >
+        #{cartPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="productCouponIds != null" >
+        #{productCouponIds,jdbcType=VARCHAR},
+      </if>
+      <if test="productCouponNums != null" >
+        #{productCouponNums,jdbcType=VARCHAR},
+      </if>
+      <if test="orderCouponIds != null" >
+        #{orderCouponIds,jdbcType=VARCHAR},
+      </if>
+      <if test="orderCouponNums != null" >
+        #{orderCouponNums,jdbcType=VARCHAR},
+      </if>
+      <if test="repairState != null" >
+        #{repairState,jdbcType=CHAR},
+      </if>
+      <if test="isComment != null" >
+        #{isComment,jdbcType=CHAR},
+      </if>
+      <if test="isShow != null" >
+        #{isShow,jdbcType=CHAR},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=CHAR},
+      </if>
+      <if test="addUserId != null" >
+        #{addUserId,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null" >
+        #{addTime,jdbcType=VARCHAR},
+      </if>
+      <if test="editUserId != null" >
+        #{editUserId,jdbcType=INTEGER},
+      </if>
+      <if test="editTime != null" >
+        #{editTime,jdbcType=VARCHAR},
+      </if>
+      <if test="comments != null" >
+        #{comments,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ecbusiness.model.OrderItemCriteria" resultType="java.lang.Integer" >
+    select count(*) from order_item
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update order_item
+    <set >
+      <if test="record.orderItemId != null" >
+        ORDER_ITEM_ID = #{record.orderItemId,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderId != null" >
+        ORDER_ID = #{record.orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderGroupId != null" >
+        ORDER_GROUP_ID = #{record.orderGroupId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderDeliveryId != null" >
+        ORDER_DELIVERY_ID = #{record.orderDeliveryId,jdbcType=INTEGER},
+      </if>
+      <if test="record.goodsType != null" >
+        GOODS_TYPE = #{record.goodsType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodsId != null" >
+        GOODS_ID = #{record.goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="record.goodsNo != null" >
+        GOODS_NO = #{record.goodsNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodsName != null" >
+        GOODS_NAME = #{record.goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodsUnit != null" >
+        GOODS_UNIT = #{record.goodsUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodsCostPrice != null" >
+        GOODS_COST_PRICE = #{record.goodsCostPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.goodsOldPrice != null" >
+        GOODS_OLD_PRICE = #{record.goodsOldPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.goodsPrice != null" >
+        GOODS_PRICE = #{record.goodsPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.goodsAmount != null" >
+        GOODS_AMOUNT = #{record.goodsAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.giftAmount != null" >
+        GIFT_AMOUNT = #{record.giftAmount,jdbcType=INTEGER},
+      </if>
+      <if test="record.canReturnAmount != null" >
+        CAN_RETURN_AMOUNT = #{record.canReturnAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.subsidy != null" >
+        SUBSIDY = #{record.subsidy,jdbcType=DECIMAL},
+      </if>
+      <if test="record.points != null" >
+        POINTS = #{record.points,jdbcType=DECIMAL},
+      </if>
+      <if test="record.awardMoney != null" >
+        AWARD_MONEY = #{record.awardMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="record.goodsSumFee != null" >
+        GOODS_SUM_FEE = #{record.goodsSumFee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.productCombinationId != null" >
+        PRODUCT_COMBINATION_ID = #{record.productCombinationId,jdbcType=INTEGER},
+      </if>
+      <if test="record.executePrice != null" >
+        EXECUTE_PRICE = #{record.executePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.isGift != null" >
+        IS_GIFT = #{record.isGift,jdbcType=CHAR},
+      </if>
+      <if test="record.mainGoodsId != null" >
+        MAIN_GOODS_ID = #{record.mainGoodsId,jdbcType=INTEGER},
+      </if>
+      <if test="record.pcgGiftId != null" >
+        PCG_GIFT_ID = #{record.pcgGiftId,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderRuleId != null" >
+        ORDER_RULE_ID = #{record.orderRuleId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productRuleId != null" >
+        PRODUCT_RULE_ID = #{record.productRuleId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productDown != null" >
+        PRODUCT_DOWN = #{record.productDown,jdbcType=DECIMAL},
+      </if>
+      <if test="record.cartDown != null" >
+        CART_DOWN = #{record.cartDown,jdbcType=DECIMAL},
+      </if>
+      <if test="record.cartPrice != null" >
+        CART_PRICE = #{record.cartPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.productCouponIds != null" >
+        PRODUCT_COUPON_IDS = #{record.productCouponIds,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productCouponNums != null" >
+        PRODUCT_COUPON_NUMS = #{record.productCouponNums,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderCouponIds != null" >
+        ORDER_COUPON_IDS = #{record.orderCouponIds,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderCouponNums != null" >
+        ORDER_COUPON_NUMS = #{record.orderCouponNums,jdbcType=VARCHAR},
+      </if>
+      <if test="record.repairState != null" >
+        REPAIR_STATE = #{record.repairState,jdbcType=CHAR},
+      </if>
+      <if test="record.isComment != null" >
+        IS_COMMENT = #{record.isComment,jdbcType=CHAR},
+      </if>
+      <if test="record.isShow != null" >
+        IS_SHOW = #{record.isShow,jdbcType=CHAR},
+      </if>
+      <if test="record.isDelete != null" >
+        IS_DELETE = #{record.isDelete,jdbcType=CHAR},
+      </if>
+      <if test="record.addUserId != null" >
+        ADD_USER_ID = #{record.addUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.addTime != null" >
+        ADD_TIME = #{record.addTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.editUserId != null" >
+        EDIT_USER_ID = #{record.editUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.editTime != null" >
+        EDIT_TIME = #{record.editTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.comments != null" >
+        comments = #{record.comments,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update order_item
+    set ORDER_ITEM_ID = #{record.orderItemId,jdbcType=INTEGER},
+      ORDER_ID = #{record.orderId,jdbcType=VARCHAR},
+      ORDER_GROUP_ID = #{record.orderGroupId,jdbcType=VARCHAR},
+      ORDER_DELIVERY_ID = #{record.orderDeliveryId,jdbcType=INTEGER},
+      GOODS_TYPE = #{record.goodsType,jdbcType=VARCHAR},
+      GOODS_ID = #{record.goodsId,jdbcType=INTEGER},
+      GOODS_NO = #{record.goodsNo,jdbcType=VARCHAR},
+      GOODS_NAME = #{record.goodsName,jdbcType=VARCHAR},
+      GOODS_UNIT = #{record.goodsUnit,jdbcType=VARCHAR},
+      GOODS_COST_PRICE = #{record.goodsCostPrice,jdbcType=DECIMAL},
+      GOODS_OLD_PRICE = #{record.goodsOldPrice,jdbcType=DECIMAL},
+      GOODS_PRICE = #{record.goodsPrice,jdbcType=DECIMAL},
+      GOODS_AMOUNT = #{record.goodsAmount,jdbcType=DECIMAL},
+      GIFT_AMOUNT = #{record.giftAmount,jdbcType=INTEGER},
+      CAN_RETURN_AMOUNT = #{record.canReturnAmount,jdbcType=DECIMAL},
+      SUBSIDY = #{record.subsidy,jdbcType=DECIMAL},
+      POINTS = #{record.points,jdbcType=DECIMAL},
+      AWARD_MONEY = #{record.awardMoney,jdbcType=DECIMAL},
+      GOODS_SUM_FEE = #{record.goodsSumFee,jdbcType=DECIMAL},
+      PRODUCT_COMBINATION_ID = #{record.productCombinationId,jdbcType=INTEGER},
+      EXECUTE_PRICE = #{record.executePrice,jdbcType=DECIMAL},
+      IS_GIFT = #{record.isGift,jdbcType=CHAR},
+      MAIN_GOODS_ID = #{record.mainGoodsId,jdbcType=INTEGER},
+      PCG_GIFT_ID = #{record.pcgGiftId,jdbcType=INTEGER},
+      ORDER_RULE_ID = #{record.orderRuleId,jdbcType=VARCHAR},
+      PRODUCT_RULE_ID = #{record.productRuleId,jdbcType=VARCHAR},
+      PRODUCT_DOWN = #{record.productDown,jdbcType=DECIMAL},
+      CART_DOWN = #{record.cartDown,jdbcType=DECIMAL},
+      CART_PRICE = #{record.cartPrice,jdbcType=DECIMAL},
+      PRODUCT_COUPON_IDS = #{record.productCouponIds,jdbcType=VARCHAR},
+      PRODUCT_COUPON_NUMS = #{record.productCouponNums,jdbcType=VARCHAR},
+      ORDER_COUPON_IDS = #{record.orderCouponIds,jdbcType=VARCHAR},
+      ORDER_COUPON_NUMS = #{record.orderCouponNums,jdbcType=VARCHAR},
+      REPAIR_STATE = #{record.repairState,jdbcType=CHAR},
+      IS_COMMENT = #{record.isComment,jdbcType=CHAR},
+      IS_SHOW = #{record.isShow,jdbcType=CHAR},
+      IS_DELETE = #{record.isDelete,jdbcType=CHAR},
+      ADD_USER_ID = #{record.addUserId,jdbcType=INTEGER},
+      ADD_TIME = #{record.addTime,jdbcType=VARCHAR},
+      EDIT_USER_ID = #{record.editUserId,jdbcType=INTEGER},
+      EDIT_TIME = #{record.editTime,jdbcType=VARCHAR},
+      comments = #{record.comments,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ecbusiness.model.OrderItem" >
+    update order_item
+    <set >
+      <if test="orderId != null" >
+        ORDER_ID = #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderGroupId != null" >
+        ORDER_GROUP_ID = #{orderGroupId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderDeliveryId != null" >
+        ORDER_DELIVERY_ID = #{orderDeliveryId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsType != null" >
+        GOODS_TYPE = #{goodsType,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsId != null" >
+        GOODS_ID = #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsNo != null" >
+        GOODS_NO = #{goodsNo,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsName != null" >
+        GOODS_NAME = #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsUnit != null" >
+        GOODS_UNIT = #{goodsUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsCostPrice != null" >
+        GOODS_COST_PRICE = #{goodsCostPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsOldPrice != null" >
+        GOODS_OLD_PRICE = #{goodsOldPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsPrice != null" >
+        GOODS_PRICE = #{goodsPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsAmount != null" >
+        GOODS_AMOUNT = #{goodsAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="giftAmount != null" >
+        GIFT_AMOUNT = #{giftAmount,jdbcType=INTEGER},
+      </if>
+      <if test="canReturnAmount != null" >
+        CAN_RETURN_AMOUNT = #{canReturnAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="subsidy != null" >
+        SUBSIDY = #{subsidy,jdbcType=DECIMAL},
+      </if>
+      <if test="points != null" >
+        POINTS = #{points,jdbcType=DECIMAL},
+      </if>
+      <if test="awardMoney != null" >
+        AWARD_MONEY = #{awardMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsSumFee != null" >
+        GOODS_SUM_FEE = #{goodsSumFee,jdbcType=DECIMAL},
+      </if>
+      <if test="productCombinationId != null" >
+        PRODUCT_COMBINATION_ID = #{productCombinationId,jdbcType=INTEGER},
+      </if>
+      <if test="executePrice != null" >
+        EXECUTE_PRICE = #{executePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="isGift != null" >
+        IS_GIFT = #{isGift,jdbcType=CHAR},
+      </if>
+      <if test="mainGoodsId != null" >
+        MAIN_GOODS_ID = #{mainGoodsId,jdbcType=INTEGER},
+      </if>
+      <if test="pcgGiftId != null" >
+        PCG_GIFT_ID = #{pcgGiftId,jdbcType=INTEGER},
+      </if>
+      <if test="orderRuleId != null" >
+        ORDER_RULE_ID = #{orderRuleId,jdbcType=VARCHAR},
+      </if>
+      <if test="productRuleId != null" >
+        PRODUCT_RULE_ID = #{productRuleId,jdbcType=VARCHAR},
+      </if>
+      <if test="productDown != null" >
+        PRODUCT_DOWN = #{productDown,jdbcType=DECIMAL},
+      </if>
+      <if test="cartDown != null" >
+        CART_DOWN = #{cartDown,jdbcType=DECIMAL},
+      </if>
+      <if test="cartPrice != null" >
+        CART_PRICE = #{cartPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="productCouponIds != null" >
+        PRODUCT_COUPON_IDS = #{productCouponIds,jdbcType=VARCHAR},
+      </if>
+      <if test="productCouponNums != null" >
+        PRODUCT_COUPON_NUMS = #{productCouponNums,jdbcType=VARCHAR},
+      </if>
+      <if test="orderCouponIds != null" >
+        ORDER_COUPON_IDS = #{orderCouponIds,jdbcType=VARCHAR},
+      </if>
+      <if test="orderCouponNums != null" >
+        ORDER_COUPON_NUMS = #{orderCouponNums,jdbcType=VARCHAR},
+      </if>
+      <if test="repairState != null" >
+        REPAIR_STATE = #{repairState,jdbcType=CHAR},
+      </if>
+      <if test="isComment != null" >
+        IS_COMMENT = #{isComment,jdbcType=CHAR},
+      </if>
+      <if test="isShow != null" >
+        IS_SHOW = #{isShow,jdbcType=CHAR},
+      </if>
+      <if test="isDelete != null" >
+        IS_DELETE = #{isDelete,jdbcType=CHAR},
+      </if>
+      <if test="addUserId != null" >
+        ADD_USER_ID = #{addUserId,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null" >
+        ADD_TIME = #{addTime,jdbcType=VARCHAR},
+      </if>
+      <if test="editUserId != null" >
+        EDIT_USER_ID = #{editUserId,jdbcType=INTEGER},
+      </if>
+      <if test="editTime != null" >
+        EDIT_TIME = #{editTime,jdbcType=VARCHAR},
+      </if>
+      <if test="comments != null" >
+        comments = #{comments,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ORDER_ITEM_ID = #{orderItemId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ecbusiness.model.OrderItem" >
+    update order_item
+    set ORDER_ID = #{orderId,jdbcType=VARCHAR},
+      ORDER_GROUP_ID = #{orderGroupId,jdbcType=VARCHAR},
+      ORDER_DELIVERY_ID = #{orderDeliveryId,jdbcType=INTEGER},
+      GOODS_TYPE = #{goodsType,jdbcType=VARCHAR},
+      GOODS_ID = #{goodsId,jdbcType=INTEGER},
+      GOODS_NO = #{goodsNo,jdbcType=VARCHAR},
+      GOODS_NAME = #{goodsName,jdbcType=VARCHAR},
+      GOODS_UNIT = #{goodsUnit,jdbcType=VARCHAR},
+      GOODS_COST_PRICE = #{goodsCostPrice,jdbcType=DECIMAL},
+      GOODS_OLD_PRICE = #{goodsOldPrice,jdbcType=DECIMAL},
+      GOODS_PRICE = #{goodsPrice,jdbcType=DECIMAL},
+      GOODS_AMOUNT = #{goodsAmount,jdbcType=DECIMAL},
+      GIFT_AMOUNT = #{giftAmount,jdbcType=INTEGER},
+      CAN_RETURN_AMOUNT = #{canReturnAmount,jdbcType=DECIMAL},
+      SUBSIDY = #{subsidy,jdbcType=DECIMAL},
+      POINTS = #{points,jdbcType=DECIMAL},
+      AWARD_MONEY = #{awardMoney,jdbcType=DECIMAL},
+      GOODS_SUM_FEE = #{goodsSumFee,jdbcType=DECIMAL},
+      PRODUCT_COMBINATION_ID = #{productCombinationId,jdbcType=INTEGER},
+      EXECUTE_PRICE = #{executePrice,jdbcType=DECIMAL},
+      IS_GIFT = #{isGift,jdbcType=CHAR},
+      MAIN_GOODS_ID = #{mainGoodsId,jdbcType=INTEGER},
+      PCG_GIFT_ID = #{pcgGiftId,jdbcType=INTEGER},
+      ORDER_RULE_ID = #{orderRuleId,jdbcType=VARCHAR},
+      PRODUCT_RULE_ID = #{productRuleId,jdbcType=VARCHAR},
+      PRODUCT_DOWN = #{productDown,jdbcType=DECIMAL},
+      CART_DOWN = #{cartDown,jdbcType=DECIMAL},
+      CART_PRICE = #{cartPrice,jdbcType=DECIMAL},
+      PRODUCT_COUPON_IDS = #{productCouponIds,jdbcType=VARCHAR},
+      PRODUCT_COUPON_NUMS = #{productCouponNums,jdbcType=VARCHAR},
+      ORDER_COUPON_IDS = #{orderCouponIds,jdbcType=VARCHAR},
+      ORDER_COUPON_NUMS = #{orderCouponNums,jdbcType=VARCHAR},
+      REPAIR_STATE = #{repairState,jdbcType=CHAR},
+      IS_COMMENT = #{isComment,jdbcType=CHAR},
+      IS_SHOW = #{isShow,jdbcType=CHAR},
+      IS_DELETE = #{isDelete,jdbcType=CHAR},
+      ADD_USER_ID = #{addUserId,jdbcType=INTEGER},
+      ADD_TIME = #{addTime,jdbcType=VARCHAR},
+      EDIT_USER_ID = #{editUserId,jdbcType=INTEGER},
+      EDIT_TIME = #{editTime,jdbcType=VARCHAR},
+      comments = #{comments,jdbcType=VARCHAR}
+    where ORDER_ITEM_ID = #{orderItemId,jdbcType=INTEGER}
+  </update>
+  <select resultMap="BaseResultMap" parameterType="com.ecbusiness.model.OrderItemCriteria" id="selectByExampleWithRowbounds" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from order_item
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <cache />
+</mapper>

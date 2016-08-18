@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ecbusiness.mapper.ProductImgMapper" >
+  <resultMap id="BaseResultMap" type="com.ecbusiness.model.ProductImg" >
+    <id column="PRO_IMAGE_ID" property="proImageId" jdbcType="INTEGER" />
+    <result column="PRODUCT_ID" property="productId" jdbcType="INTEGER" />
+    <result column="IMAGE_TYPE" property="imageType" jdbcType="VARCHAR" />
+    <result column="PRO_IMAGE_URL" property="proImageUrl" jdbcType="VARCHAR" />
+    <result column="IMAGE_ORIGN" property="imageOrign" jdbcType="VARCHAR" />
+    <result column="IMAGE_ORDER" property="imageOrder" jdbcType="INTEGER" />
+    <result column="MASTER_PLAN" property="masterPlan" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    PRO_IMAGE_ID, PRODUCT_ID, IMAGE_TYPE, PRO_IMAGE_URL, IMAGE_ORIGN, IMAGE_ORDER, MASTER_PLAN
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ecbusiness.model.ProductImgCriteria" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from product_img
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from product_img
+    where PRO_IMAGE_ID = #{proImageId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from product_img
+    where PRO_IMAGE_ID = #{proImageId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ecbusiness.model.ProductImgCriteria" >
+    delete from product_img
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ecbusiness.model.ProductImg" >
+    insert into product_img (PRO_IMAGE_ID, PRODUCT_ID, IMAGE_TYPE, 
+      PRO_IMAGE_URL, IMAGE_ORIGN, IMAGE_ORDER, 
+      MASTER_PLAN)
+    values (#{proImageId,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER}, #{imageType,jdbcType=VARCHAR}, 
+      #{proImageUrl,jdbcType=VARCHAR}, #{imageOrign,jdbcType=VARCHAR}, #{imageOrder,jdbcType=INTEGER}, 
+      #{masterPlan,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ecbusiness.model.ProductImg" >
+    insert into product_img
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="proImageId != null" >
+        PRO_IMAGE_ID,
+      </if>
+      <if test="productId != null" >
+        PRODUCT_ID,
+      </if>
+      <if test="imageType != null" >
+        IMAGE_TYPE,
+      </if>
+      <if test="proImageUrl != null" >
+        PRO_IMAGE_URL,
+      </if>
+      <if test="imageOrign != null" >
+        IMAGE_ORIGN,
+      </if>
+      <if test="imageOrder != null" >
+        IMAGE_ORDER,
+      </if>
+      <if test="masterPlan != null" >
+        MASTER_PLAN,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="proImageId != null" >
+        #{proImageId,jdbcType=INTEGER},
+      </if>
+      <if test="productId != null" >
+        #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="imageType != null" >
+        #{imageType,jdbcType=VARCHAR},
+      </if>
+      <if test="proImageUrl != null" >
+        #{proImageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="imageOrign != null" >
+        #{imageOrign,jdbcType=VARCHAR},
+      </if>
+      <if test="imageOrder != null" >
+        #{imageOrder,jdbcType=INTEGER},
+      </if>
+      <if test="masterPlan != null" >
+        #{masterPlan,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ecbusiness.model.ProductImgCriteria" resultType="java.lang.Integer" >
+    select count(*) from product_img
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update product_img
+    <set >
+      <if test="record.proImageId != null" >
+        PRO_IMAGE_ID = #{record.proImageId,jdbcType=INTEGER},
+      </if>
+      <if test="record.productId != null" >
+        PRODUCT_ID = #{record.productId,jdbcType=INTEGER},
+      </if>
+      <if test="record.imageType != null" >
+        IMAGE_TYPE = #{record.imageType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.proImageUrl != null" >
+        PRO_IMAGE_URL = #{record.proImageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imageOrign != null" >
+        IMAGE_ORIGN = #{record.imageOrign,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imageOrder != null" >
+        IMAGE_ORDER = #{record.imageOrder,jdbcType=INTEGER},
+      </if>
+      <if test="record.masterPlan != null" >
+        MASTER_PLAN = #{record.masterPlan,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update product_img
+    set PRO_IMAGE_ID = #{record.proImageId,jdbcType=INTEGER},
+      PRODUCT_ID = #{record.productId,jdbcType=INTEGER},
+      IMAGE_TYPE = #{record.imageType,jdbcType=VARCHAR},
+      PRO_IMAGE_URL = #{record.proImageUrl,jdbcType=VARCHAR},
+      IMAGE_ORIGN = #{record.imageOrign,jdbcType=VARCHAR},
+      IMAGE_ORDER = #{record.imageOrder,jdbcType=INTEGER},
+      MASTER_PLAN = #{record.masterPlan,jdbcType=CHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ecbusiness.model.ProductImg" >
+    update product_img
+    <set >
+      <if test="productId != null" >
+        PRODUCT_ID = #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="imageType != null" >
+        IMAGE_TYPE = #{imageType,jdbcType=VARCHAR},
+      </if>
+      <if test="proImageUrl != null" >
+        PRO_IMAGE_URL = #{proImageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="imageOrign != null" >
+        IMAGE_ORIGN = #{imageOrign,jdbcType=VARCHAR},
+      </if>
+      <if test="imageOrder != null" >
+        IMAGE_ORDER = #{imageOrder,jdbcType=INTEGER},
+      </if>
+      <if test="masterPlan != null" >
+        MASTER_PLAN = #{masterPlan,jdbcType=CHAR},
+      </if>
+    </set>
+    where PRO_IMAGE_ID = #{proImageId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ecbusiness.model.ProductImg" >
+    update product_img
+    set PRODUCT_ID = #{productId,jdbcType=INTEGER},
+      IMAGE_TYPE = #{imageType,jdbcType=VARCHAR},
+      PRO_IMAGE_URL = #{proImageUrl,jdbcType=VARCHAR},
+      IMAGE_ORIGN = #{imageOrign,jdbcType=VARCHAR},
+      IMAGE_ORDER = #{imageOrder,jdbcType=INTEGER},
+      MASTER_PLAN = #{masterPlan,jdbcType=CHAR}
+    where PRO_IMAGE_ID = #{proImageId,jdbcType=INTEGER}
+  </update>
+  <select resultMap="BaseResultMap" parameterType="com.ecbusiness.model.ProductImgCriteria" id="selectByExampleWithRowbounds" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from product_img
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <cache />
+</mapper>

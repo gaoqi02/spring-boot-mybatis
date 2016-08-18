@@ -1,0 +1,701 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ecbusiness.mapper.OrderShippingMapper" >
+  <resultMap id="BaseResultMap" type="com.ecbusiness.model.OrderShipping" >
+    <id column="ORDER_SHIPPING_ID" property="orderShippingId" jdbcType="INTEGER" />
+    <result column="ORDER_ID" property="orderId" jdbcType="VARCHAR" />
+    <result column="ORDER_SHIPPING_NO" property="orderShippingNo" jdbcType="VARCHAR" />
+    <result column="LOGISTIC_COMPANY_ID" property="logisticCompanyId" jdbcType="INTEGER" />
+    <result column="PRINT_STATE" property="printState" jdbcType="VARCHAR" />
+    <result column="PRINT_TIME" property="printTime" jdbcType="VARCHAR" />
+    <result column="PRINT_USER_ID" property="printUserId" jdbcType="INTEGER" />
+    <result column="LOGISTIC_WEIGHTS_ACTUAL" property="logisticWeightsActual" jdbcType="DECIMAL" />
+    <result column="LOGISTIC_FEE_ACTUAL" property="logisticFeeActual" jdbcType="DECIMAL" />
+    <result column="LOGISTIC_FEE_USER_ID" property="logisticFeeUserId" jdbcType="INTEGER" />
+    <result column="LOGISTIC_FEE_TIME" property="logisticFeeTime" jdbcType="VARCHAR" />
+    <result column="IS_SHIPPING" property="isShipping" jdbcType="CHAR" />
+    <result column="SHIPPING_TIME" property="shippingTime" jdbcType="VARCHAR" />
+    <result column="FROM_COMPANY" property="fromCompany" jdbcType="VARCHAR" />
+    <result column="FROM_ADDRESS" property="fromAddress" jdbcType="VARCHAR" />
+    <result column="FROM_TEL" property="fromTel" jdbcType="VARCHAR" />
+    <result column="FROM_USER" property="fromUser" jdbcType="VARCHAR" />
+    <result column="TO_USER" property="toUser" jdbcType="VARCHAR" />
+    <result column="TO_ADDRESS" property="toAddress" jdbcType="VARCHAR" />
+    <result column="TO_TEL" property="toTel" jdbcType="VARCHAR" />
+    <result column="TO_MOBILE" property="toMobile" jdbcType="VARCHAR" />
+    <result column="IS_INSURANCE" property="isInsurance" jdbcType="CHAR" />
+    <result column="GOODS_FEE" property="goodsFee" jdbcType="DECIMAL" />
+    <result column="INSURANCE_FEE" property="insuranceFee" jdbcType="DECIMAL" />
+    <result column="PAYMENT_TYPE" property="paymentType" jdbcType="VARCHAR" />
+    <result column="DELIVERY_DATE_TYPE" property="deliveryDateType" jdbcType="VARCHAR" />
+    <result column="DELIVERY_TIME_TYPE" property="deliveryTimeType" jdbcType="VARCHAR" />
+    <result column="GOODS_AMOUNT" property="goodsAmount" jdbcType="INTEGER" />
+    <result column="DELIVERY_NOTES" property="deliveryNotes" jdbcType="VARCHAR" />
+    <result column="IS_DELETE" property="isDelete" jdbcType="CHAR" />
+    <result column="ADD_USER_ID" property="addUserId" jdbcType="INTEGER" />
+    <result column="ADD_TIME" property="addTime" jdbcType="VARCHAR" />
+    <result column="EDIT_USER_ID" property="editUserId" jdbcType="INTEGER" />
+    <result column="EDIT_TIME" property="editTime" jdbcType="VARCHAR" />
+    <result column="ORDER_DELIVERY_ID" property="orderDeliveryId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ORDER_SHIPPING_ID, ORDER_ID, ORDER_SHIPPING_NO, LOGISTIC_COMPANY_ID, PRINT_STATE, 
+    PRINT_TIME, PRINT_USER_ID, LOGISTIC_WEIGHTS_ACTUAL, LOGISTIC_FEE_ACTUAL, LOGISTIC_FEE_USER_ID, 
+    LOGISTIC_FEE_TIME, IS_SHIPPING, SHIPPING_TIME, FROM_COMPANY, FROM_ADDRESS, FROM_TEL, 
+    FROM_USER, TO_USER, TO_ADDRESS, TO_TEL, TO_MOBILE, IS_INSURANCE, GOODS_FEE, INSURANCE_FEE, 
+    PAYMENT_TYPE, DELIVERY_DATE_TYPE, DELIVERY_TIME_TYPE, GOODS_AMOUNT, DELIVERY_NOTES, 
+    IS_DELETE, ADD_USER_ID, ADD_TIME, EDIT_USER_ID, EDIT_TIME, ORDER_DELIVERY_ID
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ecbusiness.model.OrderShippingCriteria" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from order_shipping
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from order_shipping
+    where ORDER_SHIPPING_ID = #{orderShippingId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from order_shipping
+    where ORDER_SHIPPING_ID = #{orderShippingId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ecbusiness.model.OrderShippingCriteria" >
+    delete from order_shipping
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ecbusiness.model.OrderShipping" >
+    insert into order_shipping (ORDER_SHIPPING_ID, ORDER_ID, ORDER_SHIPPING_NO, 
+      LOGISTIC_COMPANY_ID, PRINT_STATE, PRINT_TIME, 
+      PRINT_USER_ID, LOGISTIC_WEIGHTS_ACTUAL, LOGISTIC_FEE_ACTUAL, 
+      LOGISTIC_FEE_USER_ID, LOGISTIC_FEE_TIME, IS_SHIPPING, 
+      SHIPPING_TIME, FROM_COMPANY, FROM_ADDRESS, 
+      FROM_TEL, FROM_USER, TO_USER, 
+      TO_ADDRESS, TO_TEL, TO_MOBILE, 
+      IS_INSURANCE, GOODS_FEE, INSURANCE_FEE, 
+      PAYMENT_TYPE, DELIVERY_DATE_TYPE, DELIVERY_TIME_TYPE, 
+      GOODS_AMOUNT, DELIVERY_NOTES, IS_DELETE, 
+      ADD_USER_ID, ADD_TIME, EDIT_USER_ID, 
+      EDIT_TIME, ORDER_DELIVERY_ID)
+    values (#{orderShippingId,jdbcType=INTEGER}, #{orderId,jdbcType=VARCHAR}, #{orderShippingNo,jdbcType=VARCHAR}, 
+      #{logisticCompanyId,jdbcType=INTEGER}, #{printState,jdbcType=VARCHAR}, #{printTime,jdbcType=VARCHAR}, 
+      #{printUserId,jdbcType=INTEGER}, #{logisticWeightsActual,jdbcType=DECIMAL}, #{logisticFeeActual,jdbcType=DECIMAL}, 
+      #{logisticFeeUserId,jdbcType=INTEGER}, #{logisticFeeTime,jdbcType=VARCHAR}, #{isShipping,jdbcType=CHAR}, 
+      #{shippingTime,jdbcType=VARCHAR}, #{fromCompany,jdbcType=VARCHAR}, #{fromAddress,jdbcType=VARCHAR}, 
+      #{fromTel,jdbcType=VARCHAR}, #{fromUser,jdbcType=VARCHAR}, #{toUser,jdbcType=VARCHAR}, 
+      #{toAddress,jdbcType=VARCHAR}, #{toTel,jdbcType=VARCHAR}, #{toMobile,jdbcType=VARCHAR}, 
+      #{isInsurance,jdbcType=CHAR}, #{goodsFee,jdbcType=DECIMAL}, #{insuranceFee,jdbcType=DECIMAL}, 
+      #{paymentType,jdbcType=VARCHAR}, #{deliveryDateType,jdbcType=VARCHAR}, #{deliveryTimeType,jdbcType=VARCHAR}, 
+      #{goodsAmount,jdbcType=INTEGER}, #{deliveryNotes,jdbcType=VARCHAR}, #{isDelete,jdbcType=CHAR}, 
+      #{addUserId,jdbcType=INTEGER}, #{addTime,jdbcType=VARCHAR}, #{editUserId,jdbcType=INTEGER}, 
+      #{editTime,jdbcType=VARCHAR}, #{orderDeliveryId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ecbusiness.model.OrderShipping" >
+    insert into order_shipping
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderShippingId != null" >
+        ORDER_SHIPPING_ID,
+      </if>
+      <if test="orderId != null" >
+        ORDER_ID,
+      </if>
+      <if test="orderShippingNo != null" >
+        ORDER_SHIPPING_NO,
+      </if>
+      <if test="logisticCompanyId != null" >
+        LOGISTIC_COMPANY_ID,
+      </if>
+      <if test="printState != null" >
+        PRINT_STATE,
+      </if>
+      <if test="printTime != null" >
+        PRINT_TIME,
+      </if>
+      <if test="printUserId != null" >
+        PRINT_USER_ID,
+      </if>
+      <if test="logisticWeightsActual != null" >
+        LOGISTIC_WEIGHTS_ACTUAL,
+      </if>
+      <if test="logisticFeeActual != null" >
+        LOGISTIC_FEE_ACTUAL,
+      </if>
+      <if test="logisticFeeUserId != null" >
+        LOGISTIC_FEE_USER_ID,
+      </if>
+      <if test="logisticFeeTime != null" >
+        LOGISTIC_FEE_TIME,
+      </if>
+      <if test="isShipping != null" >
+        IS_SHIPPING,
+      </if>
+      <if test="shippingTime != null" >
+        SHIPPING_TIME,
+      </if>
+      <if test="fromCompany != null" >
+        FROM_COMPANY,
+      </if>
+      <if test="fromAddress != null" >
+        FROM_ADDRESS,
+      </if>
+      <if test="fromTel != null" >
+        FROM_TEL,
+      </if>
+      <if test="fromUser != null" >
+        FROM_USER,
+      </if>
+      <if test="toUser != null" >
+        TO_USER,
+      </if>
+      <if test="toAddress != null" >
+        TO_ADDRESS,
+      </if>
+      <if test="toTel != null" >
+        TO_TEL,
+      </if>
+      <if test="toMobile != null" >
+        TO_MOBILE,
+      </if>
+      <if test="isInsurance != null" >
+        IS_INSURANCE,
+      </if>
+      <if test="goodsFee != null" >
+        GOODS_FEE,
+      </if>
+      <if test="insuranceFee != null" >
+        INSURANCE_FEE,
+      </if>
+      <if test="paymentType != null" >
+        PAYMENT_TYPE,
+      </if>
+      <if test="deliveryDateType != null" >
+        DELIVERY_DATE_TYPE,
+      </if>
+      <if test="deliveryTimeType != null" >
+        DELIVERY_TIME_TYPE,
+      </if>
+      <if test="goodsAmount != null" >
+        GOODS_AMOUNT,
+      </if>
+      <if test="deliveryNotes != null" >
+        DELIVERY_NOTES,
+      </if>
+      <if test="isDelete != null" >
+        IS_DELETE,
+      </if>
+      <if test="addUserId != null" >
+        ADD_USER_ID,
+      </if>
+      <if test="addTime != null" >
+        ADD_TIME,
+      </if>
+      <if test="editUserId != null" >
+        EDIT_USER_ID,
+      </if>
+      <if test="editTime != null" >
+        EDIT_TIME,
+      </if>
+      <if test="orderDeliveryId != null" >
+        ORDER_DELIVERY_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderShippingId != null" >
+        #{orderShippingId,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderShippingNo != null" >
+        #{orderShippingNo,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticCompanyId != null" >
+        #{logisticCompanyId,jdbcType=INTEGER},
+      </if>
+      <if test="printState != null" >
+        #{printState,jdbcType=VARCHAR},
+      </if>
+      <if test="printTime != null" >
+        #{printTime,jdbcType=VARCHAR},
+      </if>
+      <if test="printUserId != null" >
+        #{printUserId,jdbcType=INTEGER},
+      </if>
+      <if test="logisticWeightsActual != null" >
+        #{logisticWeightsActual,jdbcType=DECIMAL},
+      </if>
+      <if test="logisticFeeActual != null" >
+        #{logisticFeeActual,jdbcType=DECIMAL},
+      </if>
+      <if test="logisticFeeUserId != null" >
+        #{logisticFeeUserId,jdbcType=INTEGER},
+      </if>
+      <if test="logisticFeeTime != null" >
+        #{logisticFeeTime,jdbcType=VARCHAR},
+      </if>
+      <if test="isShipping != null" >
+        #{isShipping,jdbcType=CHAR},
+      </if>
+      <if test="shippingTime != null" >
+        #{shippingTime,jdbcType=VARCHAR},
+      </if>
+      <if test="fromCompany != null" >
+        #{fromCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="fromAddress != null" >
+        #{fromAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="fromTel != null" >
+        #{fromTel,jdbcType=VARCHAR},
+      </if>
+      <if test="fromUser != null" >
+        #{fromUser,jdbcType=VARCHAR},
+      </if>
+      <if test="toUser != null" >
+        #{toUser,jdbcType=VARCHAR},
+      </if>
+      <if test="toAddress != null" >
+        #{toAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="toTel != null" >
+        #{toTel,jdbcType=VARCHAR},
+      </if>
+      <if test="toMobile != null" >
+        #{toMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="isInsurance != null" >
+        #{isInsurance,jdbcType=CHAR},
+      </if>
+      <if test="goodsFee != null" >
+        #{goodsFee,jdbcType=DECIMAL},
+      </if>
+      <if test="insuranceFee != null" >
+        #{insuranceFee,jdbcType=DECIMAL},
+      </if>
+      <if test="paymentType != null" >
+        #{paymentType,jdbcType=VARCHAR},
+      </if>
+      <if test="deliveryDateType != null" >
+        #{deliveryDateType,jdbcType=VARCHAR},
+      </if>
+      <if test="deliveryTimeType != null" >
+        #{deliveryTimeType,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsAmount != null" >
+        #{goodsAmount,jdbcType=INTEGER},
+      </if>
+      <if test="deliveryNotes != null" >
+        #{deliveryNotes,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=CHAR},
+      </if>
+      <if test="addUserId != null" >
+        #{addUserId,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null" >
+        #{addTime,jdbcType=VARCHAR},
+      </if>
+      <if test="editUserId != null" >
+        #{editUserId,jdbcType=INTEGER},
+      </if>
+      <if test="editTime != null" >
+        #{editTime,jdbcType=VARCHAR},
+      </if>
+      <if test="orderDeliveryId != null" >
+        #{orderDeliveryId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ecbusiness.model.OrderShippingCriteria" resultType="java.lang.Integer" >
+    select count(*) from order_shipping
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update order_shipping
+    <set >
+      <if test="record.orderShippingId != null" >
+        ORDER_SHIPPING_ID = #{record.orderShippingId,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderId != null" >
+        ORDER_ID = #{record.orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderShippingNo != null" >
+        ORDER_SHIPPING_NO = #{record.orderShippingNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.logisticCompanyId != null" >
+        LOGISTIC_COMPANY_ID = #{record.logisticCompanyId,jdbcType=INTEGER},
+      </if>
+      <if test="record.printState != null" >
+        PRINT_STATE = #{record.printState,jdbcType=VARCHAR},
+      </if>
+      <if test="record.printTime != null" >
+        PRINT_TIME = #{record.printTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.printUserId != null" >
+        PRINT_USER_ID = #{record.printUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.logisticWeightsActual != null" >
+        LOGISTIC_WEIGHTS_ACTUAL = #{record.logisticWeightsActual,jdbcType=DECIMAL},
+      </if>
+      <if test="record.logisticFeeActual != null" >
+        LOGISTIC_FEE_ACTUAL = #{record.logisticFeeActual,jdbcType=DECIMAL},
+      </if>
+      <if test="record.logisticFeeUserId != null" >
+        LOGISTIC_FEE_USER_ID = #{record.logisticFeeUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.logisticFeeTime != null" >
+        LOGISTIC_FEE_TIME = #{record.logisticFeeTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isShipping != null" >
+        IS_SHIPPING = #{record.isShipping,jdbcType=CHAR},
+      </if>
+      <if test="record.shippingTime != null" >
+        SHIPPING_TIME = #{record.shippingTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fromCompany != null" >
+        FROM_COMPANY = #{record.fromCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fromAddress != null" >
+        FROM_ADDRESS = #{record.fromAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fromTel != null" >
+        FROM_TEL = #{record.fromTel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fromUser != null" >
+        FROM_USER = #{record.fromUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.toUser != null" >
+        TO_USER = #{record.toUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.toAddress != null" >
+        TO_ADDRESS = #{record.toAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.toTel != null" >
+        TO_TEL = #{record.toTel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.toMobile != null" >
+        TO_MOBILE = #{record.toMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isInsurance != null" >
+        IS_INSURANCE = #{record.isInsurance,jdbcType=CHAR},
+      </if>
+      <if test="record.goodsFee != null" >
+        GOODS_FEE = #{record.goodsFee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.insuranceFee != null" >
+        INSURANCE_FEE = #{record.insuranceFee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.paymentType != null" >
+        PAYMENT_TYPE = #{record.paymentType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deliveryDateType != null" >
+        DELIVERY_DATE_TYPE = #{record.deliveryDateType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deliveryTimeType != null" >
+        DELIVERY_TIME_TYPE = #{record.deliveryTimeType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodsAmount != null" >
+        GOODS_AMOUNT = #{record.goodsAmount,jdbcType=INTEGER},
+      </if>
+      <if test="record.deliveryNotes != null" >
+        DELIVERY_NOTES = #{record.deliveryNotes,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isDelete != null" >
+        IS_DELETE = #{record.isDelete,jdbcType=CHAR},
+      </if>
+      <if test="record.addUserId != null" >
+        ADD_USER_ID = #{record.addUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.addTime != null" >
+        ADD_TIME = #{record.addTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.editUserId != null" >
+        EDIT_USER_ID = #{record.editUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.editTime != null" >
+        EDIT_TIME = #{record.editTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderDeliveryId != null" >
+        ORDER_DELIVERY_ID = #{record.orderDeliveryId,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update order_shipping
+    set ORDER_SHIPPING_ID = #{record.orderShippingId,jdbcType=INTEGER},
+      ORDER_ID = #{record.orderId,jdbcType=VARCHAR},
+      ORDER_SHIPPING_NO = #{record.orderShippingNo,jdbcType=VARCHAR},
+      LOGISTIC_COMPANY_ID = #{record.logisticCompanyId,jdbcType=INTEGER},
+      PRINT_STATE = #{record.printState,jdbcType=VARCHAR},
+      PRINT_TIME = #{record.printTime,jdbcType=VARCHAR},
+      PRINT_USER_ID = #{record.printUserId,jdbcType=INTEGER},
+      LOGISTIC_WEIGHTS_ACTUAL = #{record.logisticWeightsActual,jdbcType=DECIMAL},
+      LOGISTIC_FEE_ACTUAL = #{record.logisticFeeActual,jdbcType=DECIMAL},
+      LOGISTIC_FEE_USER_ID = #{record.logisticFeeUserId,jdbcType=INTEGER},
+      LOGISTIC_FEE_TIME = #{record.logisticFeeTime,jdbcType=VARCHAR},
+      IS_SHIPPING = #{record.isShipping,jdbcType=CHAR},
+      SHIPPING_TIME = #{record.shippingTime,jdbcType=VARCHAR},
+      FROM_COMPANY = #{record.fromCompany,jdbcType=VARCHAR},
+      FROM_ADDRESS = #{record.fromAddress,jdbcType=VARCHAR},
+      FROM_TEL = #{record.fromTel,jdbcType=VARCHAR},
+      FROM_USER = #{record.fromUser,jdbcType=VARCHAR},
+      TO_USER = #{record.toUser,jdbcType=VARCHAR},
+      TO_ADDRESS = #{record.toAddress,jdbcType=VARCHAR},
+      TO_TEL = #{record.toTel,jdbcType=VARCHAR},
+      TO_MOBILE = #{record.toMobile,jdbcType=VARCHAR},
+      IS_INSURANCE = #{record.isInsurance,jdbcType=CHAR},
+      GOODS_FEE = #{record.goodsFee,jdbcType=DECIMAL},
+      INSURANCE_FEE = #{record.insuranceFee,jdbcType=DECIMAL},
+      PAYMENT_TYPE = #{record.paymentType,jdbcType=VARCHAR},
+      DELIVERY_DATE_TYPE = #{record.deliveryDateType,jdbcType=VARCHAR},
+      DELIVERY_TIME_TYPE = #{record.deliveryTimeType,jdbcType=VARCHAR},
+      GOODS_AMOUNT = #{record.goodsAmount,jdbcType=INTEGER},
+      DELIVERY_NOTES = #{record.deliveryNotes,jdbcType=VARCHAR},
+      IS_DELETE = #{record.isDelete,jdbcType=CHAR},
+      ADD_USER_ID = #{record.addUserId,jdbcType=INTEGER},
+      ADD_TIME = #{record.addTime,jdbcType=VARCHAR},
+      EDIT_USER_ID = #{record.editUserId,jdbcType=INTEGER},
+      EDIT_TIME = #{record.editTime,jdbcType=VARCHAR},
+      ORDER_DELIVERY_ID = #{record.orderDeliveryId,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ecbusiness.model.OrderShipping" >
+    update order_shipping
+    <set >
+      <if test="orderId != null" >
+        ORDER_ID = #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderShippingNo != null" >
+        ORDER_SHIPPING_NO = #{orderShippingNo,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticCompanyId != null" >
+        LOGISTIC_COMPANY_ID = #{logisticCompanyId,jdbcType=INTEGER},
+      </if>
+      <if test="printState != null" >
+        PRINT_STATE = #{printState,jdbcType=VARCHAR},
+      </if>
+      <if test="printTime != null" >
+        PRINT_TIME = #{printTime,jdbcType=VARCHAR},
+      </if>
+      <if test="printUserId != null" >
+        PRINT_USER_ID = #{printUserId,jdbcType=INTEGER},
+      </if>
+      <if test="logisticWeightsActual != null" >
+        LOGISTIC_WEIGHTS_ACTUAL = #{logisticWeightsActual,jdbcType=DECIMAL},
+      </if>
+      <if test="logisticFeeActual != null" >
+        LOGISTIC_FEE_ACTUAL = #{logisticFeeActual,jdbcType=DECIMAL},
+      </if>
+      <if test="logisticFeeUserId != null" >
+        LOGISTIC_FEE_USER_ID = #{logisticFeeUserId,jdbcType=INTEGER},
+      </if>
+      <if test="logisticFeeTime != null" >
+        LOGISTIC_FEE_TIME = #{logisticFeeTime,jdbcType=VARCHAR},
+      </if>
+      <if test="isShipping != null" >
+        IS_SHIPPING = #{isShipping,jdbcType=CHAR},
+      </if>
+      <if test="shippingTime != null" >
+        SHIPPING_TIME = #{shippingTime,jdbcType=VARCHAR},
+      </if>
+      <if test="fromCompany != null" >
+        FROM_COMPANY = #{fromCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="fromAddress != null" >
+        FROM_ADDRESS = #{fromAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="fromTel != null" >
+        FROM_TEL = #{fromTel,jdbcType=VARCHAR},
+      </if>
+      <if test="fromUser != null" >
+        FROM_USER = #{fromUser,jdbcType=VARCHAR},
+      </if>
+      <if test="toUser != null" >
+        TO_USER = #{toUser,jdbcType=VARCHAR},
+      </if>
+      <if test="toAddress != null" >
+        TO_ADDRESS = #{toAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="toTel != null" >
+        TO_TEL = #{toTel,jdbcType=VARCHAR},
+      </if>
+      <if test="toMobile != null" >
+        TO_MOBILE = #{toMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="isInsurance != null" >
+        IS_INSURANCE = #{isInsurance,jdbcType=CHAR},
+      </if>
+      <if test="goodsFee != null" >
+        GOODS_FEE = #{goodsFee,jdbcType=DECIMAL},
+      </if>
+      <if test="insuranceFee != null" >
+        INSURANCE_FEE = #{insuranceFee,jdbcType=DECIMAL},
+      </if>
+      <if test="paymentType != null" >
+        PAYMENT_TYPE = #{paymentType,jdbcType=VARCHAR},
+      </if>
+      <if test="deliveryDateType != null" >
+        DELIVERY_DATE_TYPE = #{deliveryDateType,jdbcType=VARCHAR},
+      </if>
+      <if test="deliveryTimeType != null" >
+        DELIVERY_TIME_TYPE = #{deliveryTimeType,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsAmount != null" >
+        GOODS_AMOUNT = #{goodsAmount,jdbcType=INTEGER},
+      </if>
+      <if test="deliveryNotes != null" >
+        DELIVERY_NOTES = #{deliveryNotes,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        IS_DELETE = #{isDelete,jdbcType=CHAR},
+      </if>
+      <if test="addUserId != null" >
+        ADD_USER_ID = #{addUserId,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null" >
+        ADD_TIME = #{addTime,jdbcType=VARCHAR},
+      </if>
+      <if test="editUserId != null" >
+        EDIT_USER_ID = #{editUserId,jdbcType=INTEGER},
+      </if>
+      <if test="editTime != null" >
+        EDIT_TIME = #{editTime,jdbcType=VARCHAR},
+      </if>
+      <if test="orderDeliveryId != null" >
+        ORDER_DELIVERY_ID = #{orderDeliveryId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ORDER_SHIPPING_ID = #{orderShippingId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ecbusiness.model.OrderShipping" >
+    update order_shipping
+    set ORDER_ID = #{orderId,jdbcType=VARCHAR},
+      ORDER_SHIPPING_NO = #{orderShippingNo,jdbcType=VARCHAR},
+      LOGISTIC_COMPANY_ID = #{logisticCompanyId,jdbcType=INTEGER},
+      PRINT_STATE = #{printState,jdbcType=VARCHAR},
+      PRINT_TIME = #{printTime,jdbcType=VARCHAR},
+      PRINT_USER_ID = #{printUserId,jdbcType=INTEGER},
+      LOGISTIC_WEIGHTS_ACTUAL = #{logisticWeightsActual,jdbcType=DECIMAL},
+      LOGISTIC_FEE_ACTUAL = #{logisticFeeActual,jdbcType=DECIMAL},
+      LOGISTIC_FEE_USER_ID = #{logisticFeeUserId,jdbcType=INTEGER},
+      LOGISTIC_FEE_TIME = #{logisticFeeTime,jdbcType=VARCHAR},
+      IS_SHIPPING = #{isShipping,jdbcType=CHAR},
+      SHIPPING_TIME = #{shippingTime,jdbcType=VARCHAR},
+      FROM_COMPANY = #{fromCompany,jdbcType=VARCHAR},
+      FROM_ADDRESS = #{fromAddress,jdbcType=VARCHAR},
+      FROM_TEL = #{fromTel,jdbcType=VARCHAR},
+      FROM_USER = #{fromUser,jdbcType=VARCHAR},
+      TO_USER = #{toUser,jdbcType=VARCHAR},
+      TO_ADDRESS = #{toAddress,jdbcType=VARCHAR},
+      TO_TEL = #{toTel,jdbcType=VARCHAR},
+      TO_MOBILE = #{toMobile,jdbcType=VARCHAR},
+      IS_INSURANCE = #{isInsurance,jdbcType=CHAR},
+      GOODS_FEE = #{goodsFee,jdbcType=DECIMAL},
+      INSURANCE_FEE = #{insuranceFee,jdbcType=DECIMAL},
+      PAYMENT_TYPE = #{paymentType,jdbcType=VARCHAR},
+      DELIVERY_DATE_TYPE = #{deliveryDateType,jdbcType=VARCHAR},
+      DELIVERY_TIME_TYPE = #{deliveryTimeType,jdbcType=VARCHAR},
+      GOODS_AMOUNT = #{goodsAmount,jdbcType=INTEGER},
+      DELIVERY_NOTES = #{deliveryNotes,jdbcType=VARCHAR},
+      IS_DELETE = #{isDelete,jdbcType=CHAR},
+      ADD_USER_ID = #{addUserId,jdbcType=INTEGER},
+      ADD_TIME = #{addTime,jdbcType=VARCHAR},
+      EDIT_USER_ID = #{editUserId,jdbcType=INTEGER},
+      EDIT_TIME = #{editTime,jdbcType=VARCHAR},
+      ORDER_DELIVERY_ID = #{orderDeliveryId,jdbcType=INTEGER}
+    where ORDER_SHIPPING_ID = #{orderShippingId,jdbcType=INTEGER}
+  </update>
+  <select resultMap="BaseResultMap" parameterType="com.ecbusiness.model.OrderShippingCriteria" id="selectByExampleWithRowbounds" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from order_shipping
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <cache />
+</mapper>

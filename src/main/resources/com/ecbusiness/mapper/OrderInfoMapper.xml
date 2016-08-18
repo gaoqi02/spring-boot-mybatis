@@ -1,0 +1,1811 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ecbusiness.mapper.OrderInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.ecbusiness.model.OrderInfo" >
+    <id column="ORDER_ID" property="orderId" jdbcType="VARCHAR" />
+    <result column="ERP_ORDER_ID" property="erpOrderId" jdbcType="INTEGER" />
+    <result column="URL_FROM_NO" property="urlFromNo" jdbcType="VARCHAR" />
+    <result column="MULTI_CHANNEL_ID" property="multiChannelId" jdbcType="INTEGER" />
+    <result column="MULTI_CHANNEL_ORDER_BATCH_ID" property="multiChannelOrderBatchId" jdbcType="INTEGER" />
+    <result column="GOODS_BATCH_NO" property="goodsBatchNo" jdbcType="VARCHAR" />
+    <result column="MULTI_CHANNEL_ORDER_ID" property="multiChannelOrderId" jdbcType="VARCHAR" />
+    <result column="IS_UPLOAD" property="isUpload" jdbcType="CHAR" />
+    <result column="UPLOAD_USER_ID" property="uploadUserId" jdbcType="INTEGER" />
+    <result column="UPLOAD_TIME" property="uploadTime" jdbcType="VARCHAR" />
+    <result column="IS_PAID" property="isPaid" jdbcType="CHAR" />
+    <result column="PAYMENT_MODE" property="paymentMode" jdbcType="VARCHAR" />
+    <result column="PAYMENT_NO" property="paymentNo" jdbcType="VARCHAR" />
+    <result column="PAID_TIME" property="paidTime" jdbcType="VARCHAR" />
+    <result column="OFFLINE_PAID_USER_ID" property="offlinePaidUserId" jdbcType="INTEGER" />
+    <result column="LOGISTIC_COMPANY_ID" property="logisticCompanyId" jdbcType="INTEGER" />
+    <result column="MEMBER_ID" property="memberId" jdbcType="INTEGER" />
+    <result column="PAYMENT_TYPE_ID" property="paymentTypeId" jdbcType="INTEGER" />
+    <result column="ORDER_STATE" property="orderState" jdbcType="INTEGER" />
+    <result column="ORDER_OUT_STATE" property="orderOutState" jdbcType="INTEGER" />
+    <result column="LIMIT_DATE" property="limitDate" jdbcType="VARCHAR" />
+    <result column="SKU_FEE" property="skuFee" jdbcType="DECIMAL" />
+    <result column="OTHER_DISCOUNTS" property="otherDiscounts" jdbcType="DECIMAL" />
+    <result column="ORDER_POINTS" property="orderPoints" jdbcType="INTEGER" />
+    <result column="DELIVERY_FEE" property="deliveryFee" jdbcType="DECIMAL" />
+    <result column="DISCOUNT_FEE" property="discountFee" jdbcType="DECIMAL" />
+    <result column="ORDER_FEE" property="orderFee" jdbcType="DECIMAL" />
+    <result column="ORDER_PAY_FEE" property="orderPayFee" jdbcType="DECIMAL" />
+    <result column="PAID_FEE" property="paidFee" jdbcType="DECIMAL" />
+    <result column="PROMOTE_RULE_IDS" property="promoteRuleIds" jdbcType="VARCHAR" />
+    <result column="PRODUCT_COMBINATION_IDS" property="productCombinationIds" jdbcType="VARCHAR" />
+    <result column="RETURN_TYPE" property="returnType" jdbcType="VARCHAR" />
+    <result column="RETURN_VALUE" property="returnValue" jdbcType="VARCHAR" />
+    <result column="ORDER_MSG" property="orderMsg" jdbcType="VARCHAR" />
+    <result column="ORDER_NOTES" property="orderNotes" jdbcType="VARCHAR" />
+    <result column="AUDIT_NOTES" property="auditNotes" jdbcType="VARCHAR" />
+    <result column="AUDIT_USER_ID" property="auditUserId" jdbcType="INTEGER" />
+    <result column="AUDIT_TIME" property="auditTime" jdbcType="VARCHAR" />
+    <result column="IS_LOCK" property="isLock" jdbcType="CHAR" />
+    <result column="LOCK_TIME" property="lockTime" jdbcType="VARCHAR" />
+    <result column="LOCK_USER_ID" property="lockUserId" jdbcType="INTEGER" />
+    <result column="COMMIT_TIME" property="commitTime" jdbcType="VARCHAR" />
+    <result column="FINISH_TIME" property="finishTime" jdbcType="VARCHAR" />
+    <result column="CANCEL_TIME" property="cancelTime" jdbcType="VARCHAR" />
+    <result column="CANCEL_USER_ID" property="cancelUserId" jdbcType="INTEGER" />
+    <result column="CANCEL_NOTES" property="cancelNotes" jdbcType="VARCHAR" />
+    <result column="IS_CHECK_BILLS" property="isCheckBills" jdbcType="CHAR" />
+    <result column="CHECK_BILL_USER_ID" property="checkBillUserId" jdbcType="INTEGER" />
+    <result column="CHECK_BILL_TIME" property="checkBillTime" jdbcType="VARCHAR" />
+    <result column="SKU_WEIGHTS" property="skuWeights" jdbcType="DECIMAL" />
+    <result column="IS_INTO_ERP" property="isIntoErp" jdbcType="CHAR" />
+    <result column="INTO_TIME" property="intoTime" jdbcType="VARCHAR" />
+    <result column="RECEIVE_USER" property="receiveUser" jdbcType="VARCHAR" />
+    <result column="PROVINCE_ID" property="provinceId" jdbcType="INTEGER" />
+    <result column="CITY_ID" property="cityId" jdbcType="INTEGER" />
+    <result column="AREA_ID" property="areaId" jdbcType="INTEGER" />
+    <result column="RECEIVE_ADDRESS" property="receiveAddress" jdbcType="VARCHAR" />
+    <result column="RECEIVE_FULL_ADDRESS" property="receiveFullAddress" jdbcType="VARCHAR" />
+    <result column="RECEIVE_POST" property="receivePost" jdbcType="VARCHAR" />
+    <result column="RECEIVE_TEL" property="receiveTel" jdbcType="VARCHAR" />
+    <result column="RECEIVE_MOBILE" property="receiveMobile" jdbcType="VARCHAR" />
+    <result column="RECEIVE_EMAIL" property="receiveEmail" jdbcType="VARCHAR" />
+    <result column="RECEIVE_DATE_TYPE" property="receiveDateType" jdbcType="VARCHAR" />
+    <result column="RECEIVE_TIME_TYPE" property="receiveTimeType" jdbcType="VARCHAR" />
+    <result column="INVOICE_TYPE" property="invoiceType" jdbcType="VARCHAR" />
+    <result column="INVOICE_CONTENT_TYPE" property="invoiceContentType" jdbcType="VARCHAR" />
+    <result column="INVOICE_TITLE" property="invoiceTitle" jdbcType="VARCHAR" />
+    <result column="INVOICE_CONTENT" property="invoiceContent" jdbcType="VARCHAR" />
+    <result column="INVOICE_TAX_NO" property="invoiceTaxNo" jdbcType="VARCHAR" />
+    <result column="IS_DRAW" property="isDraw" jdbcType="CHAR" />
+    <result column="IS_INVOICE" property="isInvoice" jdbcType="CHAR" />
+    <result column="BRAND_ID" property="brandId" jdbcType="INTEGER" />
+    <result column="BRAND_NAME" property="brandName" jdbcType="VARCHAR" />
+    <result column="INVOICE_TAX_ADDRESS" property="invoiceTaxAddress" jdbcType="VARCHAR" />
+    <result column="INVOICE_TAX_TEL" property="invoiceTaxTel" jdbcType="VARCHAR" />
+    <result column="INVOICE_TAX_BANK" property="invoiceTaxBank" jdbcType="VARCHAR" />
+    <result column="INVOICE_TAX_ACCOUNT" property="invoiceTaxAccount" jdbcType="VARCHAR" />
+    <result column="COUPON_FEE" property="couponFee" jdbcType="DECIMAL" />
+    <result column="COUPON_NOS" property="couponNos" jdbcType="VARCHAR" />
+    <result column="BALANCE_PAY_FEE" property="balancePayFee" jdbcType="DECIMAL" />
+    <result column="BBGOLD_PAY_FEE" property="bbgoldPayFee" jdbcType="DECIMAL" />
+    <result column="ORDER_TYPE" property="orderType" jdbcType="VARCHAR" />
+    <result column="ORDER_POINTS_G" property="orderPointsG" jdbcType="INTEGER" />
+    <result column="SELF_PICKUP" property="selfPickup" jdbcType="CHAR" />
+    <result column="TRANSPORTS_NO" property="transportsNo" jdbcType="VARCHAR" />
+    <result column="ORIGIN_CODE" property="originCode" jdbcType="VARCHAR" />
+    <result column="DEST_CODE" property="destCode" jdbcType="VARCHAR" />
+    <result column="INSURANCE" property="insurance" jdbcType="DECIMAL" />
+    <result column="SF_INTERFACE" property="sfInterface" jdbcType="VARCHAR" />
+    <result column="ERP_INTERFACE" property="erpInterface" jdbcType="VARCHAR" />
+    <result column="IS_DELETE" property="isDelete" jdbcType="CHAR" />
+    <result column="ADD_USER_ID" property="addUserId" jdbcType="INTEGER" />
+    <result column="ADD_TIME" property="addTime" jdbcType="VARCHAR" />
+    <result column="EDIT_USER_ID" property="editUserId" jdbcType="INTEGER" />
+    <result column="EDIT_TIME" property="editTime" jdbcType="VARCHAR" />
+    <result column="STORE_ID" property="storeId" jdbcType="INTEGER" />
+    <result column="VERIFY_CODE" property="verifyCode" jdbcType="VARCHAR" />
+    <result column="IS_CHECK" property="isCheck" jdbcType="CHAR" />
+    <result column="GROUP_BUY_RULE_ID" property="groupBuyRuleId" jdbcType="INTEGER" />
+    <result column="RETURN_DELIVERY_FEE" property="returnDeliveryFee" jdbcType="DECIMAL" />
+    <result column="IS_GIVE_POINTS" property="isGivePoints" jdbcType="CHAR" />
+    <result column="SOURCE_TYPE" property="sourceType" jdbcType="VARCHAR" />
+    <result column="AWARD_MONEY" property="awardMoney" jdbcType="DECIMAL" />
+    <result column="business_paid" property="businessPaid" jdbcType="CHAR" />
+    <result column="delivery_notes" property="deliveryNotes" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ORDER_ID, ERP_ORDER_ID, URL_FROM_NO, MULTI_CHANNEL_ID, MULTI_CHANNEL_ORDER_BATCH_ID, 
+    GOODS_BATCH_NO, MULTI_CHANNEL_ORDER_ID, IS_UPLOAD, UPLOAD_USER_ID, UPLOAD_TIME, IS_PAID, 
+    PAYMENT_MODE, PAYMENT_NO, PAID_TIME, OFFLINE_PAID_USER_ID, LOGISTIC_COMPANY_ID, MEMBER_ID, 
+    PAYMENT_TYPE_ID, ORDER_STATE, ORDER_OUT_STATE, LIMIT_DATE, SKU_FEE, OTHER_DISCOUNTS, 
+    ORDER_POINTS, DELIVERY_FEE, DISCOUNT_FEE, ORDER_FEE, ORDER_PAY_FEE, PAID_FEE, PROMOTE_RULE_IDS, 
+    PRODUCT_COMBINATION_IDS, RETURN_TYPE, RETURN_VALUE, ORDER_MSG, ORDER_NOTES, AUDIT_NOTES, 
+    AUDIT_USER_ID, AUDIT_TIME, IS_LOCK, LOCK_TIME, LOCK_USER_ID, COMMIT_TIME, FINISH_TIME, 
+    CANCEL_TIME, CANCEL_USER_ID, CANCEL_NOTES, IS_CHECK_BILLS, CHECK_BILL_USER_ID, CHECK_BILL_TIME, 
+    SKU_WEIGHTS, IS_INTO_ERP, INTO_TIME, RECEIVE_USER, PROVINCE_ID, CITY_ID, AREA_ID, 
+    RECEIVE_ADDRESS, RECEIVE_FULL_ADDRESS, RECEIVE_POST, RECEIVE_TEL, RECEIVE_MOBILE, 
+    RECEIVE_EMAIL, RECEIVE_DATE_TYPE, RECEIVE_TIME_TYPE, INVOICE_TYPE, INVOICE_CONTENT_TYPE, 
+    INVOICE_TITLE, INVOICE_CONTENT, INVOICE_TAX_NO, IS_DRAW, IS_INVOICE, BRAND_ID, BRAND_NAME, 
+    INVOICE_TAX_ADDRESS, INVOICE_TAX_TEL, INVOICE_TAX_BANK, INVOICE_TAX_ACCOUNT, COUPON_FEE, 
+    COUPON_NOS, BALANCE_PAY_FEE, BBGOLD_PAY_FEE, ORDER_TYPE, ORDER_POINTS_G, SELF_PICKUP, 
+    TRANSPORTS_NO, ORIGIN_CODE, DEST_CODE, INSURANCE, SF_INTERFACE, ERP_INTERFACE, IS_DELETE, 
+    ADD_USER_ID, ADD_TIME, EDIT_USER_ID, EDIT_TIME, STORE_ID, VERIFY_CODE, IS_CHECK, 
+    GROUP_BUY_RULE_ID, RETURN_DELIVERY_FEE, IS_GIVE_POINTS, SOURCE_TYPE, AWARD_MONEY, 
+    business_paid, delivery_notes
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ecbusiness.model.OrderInfoCriteria" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from order_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from order_info
+    where ORDER_ID = #{orderId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from order_info
+    where ORDER_ID = #{orderId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ecbusiness.model.OrderInfoCriteria" >
+    delete from order_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ecbusiness.model.OrderInfo" >
+    insert into order_info (ORDER_ID, ERP_ORDER_ID, URL_FROM_NO, 
+      MULTI_CHANNEL_ID, MULTI_CHANNEL_ORDER_BATCH_ID, 
+      GOODS_BATCH_NO, MULTI_CHANNEL_ORDER_ID, IS_UPLOAD, 
+      UPLOAD_USER_ID, UPLOAD_TIME, IS_PAID, 
+      PAYMENT_MODE, PAYMENT_NO, PAID_TIME, 
+      OFFLINE_PAID_USER_ID, LOGISTIC_COMPANY_ID, MEMBER_ID, 
+      PAYMENT_TYPE_ID, ORDER_STATE, ORDER_OUT_STATE, 
+      LIMIT_DATE, SKU_FEE, OTHER_DISCOUNTS, 
+      ORDER_POINTS, DELIVERY_FEE, DISCOUNT_FEE, 
+      ORDER_FEE, ORDER_PAY_FEE, PAID_FEE, 
+      PROMOTE_RULE_IDS, PRODUCT_COMBINATION_IDS, 
+      RETURN_TYPE, RETURN_VALUE, ORDER_MSG, 
+      ORDER_NOTES, AUDIT_NOTES, AUDIT_USER_ID, 
+      AUDIT_TIME, IS_LOCK, LOCK_TIME, 
+      LOCK_USER_ID, COMMIT_TIME, FINISH_TIME, 
+      CANCEL_TIME, CANCEL_USER_ID, CANCEL_NOTES, 
+      IS_CHECK_BILLS, CHECK_BILL_USER_ID, CHECK_BILL_TIME, 
+      SKU_WEIGHTS, IS_INTO_ERP, INTO_TIME, 
+      RECEIVE_USER, PROVINCE_ID, CITY_ID, 
+      AREA_ID, RECEIVE_ADDRESS, RECEIVE_FULL_ADDRESS, 
+      RECEIVE_POST, RECEIVE_TEL, RECEIVE_MOBILE, 
+      RECEIVE_EMAIL, RECEIVE_DATE_TYPE, RECEIVE_TIME_TYPE, 
+      INVOICE_TYPE, INVOICE_CONTENT_TYPE, INVOICE_TITLE, 
+      INVOICE_CONTENT, INVOICE_TAX_NO, IS_DRAW, 
+      IS_INVOICE, BRAND_ID, BRAND_NAME, 
+      INVOICE_TAX_ADDRESS, INVOICE_TAX_TEL, INVOICE_TAX_BANK, 
+      INVOICE_TAX_ACCOUNT, COUPON_FEE, COUPON_NOS, 
+      BALANCE_PAY_FEE, BBGOLD_PAY_FEE, ORDER_TYPE, 
+      ORDER_POINTS_G, SELF_PICKUP, TRANSPORTS_NO, 
+      ORIGIN_CODE, DEST_CODE, INSURANCE, 
+      SF_INTERFACE, ERP_INTERFACE, IS_DELETE, 
+      ADD_USER_ID, ADD_TIME, EDIT_USER_ID, 
+      EDIT_TIME, STORE_ID, VERIFY_CODE, 
+      IS_CHECK, GROUP_BUY_RULE_ID, RETURN_DELIVERY_FEE, 
+      IS_GIVE_POINTS, SOURCE_TYPE, AWARD_MONEY, 
+      business_paid, delivery_notes)
+    values (#{orderId,jdbcType=VARCHAR}, #{erpOrderId,jdbcType=INTEGER}, #{urlFromNo,jdbcType=VARCHAR}, 
+      #{multiChannelId,jdbcType=INTEGER}, #{multiChannelOrderBatchId,jdbcType=INTEGER}, 
+      #{goodsBatchNo,jdbcType=VARCHAR}, #{multiChannelOrderId,jdbcType=VARCHAR}, #{isUpload,jdbcType=CHAR}, 
+      #{uploadUserId,jdbcType=INTEGER}, #{uploadTime,jdbcType=VARCHAR}, #{isPaid,jdbcType=CHAR}, 
+      #{paymentMode,jdbcType=VARCHAR}, #{paymentNo,jdbcType=VARCHAR}, #{paidTime,jdbcType=VARCHAR}, 
+      #{offlinePaidUserId,jdbcType=INTEGER}, #{logisticCompanyId,jdbcType=INTEGER}, #{memberId,jdbcType=INTEGER}, 
+      #{paymentTypeId,jdbcType=INTEGER}, #{orderState,jdbcType=INTEGER}, #{orderOutState,jdbcType=INTEGER}, 
+      #{limitDate,jdbcType=VARCHAR}, #{skuFee,jdbcType=DECIMAL}, #{otherDiscounts,jdbcType=DECIMAL}, 
+      #{orderPoints,jdbcType=INTEGER}, #{deliveryFee,jdbcType=DECIMAL}, #{discountFee,jdbcType=DECIMAL}, 
+      #{orderFee,jdbcType=DECIMAL}, #{orderPayFee,jdbcType=DECIMAL}, #{paidFee,jdbcType=DECIMAL}, 
+      #{promoteRuleIds,jdbcType=VARCHAR}, #{productCombinationIds,jdbcType=VARCHAR}, 
+      #{returnType,jdbcType=VARCHAR}, #{returnValue,jdbcType=VARCHAR}, #{orderMsg,jdbcType=VARCHAR}, 
+      #{orderNotes,jdbcType=VARCHAR}, #{auditNotes,jdbcType=VARCHAR}, #{auditUserId,jdbcType=INTEGER}, 
+      #{auditTime,jdbcType=VARCHAR}, #{isLock,jdbcType=CHAR}, #{lockTime,jdbcType=VARCHAR}, 
+      #{lockUserId,jdbcType=INTEGER}, #{commitTime,jdbcType=VARCHAR}, #{finishTime,jdbcType=VARCHAR}, 
+      #{cancelTime,jdbcType=VARCHAR}, #{cancelUserId,jdbcType=INTEGER}, #{cancelNotes,jdbcType=VARCHAR}, 
+      #{isCheckBills,jdbcType=CHAR}, #{checkBillUserId,jdbcType=INTEGER}, #{checkBillTime,jdbcType=VARCHAR}, 
+      #{skuWeights,jdbcType=DECIMAL}, #{isIntoErp,jdbcType=CHAR}, #{intoTime,jdbcType=VARCHAR}, 
+      #{receiveUser,jdbcType=VARCHAR}, #{provinceId,jdbcType=INTEGER}, #{cityId,jdbcType=INTEGER}, 
+      #{areaId,jdbcType=INTEGER}, #{receiveAddress,jdbcType=VARCHAR}, #{receiveFullAddress,jdbcType=VARCHAR}, 
+      #{receivePost,jdbcType=VARCHAR}, #{receiveTel,jdbcType=VARCHAR}, #{receiveMobile,jdbcType=VARCHAR}, 
+      #{receiveEmail,jdbcType=VARCHAR}, #{receiveDateType,jdbcType=VARCHAR}, #{receiveTimeType,jdbcType=VARCHAR}, 
+      #{invoiceType,jdbcType=VARCHAR}, #{invoiceContentType,jdbcType=VARCHAR}, #{invoiceTitle,jdbcType=VARCHAR}, 
+      #{invoiceContent,jdbcType=VARCHAR}, #{invoiceTaxNo,jdbcType=VARCHAR}, #{isDraw,jdbcType=CHAR}, 
+      #{isInvoice,jdbcType=CHAR}, #{brandId,jdbcType=INTEGER}, #{brandName,jdbcType=VARCHAR}, 
+      #{invoiceTaxAddress,jdbcType=VARCHAR}, #{invoiceTaxTel,jdbcType=VARCHAR}, #{invoiceTaxBank,jdbcType=VARCHAR}, 
+      #{invoiceTaxAccount,jdbcType=VARCHAR}, #{couponFee,jdbcType=DECIMAL}, #{couponNos,jdbcType=VARCHAR}, 
+      #{balancePayFee,jdbcType=DECIMAL}, #{bbgoldPayFee,jdbcType=DECIMAL}, #{orderType,jdbcType=VARCHAR}, 
+      #{orderPointsG,jdbcType=INTEGER}, #{selfPickup,jdbcType=CHAR}, #{transportsNo,jdbcType=VARCHAR}, 
+      #{originCode,jdbcType=VARCHAR}, #{destCode,jdbcType=VARCHAR}, #{insurance,jdbcType=DECIMAL}, 
+      #{sfInterface,jdbcType=VARCHAR}, #{erpInterface,jdbcType=VARCHAR}, #{isDelete,jdbcType=CHAR}, 
+      #{addUserId,jdbcType=INTEGER}, #{addTime,jdbcType=VARCHAR}, #{editUserId,jdbcType=INTEGER}, 
+      #{editTime,jdbcType=VARCHAR}, #{storeId,jdbcType=INTEGER}, #{verifyCode,jdbcType=VARCHAR}, 
+      #{isCheck,jdbcType=CHAR}, #{groupBuyRuleId,jdbcType=INTEGER}, #{returnDeliveryFee,jdbcType=DECIMAL}, 
+      #{isGivePoints,jdbcType=CHAR}, #{sourceType,jdbcType=VARCHAR}, #{awardMoney,jdbcType=DECIMAL}, 
+      #{businessPaid,jdbcType=CHAR}, #{deliveryNotes,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ecbusiness.model.OrderInfo" >
+    insert into order_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderId != null" >
+        ORDER_ID,
+      </if>
+      <if test="erpOrderId != null" >
+        ERP_ORDER_ID,
+      </if>
+      <if test="urlFromNo != null" >
+        URL_FROM_NO,
+      </if>
+      <if test="multiChannelId != null" >
+        MULTI_CHANNEL_ID,
+      </if>
+      <if test="multiChannelOrderBatchId != null" >
+        MULTI_CHANNEL_ORDER_BATCH_ID,
+      </if>
+      <if test="goodsBatchNo != null" >
+        GOODS_BATCH_NO,
+      </if>
+      <if test="multiChannelOrderId != null" >
+        MULTI_CHANNEL_ORDER_ID,
+      </if>
+      <if test="isUpload != null" >
+        IS_UPLOAD,
+      </if>
+      <if test="uploadUserId != null" >
+        UPLOAD_USER_ID,
+      </if>
+      <if test="uploadTime != null" >
+        UPLOAD_TIME,
+      </if>
+      <if test="isPaid != null" >
+        IS_PAID,
+      </if>
+      <if test="paymentMode != null" >
+        PAYMENT_MODE,
+      </if>
+      <if test="paymentNo != null" >
+        PAYMENT_NO,
+      </if>
+      <if test="paidTime != null" >
+        PAID_TIME,
+      </if>
+      <if test="offlinePaidUserId != null" >
+        OFFLINE_PAID_USER_ID,
+      </if>
+      <if test="logisticCompanyId != null" >
+        LOGISTIC_COMPANY_ID,
+      </if>
+      <if test="memberId != null" >
+        MEMBER_ID,
+      </if>
+      <if test="paymentTypeId != null" >
+        PAYMENT_TYPE_ID,
+      </if>
+      <if test="orderState != null" >
+        ORDER_STATE,
+      </if>
+      <if test="orderOutState != null" >
+        ORDER_OUT_STATE,
+      </if>
+      <if test="limitDate != null" >
+        LIMIT_DATE,
+      </if>
+      <if test="skuFee != null" >
+        SKU_FEE,
+      </if>
+      <if test="otherDiscounts != null" >
+        OTHER_DISCOUNTS,
+      </if>
+      <if test="orderPoints != null" >
+        ORDER_POINTS,
+      </if>
+      <if test="deliveryFee != null" >
+        DELIVERY_FEE,
+      </if>
+      <if test="discountFee != null" >
+        DISCOUNT_FEE,
+      </if>
+      <if test="orderFee != null" >
+        ORDER_FEE,
+      </if>
+      <if test="orderPayFee != null" >
+        ORDER_PAY_FEE,
+      </if>
+      <if test="paidFee != null" >
+        PAID_FEE,
+      </if>
+      <if test="promoteRuleIds != null" >
+        PROMOTE_RULE_IDS,
+      </if>
+      <if test="productCombinationIds != null" >
+        PRODUCT_COMBINATION_IDS,
+      </if>
+      <if test="returnType != null" >
+        RETURN_TYPE,
+      </if>
+      <if test="returnValue != null" >
+        RETURN_VALUE,
+      </if>
+      <if test="orderMsg != null" >
+        ORDER_MSG,
+      </if>
+      <if test="orderNotes != null" >
+        ORDER_NOTES,
+      </if>
+      <if test="auditNotes != null" >
+        AUDIT_NOTES,
+      </if>
+      <if test="auditUserId != null" >
+        AUDIT_USER_ID,
+      </if>
+      <if test="auditTime != null" >
+        AUDIT_TIME,
+      </if>
+      <if test="isLock != null" >
+        IS_LOCK,
+      </if>
+      <if test="lockTime != null" >
+        LOCK_TIME,
+      </if>
+      <if test="lockUserId != null" >
+        LOCK_USER_ID,
+      </if>
+      <if test="commitTime != null" >
+        COMMIT_TIME,
+      </if>
+      <if test="finishTime != null" >
+        FINISH_TIME,
+      </if>
+      <if test="cancelTime != null" >
+        CANCEL_TIME,
+      </if>
+      <if test="cancelUserId != null" >
+        CANCEL_USER_ID,
+      </if>
+      <if test="cancelNotes != null" >
+        CANCEL_NOTES,
+      </if>
+      <if test="isCheckBills != null" >
+        IS_CHECK_BILLS,
+      </if>
+      <if test="checkBillUserId != null" >
+        CHECK_BILL_USER_ID,
+      </if>
+      <if test="checkBillTime != null" >
+        CHECK_BILL_TIME,
+      </if>
+      <if test="skuWeights != null" >
+        SKU_WEIGHTS,
+      </if>
+      <if test="isIntoErp != null" >
+        IS_INTO_ERP,
+      </if>
+      <if test="intoTime != null" >
+        INTO_TIME,
+      </if>
+      <if test="receiveUser != null" >
+        RECEIVE_USER,
+      </if>
+      <if test="provinceId != null" >
+        PROVINCE_ID,
+      </if>
+      <if test="cityId != null" >
+        CITY_ID,
+      </if>
+      <if test="areaId != null" >
+        AREA_ID,
+      </if>
+      <if test="receiveAddress != null" >
+        RECEIVE_ADDRESS,
+      </if>
+      <if test="receiveFullAddress != null" >
+        RECEIVE_FULL_ADDRESS,
+      </if>
+      <if test="receivePost != null" >
+        RECEIVE_POST,
+      </if>
+      <if test="receiveTel != null" >
+        RECEIVE_TEL,
+      </if>
+      <if test="receiveMobile != null" >
+        RECEIVE_MOBILE,
+      </if>
+      <if test="receiveEmail != null" >
+        RECEIVE_EMAIL,
+      </if>
+      <if test="receiveDateType != null" >
+        RECEIVE_DATE_TYPE,
+      </if>
+      <if test="receiveTimeType != null" >
+        RECEIVE_TIME_TYPE,
+      </if>
+      <if test="invoiceType != null" >
+        INVOICE_TYPE,
+      </if>
+      <if test="invoiceContentType != null" >
+        INVOICE_CONTENT_TYPE,
+      </if>
+      <if test="invoiceTitle != null" >
+        INVOICE_TITLE,
+      </if>
+      <if test="invoiceContent != null" >
+        INVOICE_CONTENT,
+      </if>
+      <if test="invoiceTaxNo != null" >
+        INVOICE_TAX_NO,
+      </if>
+      <if test="isDraw != null" >
+        IS_DRAW,
+      </if>
+      <if test="isInvoice != null" >
+        IS_INVOICE,
+      </if>
+      <if test="brandId != null" >
+        BRAND_ID,
+      </if>
+      <if test="brandName != null" >
+        BRAND_NAME,
+      </if>
+      <if test="invoiceTaxAddress != null" >
+        INVOICE_TAX_ADDRESS,
+      </if>
+      <if test="invoiceTaxTel != null" >
+        INVOICE_TAX_TEL,
+      </if>
+      <if test="invoiceTaxBank != null" >
+        INVOICE_TAX_BANK,
+      </if>
+      <if test="invoiceTaxAccount != null" >
+        INVOICE_TAX_ACCOUNT,
+      </if>
+      <if test="couponFee != null" >
+        COUPON_FEE,
+      </if>
+      <if test="couponNos != null" >
+        COUPON_NOS,
+      </if>
+      <if test="balancePayFee != null" >
+        BALANCE_PAY_FEE,
+      </if>
+      <if test="bbgoldPayFee != null" >
+        BBGOLD_PAY_FEE,
+      </if>
+      <if test="orderType != null" >
+        ORDER_TYPE,
+      </if>
+      <if test="orderPointsG != null" >
+        ORDER_POINTS_G,
+      </if>
+      <if test="selfPickup != null" >
+        SELF_PICKUP,
+      </if>
+      <if test="transportsNo != null" >
+        TRANSPORTS_NO,
+      </if>
+      <if test="originCode != null" >
+        ORIGIN_CODE,
+      </if>
+      <if test="destCode != null" >
+        DEST_CODE,
+      </if>
+      <if test="insurance != null" >
+        INSURANCE,
+      </if>
+      <if test="sfInterface != null" >
+        SF_INTERFACE,
+      </if>
+      <if test="erpInterface != null" >
+        ERP_INTERFACE,
+      </if>
+      <if test="isDelete != null" >
+        IS_DELETE,
+      </if>
+      <if test="addUserId != null" >
+        ADD_USER_ID,
+      </if>
+      <if test="addTime != null" >
+        ADD_TIME,
+      </if>
+      <if test="editUserId != null" >
+        EDIT_USER_ID,
+      </if>
+      <if test="editTime != null" >
+        EDIT_TIME,
+      </if>
+      <if test="storeId != null" >
+        STORE_ID,
+      </if>
+      <if test="verifyCode != null" >
+        VERIFY_CODE,
+      </if>
+      <if test="isCheck != null" >
+        IS_CHECK,
+      </if>
+      <if test="groupBuyRuleId != null" >
+        GROUP_BUY_RULE_ID,
+      </if>
+      <if test="returnDeliveryFee != null" >
+        RETURN_DELIVERY_FEE,
+      </if>
+      <if test="isGivePoints != null" >
+        IS_GIVE_POINTS,
+      </if>
+      <if test="sourceType != null" >
+        SOURCE_TYPE,
+      </if>
+      <if test="awardMoney != null" >
+        AWARD_MONEY,
+      </if>
+      <if test="businessPaid != null" >
+        business_paid,
+      </if>
+      <if test="deliveryNotes != null" >
+        delivery_notes,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderId != null" >
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="erpOrderId != null" >
+        #{erpOrderId,jdbcType=INTEGER},
+      </if>
+      <if test="urlFromNo != null" >
+        #{urlFromNo,jdbcType=VARCHAR},
+      </if>
+      <if test="multiChannelId != null" >
+        #{multiChannelId,jdbcType=INTEGER},
+      </if>
+      <if test="multiChannelOrderBatchId != null" >
+        #{multiChannelOrderBatchId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsBatchNo != null" >
+        #{goodsBatchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="multiChannelOrderId != null" >
+        #{multiChannelOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="isUpload != null" >
+        #{isUpload,jdbcType=CHAR},
+      </if>
+      <if test="uploadUserId != null" >
+        #{uploadUserId,jdbcType=INTEGER},
+      </if>
+      <if test="uploadTime != null" >
+        #{uploadTime,jdbcType=VARCHAR},
+      </if>
+      <if test="isPaid != null" >
+        #{isPaid,jdbcType=CHAR},
+      </if>
+      <if test="paymentMode != null" >
+        #{paymentMode,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentNo != null" >
+        #{paymentNo,jdbcType=VARCHAR},
+      </if>
+      <if test="paidTime != null" >
+        #{paidTime,jdbcType=VARCHAR},
+      </if>
+      <if test="offlinePaidUserId != null" >
+        #{offlinePaidUserId,jdbcType=INTEGER},
+      </if>
+      <if test="logisticCompanyId != null" >
+        #{logisticCompanyId,jdbcType=INTEGER},
+      </if>
+      <if test="memberId != null" >
+        #{memberId,jdbcType=INTEGER},
+      </if>
+      <if test="paymentTypeId != null" >
+        #{paymentTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="orderState != null" >
+        #{orderState,jdbcType=INTEGER},
+      </if>
+      <if test="orderOutState != null" >
+        #{orderOutState,jdbcType=INTEGER},
+      </if>
+      <if test="limitDate != null" >
+        #{limitDate,jdbcType=VARCHAR},
+      </if>
+      <if test="skuFee != null" >
+        #{skuFee,jdbcType=DECIMAL},
+      </if>
+      <if test="otherDiscounts != null" >
+        #{otherDiscounts,jdbcType=DECIMAL},
+      </if>
+      <if test="orderPoints != null" >
+        #{orderPoints,jdbcType=INTEGER},
+      </if>
+      <if test="deliveryFee != null" >
+        #{deliveryFee,jdbcType=DECIMAL},
+      </if>
+      <if test="discountFee != null" >
+        #{discountFee,jdbcType=DECIMAL},
+      </if>
+      <if test="orderFee != null" >
+        #{orderFee,jdbcType=DECIMAL},
+      </if>
+      <if test="orderPayFee != null" >
+        #{orderPayFee,jdbcType=DECIMAL},
+      </if>
+      <if test="paidFee != null" >
+        #{paidFee,jdbcType=DECIMAL},
+      </if>
+      <if test="promoteRuleIds != null" >
+        #{promoteRuleIds,jdbcType=VARCHAR},
+      </if>
+      <if test="productCombinationIds != null" >
+        #{productCombinationIds,jdbcType=VARCHAR},
+      </if>
+      <if test="returnType != null" >
+        #{returnType,jdbcType=VARCHAR},
+      </if>
+      <if test="returnValue != null" >
+        #{returnValue,jdbcType=VARCHAR},
+      </if>
+      <if test="orderMsg != null" >
+        #{orderMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNotes != null" >
+        #{orderNotes,jdbcType=VARCHAR},
+      </if>
+      <if test="auditNotes != null" >
+        #{auditNotes,jdbcType=VARCHAR},
+      </if>
+      <if test="auditUserId != null" >
+        #{auditUserId,jdbcType=INTEGER},
+      </if>
+      <if test="auditTime != null" >
+        #{auditTime,jdbcType=VARCHAR},
+      </if>
+      <if test="isLock != null" >
+        #{isLock,jdbcType=CHAR},
+      </if>
+      <if test="lockTime != null" >
+        #{lockTime,jdbcType=VARCHAR},
+      </if>
+      <if test="lockUserId != null" >
+        #{lockUserId,jdbcType=INTEGER},
+      </if>
+      <if test="commitTime != null" >
+        #{commitTime,jdbcType=VARCHAR},
+      </if>
+      <if test="finishTime != null" >
+        #{finishTime,jdbcType=VARCHAR},
+      </if>
+      <if test="cancelTime != null" >
+        #{cancelTime,jdbcType=VARCHAR},
+      </if>
+      <if test="cancelUserId != null" >
+        #{cancelUserId,jdbcType=INTEGER},
+      </if>
+      <if test="cancelNotes != null" >
+        #{cancelNotes,jdbcType=VARCHAR},
+      </if>
+      <if test="isCheckBills != null" >
+        #{isCheckBills,jdbcType=CHAR},
+      </if>
+      <if test="checkBillUserId != null" >
+        #{checkBillUserId,jdbcType=INTEGER},
+      </if>
+      <if test="checkBillTime != null" >
+        #{checkBillTime,jdbcType=VARCHAR},
+      </if>
+      <if test="skuWeights != null" >
+        #{skuWeights,jdbcType=DECIMAL},
+      </if>
+      <if test="isIntoErp != null" >
+        #{isIntoErp,jdbcType=CHAR},
+      </if>
+      <if test="intoTime != null" >
+        #{intoTime,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveUser != null" >
+        #{receiveUser,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceId != null" >
+        #{provinceId,jdbcType=INTEGER},
+      </if>
+      <if test="cityId != null" >
+        #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="areaId != null" >
+        #{areaId,jdbcType=INTEGER},
+      </if>
+      <if test="receiveAddress != null" >
+        #{receiveAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveFullAddress != null" >
+        #{receiveFullAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="receivePost != null" >
+        #{receivePost,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveTel != null" >
+        #{receiveTel,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveMobile != null" >
+        #{receiveMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveEmail != null" >
+        #{receiveEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveDateType != null" >
+        #{receiveDateType,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveTimeType != null" >
+        #{receiveTimeType,jdbcType=VARCHAR},
+      </if>
+      <if test="invoiceType != null" >
+        #{invoiceType,jdbcType=VARCHAR},
+      </if>
+      <if test="invoiceContentType != null" >
+        #{invoiceContentType,jdbcType=VARCHAR},
+      </if>
+      <if test="invoiceTitle != null" >
+        #{invoiceTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="invoiceContent != null" >
+        #{invoiceContent,jdbcType=VARCHAR},
+      </if>
+      <if test="invoiceTaxNo != null" >
+        #{invoiceTaxNo,jdbcType=VARCHAR},
+      </if>
+      <if test="isDraw != null" >
+        #{isDraw,jdbcType=CHAR},
+      </if>
+      <if test="isInvoice != null" >
+        #{isInvoice,jdbcType=CHAR},
+      </if>
+      <if test="brandId != null" >
+        #{brandId,jdbcType=INTEGER},
+      </if>
+      <if test="brandName != null" >
+        #{brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="invoiceTaxAddress != null" >
+        #{invoiceTaxAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="invoiceTaxTel != null" >
+        #{invoiceTaxTel,jdbcType=VARCHAR},
+      </if>
+      <if test="invoiceTaxBank != null" >
+        #{invoiceTaxBank,jdbcType=VARCHAR},
+      </if>
+      <if test="invoiceTaxAccount != null" >
+        #{invoiceTaxAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="couponFee != null" >
+        #{couponFee,jdbcType=DECIMAL},
+      </if>
+      <if test="couponNos != null" >
+        #{couponNos,jdbcType=VARCHAR},
+      </if>
+      <if test="balancePayFee != null" >
+        #{balancePayFee,jdbcType=DECIMAL},
+      </if>
+      <if test="bbgoldPayFee != null" >
+        #{bbgoldPayFee,jdbcType=DECIMAL},
+      </if>
+      <if test="orderType != null" >
+        #{orderType,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPointsG != null" >
+        #{orderPointsG,jdbcType=INTEGER},
+      </if>
+      <if test="selfPickup != null" >
+        #{selfPickup,jdbcType=CHAR},
+      </if>
+      <if test="transportsNo != null" >
+        #{transportsNo,jdbcType=VARCHAR},
+      </if>
+      <if test="originCode != null" >
+        #{originCode,jdbcType=VARCHAR},
+      </if>
+      <if test="destCode != null" >
+        #{destCode,jdbcType=VARCHAR},
+      </if>
+      <if test="insurance != null" >
+        #{insurance,jdbcType=DECIMAL},
+      </if>
+      <if test="sfInterface != null" >
+        #{sfInterface,jdbcType=VARCHAR},
+      </if>
+      <if test="erpInterface != null" >
+        #{erpInterface,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=CHAR},
+      </if>
+      <if test="addUserId != null" >
+        #{addUserId,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null" >
+        #{addTime,jdbcType=VARCHAR},
+      </if>
+      <if test="editUserId != null" >
+        #{editUserId,jdbcType=INTEGER},
+      </if>
+      <if test="editTime != null" >
+        #{editTime,jdbcType=VARCHAR},
+      </if>
+      <if test="storeId != null" >
+        #{storeId,jdbcType=INTEGER},
+      </if>
+      <if test="verifyCode != null" >
+        #{verifyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="isCheck != null" >
+        #{isCheck,jdbcType=CHAR},
+      </if>
+      <if test="groupBuyRuleId != null" >
+        #{groupBuyRuleId,jdbcType=INTEGER},
+      </if>
+      <if test="returnDeliveryFee != null" >
+        #{returnDeliveryFee,jdbcType=DECIMAL},
+      </if>
+      <if test="isGivePoints != null" >
+        #{isGivePoints,jdbcType=CHAR},
+      </if>
+      <if test="sourceType != null" >
+        #{sourceType,jdbcType=VARCHAR},
+      </if>
+      <if test="awardMoney != null" >
+        #{awardMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="businessPaid != null" >
+        #{businessPaid,jdbcType=CHAR},
+      </if>
+      <if test="deliveryNotes != null" >
+        #{deliveryNotes,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ecbusiness.model.OrderInfoCriteria" resultType="java.lang.Integer" >
+    select count(*) from order_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update order_info
+    <set >
+      <if test="record.orderId != null" >
+        ORDER_ID = #{record.orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.erpOrderId != null" >
+        ERP_ORDER_ID = #{record.erpOrderId,jdbcType=INTEGER},
+      </if>
+      <if test="record.urlFromNo != null" >
+        URL_FROM_NO = #{record.urlFromNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.multiChannelId != null" >
+        MULTI_CHANNEL_ID = #{record.multiChannelId,jdbcType=INTEGER},
+      </if>
+      <if test="record.multiChannelOrderBatchId != null" >
+        MULTI_CHANNEL_ORDER_BATCH_ID = #{record.multiChannelOrderBatchId,jdbcType=INTEGER},
+      </if>
+      <if test="record.goodsBatchNo != null" >
+        GOODS_BATCH_NO = #{record.goodsBatchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.multiChannelOrderId != null" >
+        MULTI_CHANNEL_ORDER_ID = #{record.multiChannelOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isUpload != null" >
+        IS_UPLOAD = #{record.isUpload,jdbcType=CHAR},
+      </if>
+      <if test="record.uploadUserId != null" >
+        UPLOAD_USER_ID = #{record.uploadUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.uploadTime != null" >
+        UPLOAD_TIME = #{record.uploadTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isPaid != null" >
+        IS_PAID = #{record.isPaid,jdbcType=CHAR},
+      </if>
+      <if test="record.paymentMode != null" >
+        PAYMENT_MODE = #{record.paymentMode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.paymentNo != null" >
+        PAYMENT_NO = #{record.paymentNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.paidTime != null" >
+        PAID_TIME = #{record.paidTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.offlinePaidUserId != null" >
+        OFFLINE_PAID_USER_ID = #{record.offlinePaidUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.logisticCompanyId != null" >
+        LOGISTIC_COMPANY_ID = #{record.logisticCompanyId,jdbcType=INTEGER},
+      </if>
+      <if test="record.memberId != null" >
+        MEMBER_ID = #{record.memberId,jdbcType=INTEGER},
+      </if>
+      <if test="record.paymentTypeId != null" >
+        PAYMENT_TYPE_ID = #{record.paymentTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderState != null" >
+        ORDER_STATE = #{record.orderState,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderOutState != null" >
+        ORDER_OUT_STATE = #{record.orderOutState,jdbcType=INTEGER},
+      </if>
+      <if test="record.limitDate != null" >
+        LIMIT_DATE = #{record.limitDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.skuFee != null" >
+        SKU_FEE = #{record.skuFee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.otherDiscounts != null" >
+        OTHER_DISCOUNTS = #{record.otherDiscounts,jdbcType=DECIMAL},
+      </if>
+      <if test="record.orderPoints != null" >
+        ORDER_POINTS = #{record.orderPoints,jdbcType=INTEGER},
+      </if>
+      <if test="record.deliveryFee != null" >
+        DELIVERY_FEE = #{record.deliveryFee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.discountFee != null" >
+        DISCOUNT_FEE = #{record.discountFee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.orderFee != null" >
+        ORDER_FEE = #{record.orderFee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.orderPayFee != null" >
+        ORDER_PAY_FEE = #{record.orderPayFee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.paidFee != null" >
+        PAID_FEE = #{record.paidFee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.promoteRuleIds != null" >
+        PROMOTE_RULE_IDS = #{record.promoteRuleIds,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productCombinationIds != null" >
+        PRODUCT_COMBINATION_IDS = #{record.productCombinationIds,jdbcType=VARCHAR},
+      </if>
+      <if test="record.returnType != null" >
+        RETURN_TYPE = #{record.returnType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.returnValue != null" >
+        RETURN_VALUE = #{record.returnValue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderMsg != null" >
+        ORDER_MSG = #{record.orderMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderNotes != null" >
+        ORDER_NOTES = #{record.orderNotes,jdbcType=VARCHAR},
+      </if>
+      <if test="record.auditNotes != null" >
+        AUDIT_NOTES = #{record.auditNotes,jdbcType=VARCHAR},
+      </if>
+      <if test="record.auditUserId != null" >
+        AUDIT_USER_ID = #{record.auditUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.auditTime != null" >
+        AUDIT_TIME = #{record.auditTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isLock != null" >
+        IS_LOCK = #{record.isLock,jdbcType=CHAR},
+      </if>
+      <if test="record.lockTime != null" >
+        LOCK_TIME = #{record.lockTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lockUserId != null" >
+        LOCK_USER_ID = #{record.lockUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.commitTime != null" >
+        COMMIT_TIME = #{record.commitTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.finishTime != null" >
+        FINISH_TIME = #{record.finishTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cancelTime != null" >
+        CANCEL_TIME = #{record.cancelTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cancelUserId != null" >
+        CANCEL_USER_ID = #{record.cancelUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.cancelNotes != null" >
+        CANCEL_NOTES = #{record.cancelNotes,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isCheckBills != null" >
+        IS_CHECK_BILLS = #{record.isCheckBills,jdbcType=CHAR},
+      </if>
+      <if test="record.checkBillUserId != null" >
+        CHECK_BILL_USER_ID = #{record.checkBillUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.checkBillTime != null" >
+        CHECK_BILL_TIME = #{record.checkBillTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.skuWeights != null" >
+        SKU_WEIGHTS = #{record.skuWeights,jdbcType=DECIMAL},
+      </if>
+      <if test="record.isIntoErp != null" >
+        IS_INTO_ERP = #{record.isIntoErp,jdbcType=CHAR},
+      </if>
+      <if test="record.intoTime != null" >
+        INTO_TIME = #{record.intoTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.receiveUser != null" >
+        RECEIVE_USER = #{record.receiveUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.provinceId != null" >
+        PROVINCE_ID = #{record.provinceId,jdbcType=INTEGER},
+      </if>
+      <if test="record.cityId != null" >
+        CITY_ID = #{record.cityId,jdbcType=INTEGER},
+      </if>
+      <if test="record.areaId != null" >
+        AREA_ID = #{record.areaId,jdbcType=INTEGER},
+      </if>
+      <if test="record.receiveAddress != null" >
+        RECEIVE_ADDRESS = #{record.receiveAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.receiveFullAddress != null" >
+        RECEIVE_FULL_ADDRESS = #{record.receiveFullAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.receivePost != null" >
+        RECEIVE_POST = #{record.receivePost,jdbcType=VARCHAR},
+      </if>
+      <if test="record.receiveTel != null" >
+        RECEIVE_TEL = #{record.receiveTel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.receiveMobile != null" >
+        RECEIVE_MOBILE = #{record.receiveMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.receiveEmail != null" >
+        RECEIVE_EMAIL = #{record.receiveEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.receiveDateType != null" >
+        RECEIVE_DATE_TYPE = #{record.receiveDateType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.receiveTimeType != null" >
+        RECEIVE_TIME_TYPE = #{record.receiveTimeType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.invoiceType != null" >
+        INVOICE_TYPE = #{record.invoiceType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.invoiceContentType != null" >
+        INVOICE_CONTENT_TYPE = #{record.invoiceContentType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.invoiceTitle != null" >
+        INVOICE_TITLE = #{record.invoiceTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.invoiceContent != null" >
+        INVOICE_CONTENT = #{record.invoiceContent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.invoiceTaxNo != null" >
+        INVOICE_TAX_NO = #{record.invoiceTaxNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isDraw != null" >
+        IS_DRAW = #{record.isDraw,jdbcType=CHAR},
+      </if>
+      <if test="record.isInvoice != null" >
+        IS_INVOICE = #{record.isInvoice,jdbcType=CHAR},
+      </if>
+      <if test="record.brandId != null" >
+        BRAND_ID = #{record.brandId,jdbcType=INTEGER},
+      </if>
+      <if test="record.brandName != null" >
+        BRAND_NAME = #{record.brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.invoiceTaxAddress != null" >
+        INVOICE_TAX_ADDRESS = #{record.invoiceTaxAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.invoiceTaxTel != null" >
+        INVOICE_TAX_TEL = #{record.invoiceTaxTel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.invoiceTaxBank != null" >
+        INVOICE_TAX_BANK = #{record.invoiceTaxBank,jdbcType=VARCHAR},
+      </if>
+      <if test="record.invoiceTaxAccount != null" >
+        INVOICE_TAX_ACCOUNT = #{record.invoiceTaxAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.couponFee != null" >
+        COUPON_FEE = #{record.couponFee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.couponNos != null" >
+        COUPON_NOS = #{record.couponNos,jdbcType=VARCHAR},
+      </if>
+      <if test="record.balancePayFee != null" >
+        BALANCE_PAY_FEE = #{record.balancePayFee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.bbgoldPayFee != null" >
+        BBGOLD_PAY_FEE = #{record.bbgoldPayFee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.orderType != null" >
+        ORDER_TYPE = #{record.orderType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderPointsG != null" >
+        ORDER_POINTS_G = #{record.orderPointsG,jdbcType=INTEGER},
+      </if>
+      <if test="record.selfPickup != null" >
+        SELF_PICKUP = #{record.selfPickup,jdbcType=CHAR},
+      </if>
+      <if test="record.transportsNo != null" >
+        TRANSPORTS_NO = #{record.transportsNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.originCode != null" >
+        ORIGIN_CODE = #{record.originCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.destCode != null" >
+        DEST_CODE = #{record.destCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.insurance != null" >
+        INSURANCE = #{record.insurance,jdbcType=DECIMAL},
+      </if>
+      <if test="record.sfInterface != null" >
+        SF_INTERFACE = #{record.sfInterface,jdbcType=VARCHAR},
+      </if>
+      <if test="record.erpInterface != null" >
+        ERP_INTERFACE = #{record.erpInterface,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isDelete != null" >
+        IS_DELETE = #{record.isDelete,jdbcType=CHAR},
+      </if>
+      <if test="record.addUserId != null" >
+        ADD_USER_ID = #{record.addUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.addTime != null" >
+        ADD_TIME = #{record.addTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.editUserId != null" >
+        EDIT_USER_ID = #{record.editUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.editTime != null" >
+        EDIT_TIME = #{record.editTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.storeId != null" >
+        STORE_ID = #{record.storeId,jdbcType=INTEGER},
+      </if>
+      <if test="record.verifyCode != null" >
+        VERIFY_CODE = #{record.verifyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isCheck != null" >
+        IS_CHECK = #{record.isCheck,jdbcType=CHAR},
+      </if>
+      <if test="record.groupBuyRuleId != null" >
+        GROUP_BUY_RULE_ID = #{record.groupBuyRuleId,jdbcType=INTEGER},
+      </if>
+      <if test="record.returnDeliveryFee != null" >
+        RETURN_DELIVERY_FEE = #{record.returnDeliveryFee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.isGivePoints != null" >
+        IS_GIVE_POINTS = #{record.isGivePoints,jdbcType=CHAR},
+      </if>
+      <if test="record.sourceType != null" >
+        SOURCE_TYPE = #{record.sourceType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.awardMoney != null" >
+        AWARD_MONEY = #{record.awardMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="record.businessPaid != null" >
+        business_paid = #{record.businessPaid,jdbcType=CHAR},
+      </if>
+      <if test="record.deliveryNotes != null" >
+        delivery_notes = #{record.deliveryNotes,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update order_info
+    set ORDER_ID = #{record.orderId,jdbcType=VARCHAR},
+      ERP_ORDER_ID = #{record.erpOrderId,jdbcType=INTEGER},
+      URL_FROM_NO = #{record.urlFromNo,jdbcType=VARCHAR},
+      MULTI_CHANNEL_ID = #{record.multiChannelId,jdbcType=INTEGER},
+      MULTI_CHANNEL_ORDER_BATCH_ID = #{record.multiChannelOrderBatchId,jdbcType=INTEGER},
+      GOODS_BATCH_NO = #{record.goodsBatchNo,jdbcType=VARCHAR},
+      MULTI_CHANNEL_ORDER_ID = #{record.multiChannelOrderId,jdbcType=VARCHAR},
+      IS_UPLOAD = #{record.isUpload,jdbcType=CHAR},
+      UPLOAD_USER_ID = #{record.uploadUserId,jdbcType=INTEGER},
+      UPLOAD_TIME = #{record.uploadTime,jdbcType=VARCHAR},
+      IS_PAID = #{record.isPaid,jdbcType=CHAR},
+      PAYMENT_MODE = #{record.paymentMode,jdbcType=VARCHAR},
+      PAYMENT_NO = #{record.paymentNo,jdbcType=VARCHAR},
+      PAID_TIME = #{record.paidTime,jdbcType=VARCHAR},
+      OFFLINE_PAID_USER_ID = #{record.offlinePaidUserId,jdbcType=INTEGER},
+      LOGISTIC_COMPANY_ID = #{record.logisticCompanyId,jdbcType=INTEGER},
+      MEMBER_ID = #{record.memberId,jdbcType=INTEGER},
+      PAYMENT_TYPE_ID = #{record.paymentTypeId,jdbcType=INTEGER},
+      ORDER_STATE = #{record.orderState,jdbcType=INTEGER},
+      ORDER_OUT_STATE = #{record.orderOutState,jdbcType=INTEGER},
+      LIMIT_DATE = #{record.limitDate,jdbcType=VARCHAR},
+      SKU_FEE = #{record.skuFee,jdbcType=DECIMAL},
+      OTHER_DISCOUNTS = #{record.otherDiscounts,jdbcType=DECIMAL},
+      ORDER_POINTS = #{record.orderPoints,jdbcType=INTEGER},
+      DELIVERY_FEE = #{record.deliveryFee,jdbcType=DECIMAL},
+      DISCOUNT_FEE = #{record.discountFee,jdbcType=DECIMAL},
+      ORDER_FEE = #{record.orderFee,jdbcType=DECIMAL},
+      ORDER_PAY_FEE = #{record.orderPayFee,jdbcType=DECIMAL},
+      PAID_FEE = #{record.paidFee,jdbcType=DECIMAL},
+      PROMOTE_RULE_IDS = #{record.promoteRuleIds,jdbcType=VARCHAR},
+      PRODUCT_COMBINATION_IDS = #{record.productCombinationIds,jdbcType=VARCHAR},
+      RETURN_TYPE = #{record.returnType,jdbcType=VARCHAR},
+      RETURN_VALUE = #{record.returnValue,jdbcType=VARCHAR},
+      ORDER_MSG = #{record.orderMsg,jdbcType=VARCHAR},
+      ORDER_NOTES = #{record.orderNotes,jdbcType=VARCHAR},
+      AUDIT_NOTES = #{record.auditNotes,jdbcType=VARCHAR},
+      AUDIT_USER_ID = #{record.auditUserId,jdbcType=INTEGER},
+      AUDIT_TIME = #{record.auditTime,jdbcType=VARCHAR},
+      IS_LOCK = #{record.isLock,jdbcType=CHAR},
+      LOCK_TIME = #{record.lockTime,jdbcType=VARCHAR},
+      LOCK_USER_ID = #{record.lockUserId,jdbcType=INTEGER},
+      COMMIT_TIME = #{record.commitTime,jdbcType=VARCHAR},
+      FINISH_TIME = #{record.finishTime,jdbcType=VARCHAR},
+      CANCEL_TIME = #{record.cancelTime,jdbcType=VARCHAR},
+      CANCEL_USER_ID = #{record.cancelUserId,jdbcType=INTEGER},
+      CANCEL_NOTES = #{record.cancelNotes,jdbcType=VARCHAR},
+      IS_CHECK_BILLS = #{record.isCheckBills,jdbcType=CHAR},
+      CHECK_BILL_USER_ID = #{record.checkBillUserId,jdbcType=INTEGER},
+      CHECK_BILL_TIME = #{record.checkBillTime,jdbcType=VARCHAR},
+      SKU_WEIGHTS = #{record.skuWeights,jdbcType=DECIMAL},
+      IS_INTO_ERP = #{record.isIntoErp,jdbcType=CHAR},
+      INTO_TIME = #{record.intoTime,jdbcType=VARCHAR},
+      RECEIVE_USER = #{record.receiveUser,jdbcType=VARCHAR},
+      PROVINCE_ID = #{record.provinceId,jdbcType=INTEGER},
+      CITY_ID = #{record.cityId,jdbcType=INTEGER},
+      AREA_ID = #{record.areaId,jdbcType=INTEGER},
+      RECEIVE_ADDRESS = #{record.receiveAddress,jdbcType=VARCHAR},
+      RECEIVE_FULL_ADDRESS = #{record.receiveFullAddress,jdbcType=VARCHAR},
+      RECEIVE_POST = #{record.receivePost,jdbcType=VARCHAR},
+      RECEIVE_TEL = #{record.receiveTel,jdbcType=VARCHAR},
+      RECEIVE_MOBILE = #{record.receiveMobile,jdbcType=VARCHAR},
+      RECEIVE_EMAIL = #{record.receiveEmail,jdbcType=VARCHAR},
+      RECEIVE_DATE_TYPE = #{record.receiveDateType,jdbcType=VARCHAR},
+      RECEIVE_TIME_TYPE = #{record.receiveTimeType,jdbcType=VARCHAR},
+      INVOICE_TYPE = #{record.invoiceType,jdbcType=VARCHAR},
+      INVOICE_CONTENT_TYPE = #{record.invoiceContentType,jdbcType=VARCHAR},
+      INVOICE_TITLE = #{record.invoiceTitle,jdbcType=VARCHAR},
+      INVOICE_CONTENT = #{record.invoiceContent,jdbcType=VARCHAR},
+      INVOICE_TAX_NO = #{record.invoiceTaxNo,jdbcType=VARCHAR},
+      IS_DRAW = #{record.isDraw,jdbcType=CHAR},
+      IS_INVOICE = #{record.isInvoice,jdbcType=CHAR},
+      BRAND_ID = #{record.brandId,jdbcType=INTEGER},
+      BRAND_NAME = #{record.brandName,jdbcType=VARCHAR},
+      INVOICE_TAX_ADDRESS = #{record.invoiceTaxAddress,jdbcType=VARCHAR},
+      INVOICE_TAX_TEL = #{record.invoiceTaxTel,jdbcType=VARCHAR},
+      INVOICE_TAX_BANK = #{record.invoiceTaxBank,jdbcType=VARCHAR},
+      INVOICE_TAX_ACCOUNT = #{record.invoiceTaxAccount,jdbcType=VARCHAR},
+      COUPON_FEE = #{record.couponFee,jdbcType=DECIMAL},
+      COUPON_NOS = #{record.couponNos,jdbcType=VARCHAR},
+      BALANCE_PAY_FEE = #{record.balancePayFee,jdbcType=DECIMAL},
+      BBGOLD_PAY_FEE = #{record.bbgoldPayFee,jdbcType=DECIMAL},
+      ORDER_TYPE = #{record.orderType,jdbcType=VARCHAR},
+      ORDER_POINTS_G = #{record.orderPointsG,jdbcType=INTEGER},
+      SELF_PICKUP = #{record.selfPickup,jdbcType=CHAR},
+      TRANSPORTS_NO = #{record.transportsNo,jdbcType=VARCHAR},
+      ORIGIN_CODE = #{record.originCode,jdbcType=VARCHAR},
+      DEST_CODE = #{record.destCode,jdbcType=VARCHAR},
+      INSURANCE = #{record.insurance,jdbcType=DECIMAL},
+      SF_INTERFACE = #{record.sfInterface,jdbcType=VARCHAR},
+      ERP_INTERFACE = #{record.erpInterface,jdbcType=VARCHAR},
+      IS_DELETE = #{record.isDelete,jdbcType=CHAR},
+      ADD_USER_ID = #{record.addUserId,jdbcType=INTEGER},
+      ADD_TIME = #{record.addTime,jdbcType=VARCHAR},
+      EDIT_USER_ID = #{record.editUserId,jdbcType=INTEGER},
+      EDIT_TIME = #{record.editTime,jdbcType=VARCHAR},
+      STORE_ID = #{record.storeId,jdbcType=INTEGER},
+      VERIFY_CODE = #{record.verifyCode,jdbcType=VARCHAR},
+      IS_CHECK = #{record.isCheck,jdbcType=CHAR},
+      GROUP_BUY_RULE_ID = #{record.groupBuyRuleId,jdbcType=INTEGER},
+      RETURN_DELIVERY_FEE = #{record.returnDeliveryFee,jdbcType=DECIMAL},
+      IS_GIVE_POINTS = #{record.isGivePoints,jdbcType=CHAR},
+      SOURCE_TYPE = #{record.sourceType,jdbcType=VARCHAR},
+      AWARD_MONEY = #{record.awardMoney,jdbcType=DECIMAL},
+      business_paid = #{record.businessPaid,jdbcType=CHAR},
+      delivery_notes = #{record.deliveryNotes,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ecbusiness.model.OrderInfo" >
+    update order_info
+    <set >
+      <if test="erpOrderId != null" >
+        ERP_ORDER_ID = #{erpOrderId,jdbcType=INTEGER},
+      </if>
+      <if test="urlFromNo != null" >
+        URL_FROM_NO = #{urlFromNo,jdbcType=VARCHAR},
+      </if>
+      <if test="multiChannelId != null" >
+        MULTI_CHANNEL_ID = #{multiChannelId,jdbcType=INTEGER},
+      </if>
+      <if test="multiChannelOrderBatchId != null" >
+        MULTI_CHANNEL_ORDER_BATCH_ID = #{multiChannelOrderBatchId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsBatchNo != null" >
+        GOODS_BATCH_NO = #{goodsBatchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="multiChannelOrderId != null" >
+        MULTI_CHANNEL_ORDER_ID = #{multiChannelOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="isUpload != null" >
+        IS_UPLOAD = #{isUpload,jdbcType=CHAR},
+      </if>
+      <if test="uploadUserId != null" >
+        UPLOAD_USER_ID = #{uploadUserId,jdbcType=INTEGER},
+      </if>
+      <if test="uploadTime != null" >
+        UPLOAD_TIME = #{uploadTime,jdbcType=VARCHAR},
+      </if>
+      <if test="isPaid != null" >
+        IS_PAID = #{isPaid,jdbcType=CHAR},
+      </if>
+      <if test="paymentMode != null" >
+        PAYMENT_MODE = #{paymentMode,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentNo != null" >
+        PAYMENT_NO = #{paymentNo,jdbcType=VARCHAR},
+      </if>
+      <if test="paidTime != null" >
+        PAID_TIME = #{paidTime,jdbcType=VARCHAR},
+      </if>
+      <if test="offlinePaidUserId != null" >
+        OFFLINE_PAID_USER_ID = #{offlinePaidUserId,jdbcType=INTEGER},
+      </if>
+      <if test="logisticCompanyId != null" >
+        LOGISTIC_COMPANY_ID = #{logisticCompanyId,jdbcType=INTEGER},
+      </if>
+      <if test="memberId != null" >
+        MEMBER_ID = #{memberId,jdbcType=INTEGER},
+      </if>
+      <if test="paymentTypeId != null" >
+        PAYMENT_TYPE_ID = #{paymentTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="orderState != null" >
+        ORDER_STATE = #{orderState,jdbcType=INTEGER},
+      </if>
+      <if test="orderOutState != null" >
+        ORDER_OUT_STATE = #{orderOutState,jdbcType=INTEGER},
+      </if>
+      <if test="limitDate != null" >
+        LIMIT_DATE = #{limitDate,jdbcType=VARCHAR},
+      </if>
+      <if test="skuFee != null" >
+        SKU_FEE = #{skuFee,jdbcType=DECIMAL},
+      </if>
+      <if test="otherDiscounts != null" >
+        OTHER_DISCOUNTS = #{otherDiscounts,jdbcType=DECIMAL},
+      </if>
+      <if test="orderPoints != null" >
+        ORDER_POINTS = #{orderPoints,jdbcType=INTEGER},
+      </if>
+      <if test="deliveryFee != null" >
+        DELIVERY_FEE = #{deliveryFee,jdbcType=DECIMAL},
+      </if>
+      <if test="discountFee != null" >
+        DISCOUNT_FEE = #{discountFee,jdbcType=DECIMAL},
+      </if>
+      <if test="orderFee != null" >
+        ORDER_FEE = #{orderFee,jdbcType=DECIMAL},
+      </if>
+      <if test="orderPayFee != null" >
+        ORDER_PAY_FEE = #{orderPayFee,jdbcType=DECIMAL},
+      </if>
+      <if test="paidFee != null" >
+        PAID_FEE = #{paidFee,jdbcType=DECIMAL},
+      </if>
+      <if test="promoteRuleIds != null" >
+        PROMOTE_RULE_IDS = #{promoteRuleIds,jdbcType=VARCHAR},
+      </if>
+      <if test="productCombinationIds != null" >
+        PRODUCT_COMBINATION_IDS = #{productCombinationIds,jdbcType=VARCHAR},
+      </if>
+      <if test="returnType != null" >
+        RETURN_TYPE = #{returnType,jdbcType=VARCHAR},
+      </if>
+      <if test="returnValue != null" >
+        RETURN_VALUE = #{returnValue,jdbcType=VARCHAR},
+      </if>
+      <if test="orderMsg != null" >
+        ORDER_MSG = #{orderMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNotes != null" >
+        ORDER_NOTES = #{orderNotes,jdbcType=VARCHAR},
+      </if>
+      <if test="auditNotes != null" >
+        AUDIT_NOTES = #{auditNotes,jdbcType=VARCHAR},
+      </if>
+      <if test="auditUserId != null" >
+        AUDIT_USER_ID = #{auditUserId,jdbcType=INTEGER},
+      </if>
+      <if test="auditTime != null" >
+        AUDIT_TIME = #{auditTime,jdbcType=VARCHAR},
+      </if>
+      <if test="isLock != null" >
+        IS_LOCK = #{isLock,jdbcType=CHAR},
+      </if>
+      <if test="lockTime != null" >
+        LOCK_TIME = #{lockTime,jdbcType=VARCHAR},
+      </if>
+      <if test="lockUserId != null" >
+        LOCK_USER_ID = #{lockUserId,jdbcType=INTEGER},
+      </if>
+      <if test="commitTime != null" >
+        COMMIT_TIME = #{commitTime,jdbcType=VARCHAR},
+      </if>
+      <if test="finishTime != null" >
+        FINISH_TIME = #{finishTime,jdbcType=VARCHAR},
+      </if>
+      <if test="cancelTime != null" >
+        CANCEL_TIME = #{cancelTime,jdbcType=VARCHAR},
+      </if>
+      <if test="cancelUserId != null" >
+        CANCEL_USER_ID = #{cancelUserId,jdbcType=INTEGER},
+      </if>
+      <if test="cancelNotes != null" >
+        CANCEL_NOTES = #{cancelNotes,jdbcType=VARCHAR},
+      </if>
+      <if test="isCheckBills != null" >
+        IS_CHECK_BILLS = #{isCheckBills,jdbcType=CHAR},
+      </if>
+      <if test="checkBillUserId != null" >
+        CHECK_BILL_USER_ID = #{checkBillUserId,jdbcType=INTEGER},
+      </if>
+      <if test="checkBillTime != null" >
+        CHECK_BILL_TIME = #{checkBillTime,jdbcType=VARCHAR},
+      </if>
+      <if test="skuWeights != null" >
+        SKU_WEIGHTS = #{skuWeights,jdbcType=DECIMAL},
+      </if>
+      <if test="isIntoErp != null" >
+        IS_INTO_ERP = #{isIntoErp,jdbcType=CHAR},
+      </if>
+      <if test="intoTime != null" >
+        INTO_TIME = #{intoTime,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveUser != null" >
+        RECEIVE_USER = #{receiveUser,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceId != null" >
+        PROVINCE_ID = #{provinceId,jdbcType=INTEGER},
+      </if>
+      <if test="cityId != null" >
+        CITY_ID = #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="areaId != null" >
+        AREA_ID = #{areaId,jdbcType=INTEGER},
+      </if>
+      <if test="receiveAddress != null" >
+        RECEIVE_ADDRESS = #{receiveAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveFullAddress != null" >
+        RECEIVE_FULL_ADDRESS = #{receiveFullAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="receivePost != null" >
+        RECEIVE_POST = #{receivePost,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveTel != null" >
+        RECEIVE_TEL = #{receiveTel,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveMobile != null" >
+        RECEIVE_MOBILE = #{receiveMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveEmail != null" >
+        RECEIVE_EMAIL = #{receiveEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveDateType != null" >
+        RECEIVE_DATE_TYPE = #{receiveDateType,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveTimeType != null" >
+        RECEIVE_TIME_TYPE = #{receiveTimeType,jdbcType=VARCHAR},
+      </if>
+      <if test="invoiceType != null" >
+        INVOICE_TYPE = #{invoiceType,jdbcType=VARCHAR},
+      </if>
+      <if test="invoiceContentType != null" >
+        INVOICE_CONTENT_TYPE = #{invoiceContentType,jdbcType=VARCHAR},
+      </if>
+      <if test="invoiceTitle != null" >
+        INVOICE_TITLE = #{invoiceTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="invoiceContent != null" >
+        INVOICE_CONTENT = #{invoiceContent,jdbcType=VARCHAR},
+      </if>
+      <if test="invoiceTaxNo != null" >
+        INVOICE_TAX_NO = #{invoiceTaxNo,jdbcType=VARCHAR},
+      </if>
+      <if test="isDraw != null" >
+        IS_DRAW = #{isDraw,jdbcType=CHAR},
+      </if>
+      <if test="isInvoice != null" >
+        IS_INVOICE = #{isInvoice,jdbcType=CHAR},
+      </if>
+      <if test="brandId != null" >
+        BRAND_ID = #{brandId,jdbcType=INTEGER},
+      </if>
+      <if test="brandName != null" >
+        BRAND_NAME = #{brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="invoiceTaxAddress != null" >
+        INVOICE_TAX_ADDRESS = #{invoiceTaxAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="invoiceTaxTel != null" >
+        INVOICE_TAX_TEL = #{invoiceTaxTel,jdbcType=VARCHAR},
+      </if>
+      <if test="invoiceTaxBank != null" >
+        INVOICE_TAX_BANK = #{invoiceTaxBank,jdbcType=VARCHAR},
+      </if>
+      <if test="invoiceTaxAccount != null" >
+        INVOICE_TAX_ACCOUNT = #{invoiceTaxAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="couponFee != null" >
+        COUPON_FEE = #{couponFee,jdbcType=DECIMAL},
+      </if>
+      <if test="couponNos != null" >
+        COUPON_NOS = #{couponNos,jdbcType=VARCHAR},
+      </if>
+      <if test="balancePayFee != null" >
+        BALANCE_PAY_FEE = #{balancePayFee,jdbcType=DECIMAL},
+      </if>
+      <if test="bbgoldPayFee != null" >
+        BBGOLD_PAY_FEE = #{bbgoldPayFee,jdbcType=DECIMAL},
+      </if>
+      <if test="orderType != null" >
+        ORDER_TYPE = #{orderType,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPointsG != null" >
+        ORDER_POINTS_G = #{orderPointsG,jdbcType=INTEGER},
+      </if>
+      <if test="selfPickup != null" >
+        SELF_PICKUP = #{selfPickup,jdbcType=CHAR},
+      </if>
+      <if test="transportsNo != null" >
+        TRANSPORTS_NO = #{transportsNo,jdbcType=VARCHAR},
+      </if>
+      <if test="originCode != null" >
+        ORIGIN_CODE = #{originCode,jdbcType=VARCHAR},
+      </if>
+      <if test="destCode != null" >
+        DEST_CODE = #{destCode,jdbcType=VARCHAR},
+      </if>
+      <if test="insurance != null" >
+        INSURANCE = #{insurance,jdbcType=DECIMAL},
+      </if>
+      <if test="sfInterface != null" >
+        SF_INTERFACE = #{sfInterface,jdbcType=VARCHAR},
+      </if>
+      <if test="erpInterface != null" >
+        ERP_INTERFACE = #{erpInterface,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        IS_DELETE = #{isDelete,jdbcType=CHAR},
+      </if>
+      <if test="addUserId != null" >
+        ADD_USER_ID = #{addUserId,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null" >
+        ADD_TIME = #{addTime,jdbcType=VARCHAR},
+      </if>
+      <if test="editUserId != null" >
+        EDIT_USER_ID = #{editUserId,jdbcType=INTEGER},
+      </if>
+      <if test="editTime != null" >
+        EDIT_TIME = #{editTime,jdbcType=VARCHAR},
+      </if>
+      <if test="storeId != null" >
+        STORE_ID = #{storeId,jdbcType=INTEGER},
+      </if>
+      <if test="verifyCode != null" >
+        VERIFY_CODE = #{verifyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="isCheck != null" >
+        IS_CHECK = #{isCheck,jdbcType=CHAR},
+      </if>
+      <if test="groupBuyRuleId != null" >
+        GROUP_BUY_RULE_ID = #{groupBuyRuleId,jdbcType=INTEGER},
+      </if>
+      <if test="returnDeliveryFee != null" >
+        RETURN_DELIVERY_FEE = #{returnDeliveryFee,jdbcType=DECIMAL},
+      </if>
+      <if test="isGivePoints != null" >
+        IS_GIVE_POINTS = #{isGivePoints,jdbcType=CHAR},
+      </if>
+      <if test="sourceType != null" >
+        SOURCE_TYPE = #{sourceType,jdbcType=VARCHAR},
+      </if>
+      <if test="awardMoney != null" >
+        AWARD_MONEY = #{awardMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="businessPaid != null" >
+        business_paid = #{businessPaid,jdbcType=CHAR},
+      </if>
+      <if test="deliveryNotes != null" >
+        delivery_notes = #{deliveryNotes,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ORDER_ID = #{orderId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ecbusiness.model.OrderInfo" >
+    update order_info
+    set ERP_ORDER_ID = #{erpOrderId,jdbcType=INTEGER},
+      URL_FROM_NO = #{urlFromNo,jdbcType=VARCHAR},
+      MULTI_CHANNEL_ID = #{multiChannelId,jdbcType=INTEGER},
+      MULTI_CHANNEL_ORDER_BATCH_ID = #{multiChannelOrderBatchId,jdbcType=INTEGER},
+      GOODS_BATCH_NO = #{goodsBatchNo,jdbcType=VARCHAR},
+      MULTI_CHANNEL_ORDER_ID = #{multiChannelOrderId,jdbcType=VARCHAR},
+      IS_UPLOAD = #{isUpload,jdbcType=CHAR},
+      UPLOAD_USER_ID = #{uploadUserId,jdbcType=INTEGER},
+      UPLOAD_TIME = #{uploadTime,jdbcType=VARCHAR},
+      IS_PAID = #{isPaid,jdbcType=CHAR},
+      PAYMENT_MODE = #{paymentMode,jdbcType=VARCHAR},
+      PAYMENT_NO = #{paymentNo,jdbcType=VARCHAR},
+      PAID_TIME = #{paidTime,jdbcType=VARCHAR},
+      OFFLINE_PAID_USER_ID = #{offlinePaidUserId,jdbcType=INTEGER},
+      LOGISTIC_COMPANY_ID = #{logisticCompanyId,jdbcType=INTEGER},
+      MEMBER_ID = #{memberId,jdbcType=INTEGER},
+      PAYMENT_TYPE_ID = #{paymentTypeId,jdbcType=INTEGER},
+      ORDER_STATE = #{orderState,jdbcType=INTEGER},
+      ORDER_OUT_STATE = #{orderOutState,jdbcType=INTEGER},
+      LIMIT_DATE = #{limitDate,jdbcType=VARCHAR},
+      SKU_FEE = #{skuFee,jdbcType=DECIMAL},
+      OTHER_DISCOUNTS = #{otherDiscounts,jdbcType=DECIMAL},
+      ORDER_POINTS = #{orderPoints,jdbcType=INTEGER},
+      DELIVERY_FEE = #{deliveryFee,jdbcType=DECIMAL},
+      DISCOUNT_FEE = #{discountFee,jdbcType=DECIMAL},
+      ORDER_FEE = #{orderFee,jdbcType=DECIMAL},
+      ORDER_PAY_FEE = #{orderPayFee,jdbcType=DECIMAL},
+      PAID_FEE = #{paidFee,jdbcType=DECIMAL},
+      PROMOTE_RULE_IDS = #{promoteRuleIds,jdbcType=VARCHAR},
+      PRODUCT_COMBINATION_IDS = #{productCombinationIds,jdbcType=VARCHAR},
+      RETURN_TYPE = #{returnType,jdbcType=VARCHAR},
+      RETURN_VALUE = #{returnValue,jdbcType=VARCHAR},
+      ORDER_MSG = #{orderMsg,jdbcType=VARCHAR},
+      ORDER_NOTES = #{orderNotes,jdbcType=VARCHAR},
+      AUDIT_NOTES = #{auditNotes,jdbcType=VARCHAR},
+      AUDIT_USER_ID = #{auditUserId,jdbcType=INTEGER},
+      AUDIT_TIME = #{auditTime,jdbcType=VARCHAR},
+      IS_LOCK = #{isLock,jdbcType=CHAR},
+      LOCK_TIME = #{lockTime,jdbcType=VARCHAR},
+      LOCK_USER_ID = #{lockUserId,jdbcType=INTEGER},
+      COMMIT_TIME = #{commitTime,jdbcType=VARCHAR},
+      FINISH_TIME = #{finishTime,jdbcType=VARCHAR},
+      CANCEL_TIME = #{cancelTime,jdbcType=VARCHAR},
+      CANCEL_USER_ID = #{cancelUserId,jdbcType=INTEGER},
+      CANCEL_NOTES = #{cancelNotes,jdbcType=VARCHAR},
+      IS_CHECK_BILLS = #{isCheckBills,jdbcType=CHAR},
+      CHECK_BILL_USER_ID = #{checkBillUserId,jdbcType=INTEGER},
+      CHECK_BILL_TIME = #{checkBillTime,jdbcType=VARCHAR},
+      SKU_WEIGHTS = #{skuWeights,jdbcType=DECIMAL},
+      IS_INTO_ERP = #{isIntoErp,jdbcType=CHAR},
+      INTO_TIME = #{intoTime,jdbcType=VARCHAR},
+      RECEIVE_USER = #{receiveUser,jdbcType=VARCHAR},
+      PROVINCE_ID = #{provinceId,jdbcType=INTEGER},
+      CITY_ID = #{cityId,jdbcType=INTEGER},
+      AREA_ID = #{areaId,jdbcType=INTEGER},
+      RECEIVE_ADDRESS = #{receiveAddress,jdbcType=VARCHAR},
+      RECEIVE_FULL_ADDRESS = #{receiveFullAddress,jdbcType=VARCHAR},
+      RECEIVE_POST = #{receivePost,jdbcType=VARCHAR},
+      RECEIVE_TEL = #{receiveTel,jdbcType=VARCHAR},
+      RECEIVE_MOBILE = #{receiveMobile,jdbcType=VARCHAR},
+      RECEIVE_EMAIL = #{receiveEmail,jdbcType=VARCHAR},
+      RECEIVE_DATE_TYPE = #{receiveDateType,jdbcType=VARCHAR},
+      RECEIVE_TIME_TYPE = #{receiveTimeType,jdbcType=VARCHAR},
+      INVOICE_TYPE = #{invoiceType,jdbcType=VARCHAR},
+      INVOICE_CONTENT_TYPE = #{invoiceContentType,jdbcType=VARCHAR},
+      INVOICE_TITLE = #{invoiceTitle,jdbcType=VARCHAR},
+      INVOICE_CONTENT = #{invoiceContent,jdbcType=VARCHAR},
+      INVOICE_TAX_NO = #{invoiceTaxNo,jdbcType=VARCHAR},
+      IS_DRAW = #{isDraw,jdbcType=CHAR},
+      IS_INVOICE = #{isInvoice,jdbcType=CHAR},
+      BRAND_ID = #{brandId,jdbcType=INTEGER},
+      BRAND_NAME = #{brandName,jdbcType=VARCHAR},
+      INVOICE_TAX_ADDRESS = #{invoiceTaxAddress,jdbcType=VARCHAR},
+      INVOICE_TAX_TEL = #{invoiceTaxTel,jdbcType=VARCHAR},
+      INVOICE_TAX_BANK = #{invoiceTaxBank,jdbcType=VARCHAR},
+      INVOICE_TAX_ACCOUNT = #{invoiceTaxAccount,jdbcType=VARCHAR},
+      COUPON_FEE = #{couponFee,jdbcType=DECIMAL},
+      COUPON_NOS = #{couponNos,jdbcType=VARCHAR},
+      BALANCE_PAY_FEE = #{balancePayFee,jdbcType=DECIMAL},
+      BBGOLD_PAY_FEE = #{bbgoldPayFee,jdbcType=DECIMAL},
+      ORDER_TYPE = #{orderType,jdbcType=VARCHAR},
+      ORDER_POINTS_G = #{orderPointsG,jdbcType=INTEGER},
+      SELF_PICKUP = #{selfPickup,jdbcType=CHAR},
+      TRANSPORTS_NO = #{transportsNo,jdbcType=VARCHAR},
+      ORIGIN_CODE = #{originCode,jdbcType=VARCHAR},
+      DEST_CODE = #{destCode,jdbcType=VARCHAR},
+      INSURANCE = #{insurance,jdbcType=DECIMAL},
+      SF_INTERFACE = #{sfInterface,jdbcType=VARCHAR},
+      ERP_INTERFACE = #{erpInterface,jdbcType=VARCHAR},
+      IS_DELETE = #{isDelete,jdbcType=CHAR},
+      ADD_USER_ID = #{addUserId,jdbcType=INTEGER},
+      ADD_TIME = #{addTime,jdbcType=VARCHAR},
+      EDIT_USER_ID = #{editUserId,jdbcType=INTEGER},
+      EDIT_TIME = #{editTime,jdbcType=VARCHAR},
+      STORE_ID = #{storeId,jdbcType=INTEGER},
+      VERIFY_CODE = #{verifyCode,jdbcType=VARCHAR},
+      IS_CHECK = #{isCheck,jdbcType=CHAR},
+      GROUP_BUY_RULE_ID = #{groupBuyRuleId,jdbcType=INTEGER},
+      RETURN_DELIVERY_FEE = #{returnDeliveryFee,jdbcType=DECIMAL},
+      IS_GIVE_POINTS = #{isGivePoints,jdbcType=CHAR},
+      SOURCE_TYPE = #{sourceType,jdbcType=VARCHAR},
+      AWARD_MONEY = #{awardMoney,jdbcType=DECIMAL},
+      business_paid = #{businessPaid,jdbcType=CHAR},
+      delivery_notes = #{deliveryNotes,jdbcType=VARCHAR}
+    where ORDER_ID = #{orderId,jdbcType=VARCHAR}
+  </update>
+  <select resultMap="BaseResultMap" parameterType="com.ecbusiness.model.OrderInfoCriteria" id="selectByExampleWithRowbounds" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from order_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <cache />
+</mapper>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>登录-厂商管理后台</title>
+    <link rel="icon" href="http://123.57.23.176:8080/ec-web/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="http://123.57.23.176:8080/ec-web/favicon.ico" type="image/x-icon">
+    <style type="text/css">
+    html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent;font-family:"Microsoft YaHei"}body{line-height:1}:focus{outline:1}article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary{display:block}nav ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}a{margin:0;padding:0;border:0;font-size:100%;vertical-align:baseline;background:transparent}ins{background-color:#ff9;color:#000;text-decoration:none}mark{background-color:#ff9;color:#000;font-style:italic;font-weight:bold}del{text-decoration:line-through}abbr[title],dfn[title]{border-bottom:1px dotted #000;cursor:help}table{border-collapse:collapse;border-spacing:0}hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0}input,select{vertical-align:middle}
+    a{font-family: "Microsoft YaHei";text-decoration: none;}
+    button{border: none;}
+    /*body的url需要绝对地址*/
+    body{background: url(img/businessback.jpg) no-repeat center;height: 100%;width: 100%;}
+    .signin-wrap{width: 350px;margin: 0 auto;padding-top: 200px;filter: alpha(opacity=0);  background-color: rgb(0, 0, 0);  background-color: rgba(0, 0, 0, 0);background: url(/img/businesslogo.png) no-repeat 55px 70px;}
+     .signin-section{position:relative;background:#fff;padding:20px 20px 40px;width:350px;min-height:300px;box-shadow:  0 0 5px #999;filter:alpha(Opacity=80);-moz-opacity:.8;opacity: .8}
+     .signin-section h2{font-size:18px;line-height:30px;color:#666;margin-top: }
+     .signin-section input[type=password], .signin-section input[type=text]{height:40px;line-height:40px;padding:0 10px;font-size:12px;border:1px solid rgba(0,0,0,.12);vertical-align:top}
+     .signin-section .error-tip{color:#ff6213;text-align:center;padding:5px;margin:10px 0;border:1px solid #ff6213;background:#fdf2f0}
+     .signin-section .user-input{margin:15px 0}
+     .signin-section .user-input label{display:inline-block;padding-left:40px;background:rgba(0,0,0,.12);border:1px solid #dadada}
+     .signin-section .user-input input{border:none;border-left:1px solid #dadada;min-width:285px}
+     .signin-section .user-input.user-input-focus label{background-color:#00a0e9;border:1px solid #00a0e9}
+     .signin-section .user-input.user-input-focus input{border-left:1px solid #00a0e9}
+     .signin-section .user-input.user-input-error label{background-color:#ff6213;border:1px solid #ff6213}
+     .signin-section .user-input.user-input-error input{border-left:1px solid #ff6213}
+     .signin-section .username label{background:rgba(0,0,0,.12) url(/img/businessmannormal.png) no-repeat 7px;}
+     .signin-section .passwd label{background:rgba(0,0,0,.12) url(/img/businesslocknormal.png) no-repeat 7px;}
+     .signin-section .vcode{line-height:42px}
+     .signin-section .vcode input{max-width:120px}
+     .signin-section .vcode img{border:1px solid rgba(0,0,0,.12);height:40px;width:90px;vertical-align:top}
+     .signin-section .vcode a{vertical-align:top;padding:0 8px;font-size:14px;}
+     .signin-section .passwd-get{position:relative;padding:20px 0}
+     .signin-section .passwd-get .get-forget{position:absolute;right:10px;top:20px}
+     .signin-section .actions .btn{display:block;width:100%;background:#ff6213;color:#fff;height:40px;padding:0 10px;font-size:16px;line-height:40px;border-radius:2px}
+     .publicTips{width:315px;height: 24px;line-height: 24px;color: #c89949;border: 1px solid #ebdfa2;font-size: 12px;padding-left: 30px;margin-top: 5px;background: url(/img/yellowtip.png) no-repeat 5px center;}
+     .publicTipsActive{color: red;border-color: red;background: url(/img/errortip.png) no-repeat 5px center;}
+    </style>
+</head>
+<body>
+            <div class="signin-wrap">
+            <div class="signin-section">
+                    <h2>厂商登录</h2>
+                    <p class="publicTips">公共场所不建议自动登录，以防账户丢失。</p>
+                <form class="entry" id="loginForm" name="loginForm" action="/maixian/doLogin" method="post">
+                    <input type="hidden" id="backUrlParams" name="backUrlParams" value=""> <input type="hidden" name="loginType" id="loginType" value="ordinary">
+
+                    <div class="user-input username">
+                        <label><input type="text" name="username"  placeholder="用户名" id="username" value="" class="text110 login-name" autocomplete="off" tabindex="1">
+                        </label>
+                    </div>
+                    <div class="user-input passwd">
+                        <label><input type="password" id="password" placeholder="密码" name="password" maxlength="20" value="" class="text110" autocomplete="off" tabindex="2">
+                        </label>
+                    </div>
+                    <div class="vcode">
+                        <input type="text" placeholder="验证码" name="captcha" value="" maxlength="4" tabindex="3"> <img name="yzmImg" src="/captcha/get"> <a href="/captcha/get">换一张</a>
+                    </div>
+
+                    <div class="passwd-get">
+                        <label style="font-size: 14px;"><input type="checkbox"> 自动登录</label>
+                        <p class="get-forget">
+                            <a href="/pwd/forget" style="font-size: 14px;">忘记密码</a>
+                        </p>
+                    </div>
+                    <div class="actions">
+                        <button type="submit" class="btn btn-signin">登 录</button>
+                    </div>
+                    <#if ErrMsg??>
+                    <input type="hidden" id="backURL" name="backURL" data-value="${ErrMsg}">
+                    </#if>
+                </form>
+
+            </div>
+    </div>
+
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+if ($("#backURL").attr("data-value")) {$(".publicTips").html($("#backURL").attr("data-value")).addClass("publicTipsActive")}
+
+
+
+$("body").css("{background: url(/img/businessback.jpg) no-repeat center;height: 100%;width: 100%;}")
+$(".vcode a").on("click",function(e){
+    console.log("dddd")
+    $(".vcode img").attr("src","")
+    $(".vcode img").attr("src","/captcha/get")
+    return false
+})
+
+});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,1042 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ecbusiness.mapper.ProductMapper" >
+  <resultMap id="BaseResultMap" type="com.ecbusiness.model.Product" >
+    <id column="PRODUCT_ID" property="productId" jdbcType="INTEGER" />
+    <result column="PRODUCT_CODE" property="productCode" jdbcType="VARCHAR" />
+    <result column="PRODUCT_NAME" property="productName" jdbcType="VARCHAR" />
+    <result column="PRODUCT_COMMON_NAME" property="productCommonName" jdbcType="VARCHAR" />
+    <result column="PRODUCT_ALIAS_NAME" property="productAliasName" jdbcType="VARCHAR" />
+    <result column="PRODUCT_CHN_NO" property="productChnNo" jdbcType="VARCHAR" />
+    <result column="PRODUCT_ORDER" property="productOrder" jdbcType="INTEGER" />
+    <result column="PRO_CATALOG_ID" property="proCatalogId" jdbcType="INTEGER" />
+    <result column="PRODUCT_BRAND_ID" property="productBrandId" jdbcType="INTEGER" />
+    <result column="PRODUCT_TYPE_ID" property="productTypeId" jdbcType="INTEGER" />
+    <result column="PRODUCT_MARKET_DATE" property="productMarketDate" jdbcType="VARCHAR" />
+    <result column="LOWEST_PRICE" property="lowestPrice" jdbcType="DECIMAL" />
+    <result column="PRODUCT_KEYWORD" property="productKeyword" jdbcType="VARCHAR" />
+    <result column="PRODUCT_DESC" property="productDesc" jdbcType="VARCHAR" />
+    <result column="PRO_PRO_CATALOG_ID" property="proProCatalogId" jdbcType="INTEGER" />
+    <result column="PRO_PRODUCT_BRAND_ID" property="proProductBrandId" jdbcType="INTEGER" />
+    <result column="IS_ONSALE" property="isOnsale" jdbcType="CHAR" />
+    <result column="ONSALE_TIME" property="onsaleTime" jdbcType="VARCHAR" />
+    <result column="PRODUCT_LEAST_ORDER" property="productLeastOrder" jdbcType="DECIMAL" />
+    <result column="ORDER_LIMIT_AMOUNT" property="orderLimitAmount" jdbcType="DECIMAL" />
+    <result column="BUY_AMOUNT_BASE" property="buyAmountBase" jdbcType="DECIMAL" />
+    <result column="IS_STOCK_WARN" property="isStockWarn" jdbcType="CHAR" />
+    <result column="PRODUCT_POINT" property="productPoint" jdbcType="INTEGER" />
+    <result column="IS_SUPPORT_POINT" property="isSupportPoint" jdbcType="CHAR" />
+    <result column="PRODUCT_WARN_NUMBER" property="productWarnNumber" jdbcType="INTEGER" />
+    <result column="PROMOTE_DESCRIPTION" property="promoteDescription" jdbcType="VARCHAR" />
+    <result column="USE_MARKER" property="useMarker" jdbcType="CHAR" />
+    <result column="CATALOG_CODE" property="catalogCode" jdbcType="VARCHAR" />
+    <result column="SEO_TITLE" property="seoTitle" jdbcType="VARCHAR" />
+    <result column="SEO_META_KEY_WORD" property="seoMetaKeyWord" jdbcType="VARCHAR" />
+    <result column="SEO_META_DESC" property="seoMetaDesc" jdbcType="VARCHAR" />
+    <result column="IS_AUDIT" property="isAudit" jdbcType="CHAR" />
+    <result column="IS_DELETE" property="isDelete" jdbcType="CHAR" />
+    <result column="ADD_USER_ID" property="addUserId" jdbcType="INTEGER" />
+    <result column="ADD_TIME" property="addTime" jdbcType="VARCHAR" />
+    <result column="EDIT_USER_ID" property="editUserId" jdbcType="INTEGER" />
+    <result column="EDIT_TIME" property="editTime" jdbcType="VARCHAR" />
+    <result column="PRODUCT_SIMPLE_DESC" property="productSimpleDesc" jdbcType="VARCHAR" />
+    <result column="CLICK_AMOUNT" property="clickAmount" jdbcType="INTEGER" />
+    <result column="SALE_AMOUNT" property="saleAmount" jdbcType="INTEGER" />
+    <result column="STREET" property="street" jdbcType="VARCHAR" />
+    <result column="STYLES" property="styles" jdbcType="VARCHAR" />
+    <result column="COMMENT_NUMBER" property="commentNumber" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.ecbusiness.model.ProductWithBLOBs" extends="BaseResultMap" >
+    <result column="DETAIL_INFO" property="detailInfo" jdbcType="LONGVARCHAR" />
+    <result column="DELIVERY_NOTES" property="deliveryNotes" jdbcType="LONGVARCHAR" />
+    <result column="PRIVATE_SECURITY" property="privateSecurity" jdbcType="LONGVARCHAR" />
+    <result column="SALE_SERVICE" property="saleService" jdbcType="LONGVARCHAR" />
+    <result column="HONORS" property="honors" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    PRODUCT_ID, PRODUCT_CODE, PRODUCT_NAME, PRODUCT_COMMON_NAME, PRODUCT_ALIAS_NAME, 
+    PRODUCT_CHN_NO, PRODUCT_ORDER, PRO_CATALOG_ID, PRODUCT_BRAND_ID, PRODUCT_TYPE_ID, 
+    PRODUCT_MARKET_DATE, LOWEST_PRICE, PRODUCT_KEYWORD, PRODUCT_DESC, PRO_PRO_CATALOG_ID, 
+    PRO_PRODUCT_BRAND_ID, IS_ONSALE, ONSALE_TIME, PRODUCT_LEAST_ORDER, ORDER_LIMIT_AMOUNT, 
+    BUY_AMOUNT_BASE, IS_STOCK_WARN, PRODUCT_POINT, IS_SUPPORT_POINT, PRODUCT_WARN_NUMBER, 
+    PROMOTE_DESCRIPTION, USE_MARKER, CATALOG_CODE, SEO_TITLE, SEO_META_KEY_WORD, SEO_META_DESC, 
+    IS_AUDIT, IS_DELETE, ADD_USER_ID, ADD_TIME, EDIT_USER_ID, EDIT_TIME, PRODUCT_SIMPLE_DESC, 
+    CLICK_AMOUNT, SALE_AMOUNT, STREET, STYLES, COMMENT_NUMBER
+  </sql>
+  <sql id="Blob_Column_List" >
+    DETAIL_INFO, DELIVERY_NOTES, PRIVATE_SECURITY, SALE_SERVICE, HONORS
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.ecbusiness.model.ProductCriteria" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from product
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ecbusiness.model.ProductCriteria" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from product
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from product
+    where PRODUCT_ID = #{productId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from product
+    where PRODUCT_ID = #{productId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ecbusiness.model.ProductCriteria" >
+    delete from product
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ecbusiness.model.ProductWithBLOBs" >
+    insert into product (PRODUCT_ID, PRODUCT_CODE, PRODUCT_NAME, 
+      PRODUCT_COMMON_NAME, PRODUCT_ALIAS_NAME, PRODUCT_CHN_NO, 
+      PRODUCT_ORDER, PRO_CATALOG_ID, PRODUCT_BRAND_ID, 
+      PRODUCT_TYPE_ID, PRODUCT_MARKET_DATE, LOWEST_PRICE, 
+      PRODUCT_KEYWORD, PRODUCT_DESC, PRO_PRO_CATALOG_ID, 
+      PRO_PRODUCT_BRAND_ID, IS_ONSALE, ONSALE_TIME, 
+      PRODUCT_LEAST_ORDER, ORDER_LIMIT_AMOUNT, BUY_AMOUNT_BASE, 
+      IS_STOCK_WARN, PRODUCT_POINT, IS_SUPPORT_POINT, 
+      PRODUCT_WARN_NUMBER, PROMOTE_DESCRIPTION, 
+      USE_MARKER, CATALOG_CODE, SEO_TITLE, 
+      SEO_META_KEY_WORD, SEO_META_DESC, IS_AUDIT, 
+      IS_DELETE, ADD_USER_ID, ADD_TIME, 
+      EDIT_USER_ID, EDIT_TIME, PRODUCT_SIMPLE_DESC, 
+      CLICK_AMOUNT, SALE_AMOUNT, STREET, 
+      STYLES, COMMENT_NUMBER, DETAIL_INFO, 
+      DELIVERY_NOTES, PRIVATE_SECURITY, 
+      SALE_SERVICE, HONORS)
+    values (#{productId,jdbcType=INTEGER}, #{productCode,jdbcType=VARCHAR}, #{productName,jdbcType=VARCHAR}, 
+      #{productCommonName,jdbcType=VARCHAR}, #{productAliasName,jdbcType=VARCHAR}, #{productChnNo,jdbcType=VARCHAR}, 
+      #{productOrder,jdbcType=INTEGER}, #{proCatalogId,jdbcType=INTEGER}, #{productBrandId,jdbcType=INTEGER}, 
+      #{productTypeId,jdbcType=INTEGER}, #{productMarketDate,jdbcType=VARCHAR}, #{lowestPrice,jdbcType=DECIMAL}, 
+      #{productKeyword,jdbcType=VARCHAR}, #{productDesc,jdbcType=VARCHAR}, #{proProCatalogId,jdbcType=INTEGER}, 
+      #{proProductBrandId,jdbcType=INTEGER}, #{isOnsale,jdbcType=CHAR}, #{onsaleTime,jdbcType=VARCHAR}, 
+      #{productLeastOrder,jdbcType=DECIMAL}, #{orderLimitAmount,jdbcType=DECIMAL}, #{buyAmountBase,jdbcType=DECIMAL}, 
+      #{isStockWarn,jdbcType=CHAR}, #{productPoint,jdbcType=INTEGER}, #{isSupportPoint,jdbcType=CHAR}, 
+      #{productWarnNumber,jdbcType=INTEGER}, #{promoteDescription,jdbcType=VARCHAR}, 
+      #{useMarker,jdbcType=CHAR}, #{catalogCode,jdbcType=VARCHAR}, #{seoTitle,jdbcType=VARCHAR}, 
+      #{seoMetaKeyWord,jdbcType=VARCHAR}, #{seoMetaDesc,jdbcType=VARCHAR}, #{isAudit,jdbcType=CHAR}, 
+      #{isDelete,jdbcType=CHAR}, #{addUserId,jdbcType=INTEGER}, #{addTime,jdbcType=VARCHAR}, 
+      #{editUserId,jdbcType=INTEGER}, #{editTime,jdbcType=VARCHAR}, #{productSimpleDesc,jdbcType=VARCHAR}, 
+      #{clickAmount,jdbcType=INTEGER}, #{saleAmount,jdbcType=INTEGER}, #{street,jdbcType=VARCHAR}, 
+      #{styles,jdbcType=VARCHAR}, #{commentNumber,jdbcType=INTEGER}, #{detailInfo,jdbcType=LONGVARCHAR}, 
+      #{deliveryNotes,jdbcType=LONGVARCHAR}, #{privateSecurity,jdbcType=LONGVARCHAR}, 
+      #{saleService,jdbcType=LONGVARCHAR}, #{honors,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ecbusiness.model.ProductWithBLOBs" >
+    insert into product
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="productId != null" >
+        PRODUCT_ID,
+      </if>
+      <if test="productCode != null" >
+        PRODUCT_CODE,
+      </if>
+      <if test="productName != null" >
+        PRODUCT_NAME,
+      </if>
+      <if test="productCommonName != null" >
+        PRODUCT_COMMON_NAME,
+      </if>
+      <if test="productAliasName != null" >
+        PRODUCT_ALIAS_NAME,
+      </if>
+      <if test="productChnNo != null" >
+        PRODUCT_CHN_NO,
+      </if>
+      <if test="productOrder != null" >
+        PRODUCT_ORDER,
+      </if>
+      <if test="proCatalogId != null" >
+        PRO_CATALOG_ID,
+      </if>
+      <if test="productBrandId != null" >
+        PRODUCT_BRAND_ID,
+      </if>
+      <if test="productTypeId != null" >
+        PRODUCT_TYPE_ID,
+      </if>
+      <if test="productMarketDate != null" >
+        PRODUCT_MARKET_DATE,
+      </if>
+      <if test="lowestPrice != null" >
+        LOWEST_PRICE,
+      </if>
+      <if test="productKeyword != null" >
+        PRODUCT_KEYWORD,
+      </if>
+      <if test="productDesc != null" >
+        PRODUCT_DESC,
+      </if>
+      <if test="proProCatalogId != null" >
+        PRO_PRO_CATALOG_ID,
+      </if>
+      <if test="proProductBrandId != null" >
+        PRO_PRODUCT_BRAND_ID,
+      </if>
+      <if test="isOnsale != null" >
+        IS_ONSALE,
+      </if>
+      <if test="onsaleTime != null" >
+        ONSALE_TIME,
+      </if>
+      <if test="productLeastOrder != null" >
+        PRODUCT_LEAST_ORDER,
+      </if>
+      <if test="orderLimitAmount != null" >
+        ORDER_LIMIT_AMOUNT,
+      </if>
+      <if test="buyAmountBase != null" >
+        BUY_AMOUNT_BASE,
+      </if>
+      <if test="isStockWarn != null" >
+        IS_STOCK_WARN,
+      </if>
+      <if test="productPoint != null" >
+        PRODUCT_POINT,
+      </if>
+      <if test="isSupportPoint != null" >
+        IS_SUPPORT_POINT,
+      </if>
+      <if test="productWarnNumber != null" >
+        PRODUCT_WARN_NUMBER,
+      </if>
+      <if test="promoteDescription != null" >
+        PROMOTE_DESCRIPTION,
+      </if>
+      <if test="useMarker != null" >
+        USE_MARKER,
+      </if>
+      <if test="catalogCode != null" >
+        CATALOG_CODE,
+      </if>
+      <if test="seoTitle != null" >
+        SEO_TITLE,
+      </if>
+      <if test="seoMetaKeyWord != null" >
+        SEO_META_KEY_WORD,
+      </if>
+      <if test="seoMetaDesc != null" >
+        SEO_META_DESC,
+      </if>
+      <if test="isAudit != null" >
+        IS_AUDIT,
+      </if>
+      <if test="isDelete != null" >
+        IS_DELETE,
+      </if>
+      <if test="addUserId != null" >
+        ADD_USER_ID,
+      </if>
+      <if test="addTime != null" >
+        ADD_TIME,
+      </if>
+      <if test="editUserId != null" >
+        EDIT_USER_ID,
+      </if>
+      <if test="editTime != null" >
+        EDIT_TIME,
+      </if>
+      <if test="productSimpleDesc != null" >
+        PRODUCT_SIMPLE_DESC,
+      </if>
+      <if test="clickAmount != null" >
+        CLICK_AMOUNT,
+      </if>
+      <if test="saleAmount != null" >
+        SALE_AMOUNT,
+      </if>
+      <if test="street != null" >
+        STREET,
+      </if>
+      <if test="styles != null" >
+        STYLES,
+      </if>
+      <if test="commentNumber != null" >
+        COMMENT_NUMBER,
+      </if>
+      <if test="detailInfo != null" >
+        DETAIL_INFO,
+      </if>
+      <if test="deliveryNotes != null" >
+        DELIVERY_NOTES,
+      </if>
+      <if test="privateSecurity != null" >
+        PRIVATE_SECURITY,
+      </if>
+      <if test="saleService != null" >
+        SALE_SERVICE,
+      </if>
+      <if test="honors != null" >
+        HONORS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="productId != null" >
+        #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="productCode != null" >
+        #{productCode,jdbcType=VARCHAR},
+      </if>
+      <if test="productName != null" >
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productCommonName != null" >
+        #{productCommonName,jdbcType=VARCHAR},
+      </if>
+      <if test="productAliasName != null" >
+        #{productAliasName,jdbcType=VARCHAR},
+      </if>
+      <if test="productChnNo != null" >
+        #{productChnNo,jdbcType=VARCHAR},
+      </if>
+      <if test="productOrder != null" >
+        #{productOrder,jdbcType=INTEGER},
+      </if>
+      <if test="proCatalogId != null" >
+        #{proCatalogId,jdbcType=INTEGER},
+      </if>
+      <if test="productBrandId != null" >
+        #{productBrandId,jdbcType=INTEGER},
+      </if>
+      <if test="productTypeId != null" >
+        #{productTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="productMarketDate != null" >
+        #{productMarketDate,jdbcType=VARCHAR},
+      </if>
+      <if test="lowestPrice != null" >
+        #{lowestPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="productKeyword != null" >
+        #{productKeyword,jdbcType=VARCHAR},
+      </if>
+      <if test="productDesc != null" >
+        #{productDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="proProCatalogId != null" >
+        #{proProCatalogId,jdbcType=INTEGER},
+      </if>
+      <if test="proProductBrandId != null" >
+        #{proProductBrandId,jdbcType=INTEGER},
+      </if>
+      <if test="isOnsale != null" >
+        #{isOnsale,jdbcType=CHAR},
+      </if>
+      <if test="onsaleTime != null" >
+        #{onsaleTime,jdbcType=VARCHAR},
+      </if>
+      <if test="productLeastOrder != null" >
+        #{productLeastOrder,jdbcType=DECIMAL},
+      </if>
+      <if test="orderLimitAmount != null" >
+        #{orderLimitAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="buyAmountBase != null" >
+        #{buyAmountBase,jdbcType=DECIMAL},
+      </if>
+      <if test="isStockWarn != null" >
+        #{isStockWarn,jdbcType=CHAR},
+      </if>
+      <if test="productPoint != null" >
+        #{productPoint,jdbcType=INTEGER},
+      </if>
+      <if test="isSupportPoint != null" >
+        #{isSupportPoint,jdbcType=CHAR},
+      </if>
+      <if test="productWarnNumber != null" >
+        #{productWarnNumber,jdbcType=INTEGER},
+      </if>
+      <if test="promoteDescription != null" >
+        #{promoteDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="useMarker != null" >
+        #{useMarker,jdbcType=CHAR},
+      </if>
+      <if test="catalogCode != null" >
+        #{catalogCode,jdbcType=VARCHAR},
+      </if>
+      <if test="seoTitle != null" >
+        #{seoTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="seoMetaKeyWord != null" >
+        #{seoMetaKeyWord,jdbcType=VARCHAR},
+      </if>
+      <if test="seoMetaDesc != null" >
+        #{seoMetaDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="isAudit != null" >
+        #{isAudit,jdbcType=CHAR},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=CHAR},
+      </if>
+      <if test="addUserId != null" >
+        #{addUserId,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null" >
+        #{addTime,jdbcType=VARCHAR},
+      </if>
+      <if test="editUserId != null" >
+        #{editUserId,jdbcType=INTEGER},
+      </if>
+      <if test="editTime != null" >
+        #{editTime,jdbcType=VARCHAR},
+      </if>
+      <if test="productSimpleDesc != null" >
+        #{productSimpleDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="clickAmount != null" >
+        #{clickAmount,jdbcType=INTEGER},
+      </if>
+      <if test="saleAmount != null" >
+        #{saleAmount,jdbcType=INTEGER},
+      </if>
+      <if test="street != null" >
+        #{street,jdbcType=VARCHAR},
+      </if>
+      <if test="styles != null" >
+        #{styles,jdbcType=VARCHAR},
+      </if>
+      <if test="commentNumber != null" >
+        #{commentNumber,jdbcType=INTEGER},
+      </if>
+      <if test="detailInfo != null" >
+        #{detailInfo,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="deliveryNotes != null" >
+        #{deliveryNotes,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="privateSecurity != null" >
+        #{privateSecurity,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="saleService != null" >
+        #{saleService,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="honors != null" >
+        #{honors,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ecbusiness.model.ProductCriteria" resultType="java.lang.Integer" >
+    select count(*) from product
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update product
+    <set >
+      <if test="record.productId != null" >
+        PRODUCT_ID = #{record.productId,jdbcType=INTEGER},
+      </if>
+      <if test="record.productCode != null" >
+        PRODUCT_CODE = #{record.productCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productName != null" >
+        PRODUCT_NAME = #{record.productName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productCommonName != null" >
+        PRODUCT_COMMON_NAME = #{record.productCommonName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productAliasName != null" >
+        PRODUCT_ALIAS_NAME = #{record.productAliasName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productChnNo != null" >
+        PRODUCT_CHN_NO = #{record.productChnNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productOrder != null" >
+        PRODUCT_ORDER = #{record.productOrder,jdbcType=INTEGER},
+      </if>
+      <if test="record.proCatalogId != null" >
+        PRO_CATALOG_ID = #{record.proCatalogId,jdbcType=INTEGER},
+      </if>
+      <if test="record.productBrandId != null" >
+        PRODUCT_BRAND_ID = #{record.productBrandId,jdbcType=INTEGER},
+      </if>
+      <if test="record.productTypeId != null" >
+        PRODUCT_TYPE_ID = #{record.productTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="record.productMarketDate != null" >
+        PRODUCT_MARKET_DATE = #{record.productMarketDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lowestPrice != null" >
+        LOWEST_PRICE = #{record.lowestPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.productKeyword != null" >
+        PRODUCT_KEYWORD = #{record.productKeyword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productDesc != null" >
+        PRODUCT_DESC = #{record.productDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.proProCatalogId != null" >
+        PRO_PRO_CATALOG_ID = #{record.proProCatalogId,jdbcType=INTEGER},
+      </if>
+      <if test="record.proProductBrandId != null" >
+        PRO_PRODUCT_BRAND_ID = #{record.proProductBrandId,jdbcType=INTEGER},
+      </if>
+      <if test="record.isOnsale != null" >
+        IS_ONSALE = #{record.isOnsale,jdbcType=CHAR},
+      </if>
+      <if test="record.onsaleTime != null" >
+        ONSALE_TIME = #{record.onsaleTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productLeastOrder != null" >
+        PRODUCT_LEAST_ORDER = #{record.productLeastOrder,jdbcType=DECIMAL},
+      </if>
+      <if test="record.orderLimitAmount != null" >
+        ORDER_LIMIT_AMOUNT = #{record.orderLimitAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.buyAmountBase != null" >
+        BUY_AMOUNT_BASE = #{record.buyAmountBase,jdbcType=DECIMAL},
+      </if>
+      <if test="record.isStockWarn != null" >
+        IS_STOCK_WARN = #{record.isStockWarn,jdbcType=CHAR},
+      </if>
+      <if test="record.productPoint != null" >
+        PRODUCT_POINT = #{record.productPoint,jdbcType=INTEGER},
+      </if>
+      <if test="record.isSupportPoint != null" >
+        IS_SUPPORT_POINT = #{record.isSupportPoint,jdbcType=CHAR},
+      </if>
+      <if test="record.productWarnNumber != null" >
+        PRODUCT_WARN_NUMBER = #{record.productWarnNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.promoteDescription != null" >
+        PROMOTE_DESCRIPTION = #{record.promoteDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="record.useMarker != null" >
+        USE_MARKER = #{record.useMarker,jdbcType=CHAR},
+      </if>
+      <if test="record.catalogCode != null" >
+        CATALOG_CODE = #{record.catalogCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.seoTitle != null" >
+        SEO_TITLE = #{record.seoTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.seoMetaKeyWord != null" >
+        SEO_META_KEY_WORD = #{record.seoMetaKeyWord,jdbcType=VARCHAR},
+      </if>
+      <if test="record.seoMetaDesc != null" >
+        SEO_META_DESC = #{record.seoMetaDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isAudit != null" >
+        IS_AUDIT = #{record.isAudit,jdbcType=CHAR},
+      </if>
+      <if test="record.isDelete != null" >
+        IS_DELETE = #{record.isDelete,jdbcType=CHAR},
+      </if>
+      <if test="record.addUserId != null" >
+        ADD_USER_ID = #{record.addUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.addTime != null" >
+        ADD_TIME = #{record.addTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.editUserId != null" >
+        EDIT_USER_ID = #{record.editUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.editTime != null" >
+        EDIT_TIME = #{record.editTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productSimpleDesc != null" >
+        PRODUCT_SIMPLE_DESC = #{record.productSimpleDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.clickAmount != null" >
+        CLICK_AMOUNT = #{record.clickAmount,jdbcType=INTEGER},
+      </if>
+      <if test="record.saleAmount != null" >
+        SALE_AMOUNT = #{record.saleAmount,jdbcType=INTEGER},
+      </if>
+      <if test="record.street != null" >
+        STREET = #{record.street,jdbcType=VARCHAR},
+      </if>
+      <if test="record.styles != null" >
+        STYLES = #{record.styles,jdbcType=VARCHAR},
+      </if>
+      <if test="record.commentNumber != null" >
+        COMMENT_NUMBER = #{record.commentNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.detailInfo != null" >
+        DETAIL_INFO = #{record.detailInfo,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.deliveryNotes != null" >
+        DELIVERY_NOTES = #{record.deliveryNotes,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.privateSecurity != null" >
+        PRIVATE_SECURITY = #{record.privateSecurity,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.saleService != null" >
+        SALE_SERVICE = #{record.saleService,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.honors != null" >
+        HONORS = #{record.honors,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update product
+    set PRODUCT_ID = #{record.productId,jdbcType=INTEGER},
+      PRODUCT_CODE = #{record.productCode,jdbcType=VARCHAR},
+      PRODUCT_NAME = #{record.productName,jdbcType=VARCHAR},
+      PRODUCT_COMMON_NAME = #{record.productCommonName,jdbcType=VARCHAR},
+      PRODUCT_ALIAS_NAME = #{record.productAliasName,jdbcType=VARCHAR},
+      PRODUCT_CHN_NO = #{record.productChnNo,jdbcType=VARCHAR},
+      PRODUCT_ORDER = #{record.productOrder,jdbcType=INTEGER},
+      PRO_CATALOG_ID = #{record.proCatalogId,jdbcType=INTEGER},
+      PRODUCT_BRAND_ID = #{record.productBrandId,jdbcType=INTEGER},
+      PRODUCT_TYPE_ID = #{record.productTypeId,jdbcType=INTEGER},
+      PRODUCT_MARKET_DATE = #{record.productMarketDate,jdbcType=VARCHAR},
+      LOWEST_PRICE = #{record.lowestPrice,jdbcType=DECIMAL},
+      PRODUCT_KEYWORD = #{record.productKeyword,jdbcType=VARCHAR},
+      PRODUCT_DESC = #{record.productDesc,jdbcType=VARCHAR},
+      PRO_PRO_CATALOG_ID = #{record.proProCatalogId,jdbcType=INTEGER},
+      PRO_PRODUCT_BRAND_ID = #{record.proProductBrandId,jdbcType=INTEGER},
+      IS_ONSALE = #{record.isOnsale,jdbcType=CHAR},
+      ONSALE_TIME = #{record.onsaleTime,jdbcType=VARCHAR},
+      PRODUCT_LEAST_ORDER = #{record.productLeastOrder,jdbcType=DECIMAL},
+      ORDER_LIMIT_AMOUNT = #{record.orderLimitAmount,jdbcType=DECIMAL},
+      BUY_AMOUNT_BASE = #{record.buyAmountBase,jdbcType=DECIMAL},
+      IS_STOCK_WARN = #{record.isStockWarn,jdbcType=CHAR},
+      PRODUCT_POINT = #{record.productPoint,jdbcType=INTEGER},
+      IS_SUPPORT_POINT = #{record.isSupportPoint,jdbcType=CHAR},
+      PRODUCT_WARN_NUMBER = #{record.productWarnNumber,jdbcType=INTEGER},
+      PROMOTE_DESCRIPTION = #{record.promoteDescription,jdbcType=VARCHAR},
+      USE_MARKER = #{record.useMarker,jdbcType=CHAR},
+      CATALOG_CODE = #{record.catalogCode,jdbcType=VARCHAR},
+      SEO_TITLE = #{record.seoTitle,jdbcType=VARCHAR},
+      SEO_META_KEY_WORD = #{record.seoMetaKeyWord,jdbcType=VARCHAR},
+      SEO_META_DESC = #{record.seoMetaDesc,jdbcType=VARCHAR},
+      IS_AUDIT = #{record.isAudit,jdbcType=CHAR},
+      IS_DELETE = #{record.isDelete,jdbcType=CHAR},
+      ADD_USER_ID = #{record.addUserId,jdbcType=INTEGER},
+      ADD_TIME = #{record.addTime,jdbcType=VARCHAR},
+      EDIT_USER_ID = #{record.editUserId,jdbcType=INTEGER},
+      EDIT_TIME = #{record.editTime,jdbcType=VARCHAR},
+      PRODUCT_SIMPLE_DESC = #{record.productSimpleDesc,jdbcType=VARCHAR},
+      CLICK_AMOUNT = #{record.clickAmount,jdbcType=INTEGER},
+      SALE_AMOUNT = #{record.saleAmount,jdbcType=INTEGER},
+      STREET = #{record.street,jdbcType=VARCHAR},
+      STYLES = #{record.styles,jdbcType=VARCHAR},
+      COMMENT_NUMBER = #{record.commentNumber,jdbcType=INTEGER},
+      DETAIL_INFO = #{record.detailInfo,jdbcType=LONGVARCHAR},
+      DELIVERY_NOTES = #{record.deliveryNotes,jdbcType=LONGVARCHAR},
+      PRIVATE_SECURITY = #{record.privateSecurity,jdbcType=LONGVARCHAR},
+      SALE_SERVICE = #{record.saleService,jdbcType=LONGVARCHAR},
+      HONORS = #{record.honors,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update product
+    set PRODUCT_ID = #{record.productId,jdbcType=INTEGER},
+      PRODUCT_CODE = #{record.productCode,jdbcType=VARCHAR},
+      PRODUCT_NAME = #{record.productName,jdbcType=VARCHAR},
+      PRODUCT_COMMON_NAME = #{record.productCommonName,jdbcType=VARCHAR},
+      PRODUCT_ALIAS_NAME = #{record.productAliasName,jdbcType=VARCHAR},
+      PRODUCT_CHN_NO = #{record.productChnNo,jdbcType=VARCHAR},
+      PRODUCT_ORDER = #{record.productOrder,jdbcType=INTEGER},
+      PRO_CATALOG_ID = #{record.proCatalogId,jdbcType=INTEGER},
+      PRODUCT_BRAND_ID = #{record.productBrandId,jdbcType=INTEGER},
+      PRODUCT_TYPE_ID = #{record.productTypeId,jdbcType=INTEGER},
+      PRODUCT_MARKET_DATE = #{record.productMarketDate,jdbcType=VARCHAR},
+      LOWEST_PRICE = #{record.lowestPrice,jdbcType=DECIMAL},
+      PRODUCT_KEYWORD = #{record.productKeyword,jdbcType=VARCHAR},
+      PRODUCT_DESC = #{record.productDesc,jdbcType=VARCHAR},
+      PRO_PRO_CATALOG_ID = #{record.proProCatalogId,jdbcType=INTEGER},
+      PRO_PRODUCT_BRAND_ID = #{record.proProductBrandId,jdbcType=INTEGER},
+      IS_ONSALE = #{record.isOnsale,jdbcType=CHAR},
+      ONSALE_TIME = #{record.onsaleTime,jdbcType=VARCHAR},
+      PRODUCT_LEAST_ORDER = #{record.productLeastOrder,jdbcType=DECIMAL},
+      ORDER_LIMIT_AMOUNT = #{record.orderLimitAmount,jdbcType=DECIMAL},
+      BUY_AMOUNT_BASE = #{record.buyAmountBase,jdbcType=DECIMAL},
+      IS_STOCK_WARN = #{record.isStockWarn,jdbcType=CHAR},
+      PRODUCT_POINT = #{record.productPoint,jdbcType=INTEGER},
+      IS_SUPPORT_POINT = #{record.isSupportPoint,jdbcType=CHAR},
+      PRODUCT_WARN_NUMBER = #{record.productWarnNumber,jdbcType=INTEGER},
+      PROMOTE_DESCRIPTION = #{record.promoteDescription,jdbcType=VARCHAR},
+      USE_MARKER = #{record.useMarker,jdbcType=CHAR},
+      CATALOG_CODE = #{record.catalogCode,jdbcType=VARCHAR},
+      SEO_TITLE = #{record.seoTitle,jdbcType=VARCHAR},
+      SEO_META_KEY_WORD = #{record.seoMetaKeyWord,jdbcType=VARCHAR},
+      SEO_META_DESC = #{record.seoMetaDesc,jdbcType=VARCHAR},
+      IS_AUDIT = #{record.isAudit,jdbcType=CHAR},
+      IS_DELETE = #{record.isDelete,jdbcType=CHAR},
+      ADD_USER_ID = #{record.addUserId,jdbcType=INTEGER},
+      ADD_TIME = #{record.addTime,jdbcType=VARCHAR},
+      EDIT_USER_ID = #{record.editUserId,jdbcType=INTEGER},
+      EDIT_TIME = #{record.editTime,jdbcType=VARCHAR},
+      PRODUCT_SIMPLE_DESC = #{record.productSimpleDesc,jdbcType=VARCHAR},
+      CLICK_AMOUNT = #{record.clickAmount,jdbcType=INTEGER},
+      SALE_AMOUNT = #{record.saleAmount,jdbcType=INTEGER},
+      STREET = #{record.street,jdbcType=VARCHAR},
+      STYLES = #{record.styles,jdbcType=VARCHAR},
+      COMMENT_NUMBER = #{record.commentNumber,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ecbusiness.model.ProductWithBLOBs" >
+    update product
+    <set >
+      <if test="productCode != null" >
+        PRODUCT_CODE = #{productCode,jdbcType=VARCHAR},
+      </if>
+      <if test="productName != null" >
+        PRODUCT_NAME = #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productCommonName != null" >
+        PRODUCT_COMMON_NAME = #{productCommonName,jdbcType=VARCHAR},
+      </if>
+      <if test="productAliasName != null" >
+        PRODUCT_ALIAS_NAME = #{productAliasName,jdbcType=VARCHAR},
+      </if>
+      <if test="productChnNo != null" >
+        PRODUCT_CHN_NO = #{productChnNo,jdbcType=VARCHAR},
+      </if>
+      <if test="productOrder != null" >
+        PRODUCT_ORDER = #{productOrder,jdbcType=INTEGER},
+      </if>
+      <if test="proCatalogId != null" >
+        PRO_CATALOG_ID = #{proCatalogId,jdbcType=INTEGER},
+      </if>
+      <if test="productBrandId != null" >
+        PRODUCT_BRAND_ID = #{productBrandId,jdbcType=INTEGER},
+      </if>
+      <if test="productTypeId != null" >
+        PRODUCT_TYPE_ID = #{productTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="productMarketDate != null" >
+        PRODUCT_MARKET_DATE = #{productMarketDate,jdbcType=VARCHAR},
+      </if>
+      <if test="lowestPrice != null" >
+        LOWEST_PRICE = #{lowestPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="productKeyword != null" >
+        PRODUCT_KEYWORD = #{productKeyword,jdbcType=VARCHAR},
+      </if>
+      <if test="productDesc != null" >
+        PRODUCT_DESC = #{productDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="proProCatalogId != null" >
+        PRO_PRO_CATALOG_ID = #{proProCatalogId,jdbcType=INTEGER},
+      </if>
+      <if test="proProductBrandId != null" >
+        PRO_PRODUCT_BRAND_ID = #{proProductBrandId,jdbcType=INTEGER},
+      </if>
+      <if test="isOnsale != null" >
+        IS_ONSALE = #{isOnsale,jdbcType=CHAR},
+      </if>
+      <if test="onsaleTime != null" >
+        ONSALE_TIME = #{onsaleTime,jdbcType=VARCHAR},
+      </if>
+      <if test="productLeastOrder != null" >
+        PRODUCT_LEAST_ORDER = #{productLeastOrder,jdbcType=DECIMAL},
+      </if>
+      <if test="orderLimitAmount != null" >
+        ORDER_LIMIT_AMOUNT = #{orderLimitAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="buyAmountBase != null" >
+        BUY_AMOUNT_BASE = #{buyAmountBase,jdbcType=DECIMAL},
+      </if>
+      <if test="isStockWarn != null" >
+        IS_STOCK_WARN = #{isStockWarn,jdbcType=CHAR},
+      </if>
+      <if test="productPoint != null" >
+        PRODUCT_POINT = #{productPoint,jdbcType=INTEGER},
+      </if>
+      <if test="isSupportPoint != null" >
+        IS_SUPPORT_POINT = #{isSupportPoint,jdbcType=CHAR},
+      </if>
+      <if test="productWarnNumber != null" >
+        PRODUCT_WARN_NUMBER = #{productWarnNumber,jdbcType=INTEGER},
+      </if>
+      <if test="promoteDescription != null" >
+        PROMOTE_DESCRIPTION = #{promoteDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="useMarker != null" >
+        USE_MARKER = #{useMarker,jdbcType=CHAR},
+      </if>
+      <if test="catalogCode != null" >
+        CATALOG_CODE = #{catalogCode,jdbcType=VARCHAR},
+      </if>
+      <if test="seoTitle != null" >
+        SEO_TITLE = #{seoTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="seoMetaKeyWord != null" >
+        SEO_META_KEY_WORD = #{seoMetaKeyWord,jdbcType=VARCHAR},
+      </if>
+      <if test="seoMetaDesc != null" >
+        SEO_META_DESC = #{seoMetaDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="isAudit != null" >
+        IS_AUDIT = #{isAudit,jdbcType=CHAR},
+      </if>
+      <if test="isDelete != null" >
+        IS_DELETE = #{isDelete,jdbcType=CHAR},
+      </if>
+      <if test="addUserId != null" >
+        ADD_USER_ID = #{addUserId,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null" >
+        ADD_TIME = #{addTime,jdbcType=VARCHAR},
+      </if>
+      <if test="editUserId != null" >
+        EDIT_USER_ID = #{editUserId,jdbcType=INTEGER},
+      </if>
+      <if test="editTime != null" >
+        EDIT_TIME = #{editTime,jdbcType=VARCHAR},
+      </if>
+      <if test="productSimpleDesc != null" >
+        PRODUCT_SIMPLE_DESC = #{productSimpleDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="clickAmount != null" >
+        CLICK_AMOUNT = #{clickAmount,jdbcType=INTEGER},
+      </if>
+      <if test="saleAmount != null" >
+        SALE_AMOUNT = #{saleAmount,jdbcType=INTEGER},
+      </if>
+      <if test="street != null" >
+        STREET = #{street,jdbcType=VARCHAR},
+      </if>
+      <if test="styles != null" >
+        STYLES = #{styles,jdbcType=VARCHAR},
+      </if>
+      <if test="commentNumber != null" >
+        COMMENT_NUMBER = #{commentNumber,jdbcType=INTEGER},
+      </if>
+      <if test="detailInfo != null" >
+        DETAIL_INFO = #{detailInfo,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="deliveryNotes != null" >
+        DELIVERY_NOTES = #{deliveryNotes,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="privateSecurity != null" >
+        PRIVATE_SECURITY = #{privateSecurity,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="saleService != null" >
+        SALE_SERVICE = #{saleService,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="honors != null" >
+        HONORS = #{honors,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where PRODUCT_ID = #{productId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.ecbusiness.model.ProductWithBLOBs" >
+    update product
+    set PRODUCT_CODE = #{productCode,jdbcType=VARCHAR},
+      PRODUCT_NAME = #{productName,jdbcType=VARCHAR},
+      PRODUCT_COMMON_NAME = #{productCommonName,jdbcType=VARCHAR},
+      PRODUCT_ALIAS_NAME = #{productAliasName,jdbcType=VARCHAR},
+      PRODUCT_CHN_NO = #{productChnNo,jdbcType=VARCHAR},
+      PRODUCT_ORDER = #{productOrder,jdbcType=INTEGER},
+      PRO_CATALOG_ID = #{proCatalogId,jdbcType=INTEGER},
+      PRODUCT_BRAND_ID = #{productBrandId,jdbcType=INTEGER},
+      PRODUCT_TYPE_ID = #{productTypeId,jdbcType=INTEGER},
+      PRODUCT_MARKET_DATE = #{productMarketDate,jdbcType=VARCHAR},
+      LOWEST_PRICE = #{lowestPrice,jdbcType=DECIMAL},
+      PRODUCT_KEYWORD = #{productKeyword,jdbcType=VARCHAR},
+      PRODUCT_DESC = #{productDesc,jdbcType=VARCHAR},
+      PRO_PRO_CATALOG_ID = #{proProCatalogId,jdbcType=INTEGER},
+      PRO_PRODUCT_BRAND_ID = #{proProductBrandId,jdbcType=INTEGER},
+      IS_ONSALE = #{isOnsale,jdbcType=CHAR},
+      ONSALE_TIME = #{onsaleTime,jdbcType=VARCHAR},
+      PRODUCT_LEAST_ORDER = #{productLeastOrder,jdbcType=DECIMAL},
+      ORDER_LIMIT_AMOUNT = #{orderLimitAmount,jdbcType=DECIMAL},
+      BUY_AMOUNT_BASE = #{buyAmountBase,jdbcType=DECIMAL},
+      IS_STOCK_WARN = #{isStockWarn,jdbcType=CHAR},
+      PRODUCT_POINT = #{productPoint,jdbcType=INTEGER},
+      IS_SUPPORT_POINT = #{isSupportPoint,jdbcType=CHAR},
+      PRODUCT_WARN_NUMBER = #{productWarnNumber,jdbcType=INTEGER},
+      PROMOTE_DESCRIPTION = #{promoteDescription,jdbcType=VARCHAR},
+      USE_MARKER = #{useMarker,jdbcType=CHAR},
+      CATALOG_CODE = #{catalogCode,jdbcType=VARCHAR},
+      SEO_TITLE = #{seoTitle,jdbcType=VARCHAR},
+      SEO_META_KEY_WORD = #{seoMetaKeyWord,jdbcType=VARCHAR},
+      SEO_META_DESC = #{seoMetaDesc,jdbcType=VARCHAR},
+      IS_AUDIT = #{isAudit,jdbcType=CHAR},
+      IS_DELETE = #{isDelete,jdbcType=CHAR},
+      ADD_USER_ID = #{addUserId,jdbcType=INTEGER},
+      ADD_TIME = #{addTime,jdbcType=VARCHAR},
+      EDIT_USER_ID = #{editUserId,jdbcType=INTEGER},
+      EDIT_TIME = #{editTime,jdbcType=VARCHAR},
+      PRODUCT_SIMPLE_DESC = #{productSimpleDesc,jdbcType=VARCHAR},
+      CLICK_AMOUNT = #{clickAmount,jdbcType=INTEGER},
+      SALE_AMOUNT = #{saleAmount,jdbcType=INTEGER},
+      STREET = #{street,jdbcType=VARCHAR},
+      STYLES = #{styles,jdbcType=VARCHAR},
+      COMMENT_NUMBER = #{commentNumber,jdbcType=INTEGER},
+      DETAIL_INFO = #{detailInfo,jdbcType=LONGVARCHAR},
+      DELIVERY_NOTES = #{deliveryNotes,jdbcType=LONGVARCHAR},
+      PRIVATE_SECURITY = #{privateSecurity,jdbcType=LONGVARCHAR},
+      SALE_SERVICE = #{saleService,jdbcType=LONGVARCHAR},
+      HONORS = #{honors,jdbcType=LONGVARCHAR}
+    where PRODUCT_ID = #{productId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ecbusiness.model.Product" >
+    update product
+    set PRODUCT_CODE = #{productCode,jdbcType=VARCHAR},
+      PRODUCT_NAME = #{productName,jdbcType=VARCHAR},
+      PRODUCT_COMMON_NAME = #{productCommonName,jdbcType=VARCHAR},
+      PRODUCT_ALIAS_NAME = #{productAliasName,jdbcType=VARCHAR},
+      PRODUCT_CHN_NO = #{productChnNo,jdbcType=VARCHAR},
+      PRODUCT_ORDER = #{productOrder,jdbcType=INTEGER},
+      PRO_CATALOG_ID = #{proCatalogId,jdbcType=INTEGER},
+      PRODUCT_BRAND_ID = #{productBrandId,jdbcType=INTEGER},
+      PRODUCT_TYPE_ID = #{productTypeId,jdbcType=INTEGER},
+      PRODUCT_MARKET_DATE = #{productMarketDate,jdbcType=VARCHAR},
+      LOWEST_PRICE = #{lowestPrice,jdbcType=DECIMAL},
+      PRODUCT_KEYWORD = #{productKeyword,jdbcType=VARCHAR},
+      PRODUCT_DESC = #{productDesc,jdbcType=VARCHAR},
+      PRO_PRO_CATALOG_ID = #{proProCatalogId,jdbcType=INTEGER},
+      PRO_PRODUCT_BRAND_ID = #{proProductBrandId,jdbcType=INTEGER},
+      IS_ONSALE = #{isOnsale,jdbcType=CHAR},
+      ONSALE_TIME = #{onsaleTime,jdbcType=VARCHAR},
+      PRODUCT_LEAST_ORDER = #{productLeastOrder,jdbcType=DECIMAL},
+      ORDER_LIMIT_AMOUNT = #{orderLimitAmount,jdbcType=DECIMAL},
+      BUY_AMOUNT_BASE = #{buyAmountBase,jdbcType=DECIMAL},
+      IS_STOCK_WARN = #{isStockWarn,jdbcType=CHAR},
+      PRODUCT_POINT = #{productPoint,jdbcType=INTEGER},
+      IS_SUPPORT_POINT = #{isSupportPoint,jdbcType=CHAR},
+      PRODUCT_WARN_NUMBER = #{productWarnNumber,jdbcType=INTEGER},
+      PROMOTE_DESCRIPTION = #{promoteDescription,jdbcType=VARCHAR},
+      USE_MARKER = #{useMarker,jdbcType=CHAR},
+      CATALOG_CODE = #{catalogCode,jdbcType=VARCHAR},
+      SEO_TITLE = #{seoTitle,jdbcType=VARCHAR},
+      SEO_META_KEY_WORD = #{seoMetaKeyWord,jdbcType=VARCHAR},
+      SEO_META_DESC = #{seoMetaDesc,jdbcType=VARCHAR},
+      IS_AUDIT = #{isAudit,jdbcType=CHAR},
+      IS_DELETE = #{isDelete,jdbcType=CHAR},
+      ADD_USER_ID = #{addUserId,jdbcType=INTEGER},
+      ADD_TIME = #{addTime,jdbcType=VARCHAR},
+      EDIT_USER_ID = #{editUserId,jdbcType=INTEGER},
+      EDIT_TIME = #{editTime,jdbcType=VARCHAR},
+      PRODUCT_SIMPLE_DESC = #{productSimpleDesc,jdbcType=VARCHAR},
+      CLICK_AMOUNT = #{clickAmount,jdbcType=INTEGER},
+      SALE_AMOUNT = #{saleAmount,jdbcType=INTEGER},
+      STREET = #{street,jdbcType=VARCHAR},
+      STYLES = #{styles,jdbcType=VARCHAR},
+      COMMENT_NUMBER = #{commentNumber,jdbcType=INTEGER}
+    where PRODUCT_ID = #{productId,jdbcType=INTEGER}
+  </update>
+  <select resultMap="ResultMapWithBLOBs" parameterType="com.ecbusiness.model.ProductCriteria" id="selectByExampleWithBLOBsWithRowbounds" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from product
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select resultMap="BaseResultMap" parameterType="com.ecbusiness.model.ProductCriteria" id="selectByExampleWithRowbounds" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from product
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <cache />
+</mapper>

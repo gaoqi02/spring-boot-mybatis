@@ -1,0 +1,1226 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ecbusiness.mapper.GoodsMapper" >
+  <resultMap id="BaseResultMap" type="com.ecbusiness.model.Goods" >
+    <id column="GOODS_ID" property="goodsId" jdbcType="INTEGER" />
+    <result column="PRODUCT_ID" property="productId" jdbcType="INTEGER" />
+    <result column="GOODS_NO" property="goodsNo" jdbcType="VARCHAR" />
+    <result column="FACTORY_NO" property="factoryNo" jdbcType="VARCHAR" />
+    <result column="TRADEMARK" property="trademark" jdbcType="VARCHAR" />
+    <result column="GOODS_TYPE" property="goodsType" jdbcType="INTEGER" />
+    <result column="USE_MARKER" property="useMarker" jdbcType="CHAR" />
+    <result column="WEIGHT" property="weight" jdbcType="DECIMAL" />
+    <result column="EC_PRICE" property="ecPrice" jdbcType="DECIMAL" />
+    <result column="BAR_CODE" property="barCode" jdbcType="VARCHAR" />
+    <result column="MATERIAL_GOODS" property="materialGoods" jdbcType="VARCHAR" />
+    <result column="MATERIAL_TYPE" property="materialType" jdbcType="VARCHAR" />
+    <result column="GOLD_WEIGHT" property="goldWeight" jdbcType="DECIMAL" />
+    <result column="GRAMS_GOLD_PRICE" property="gramsGoldPrice" jdbcType="DECIMAL" />
+    <result column="GOLD_SELLING_PRICE" property="goldSellingPrice" jdbcType="DECIMAL" />
+    <result column="PROCESSING_FEE" property="processingFee" jdbcType="DECIMAL" />
+    <result column="COST_PRICE" property="costPrice" jdbcType="DECIMAL" />
+    <result column="PRICE_FACTOR" property="priceFactor" jdbcType="DECIMAL" />
+    <result column="CERTIFICATE_NO" property="certificateNo" jdbcType="VARCHAR" />
+    <result column="FINGER_RING" property="fingerRing" jdbcType="VARCHAR" />
+    <result column="COMMODITY_TECHNOLOGY" property="commodityTechnology" jdbcType="VARCHAR" />
+    <result column="COMMODITY_COLOR" property="commodityColor" jdbcType="VARCHAR" />
+    <result column="MAIN_STONE" property="mainStone" jdbcType="VARCHAR" />
+    <result column="MAIN_ROCK_TYPE" property="mainRockType" jdbcType="VARCHAR" />
+    <result column="MAIN_ORE_WEIGHT" property="mainOreWeight" jdbcType="DECIMAL" />
+    <result column="MAIN_ORE_QUANTITY" property="mainOreQuantity" jdbcType="VARCHAR" />
+    <result column="MAIN_ORE_GRADE" property="mainOreGrade" jdbcType="VARCHAR" />
+    <result column="MAIN_ORE_COLOR" property="mainOreColor" jdbcType="VARCHAR" />
+    <result column="MAIN_ORE_PRICE" property="mainOrePrice" jdbcType="DECIMAL" />
+    <result column="BESIDE_STONE" property="besideStone" jdbcType="VARCHAR" />
+    <result column="BESIDE_STONE_TYPE" property="besideStoneType" jdbcType="VARCHAR" />
+    <result column="BESIDE_STONE_WEIGHT" property="besideStoneWeight" jdbcType="DECIMAL" />
+    <result column="BESIDE_STONE_QUANTITY" property="besideStoneQuantity" jdbcType="VARCHAR" />
+    <result column="BESIDE_STONE_CLEANLINESS" property="besideStoneCleanliness" jdbcType="VARCHAR" />
+    <result column="BESIDE_STONE_COLOR" property="besideStoneColor" jdbcType="VARCHAR" />
+    <result column="BESIDE_STONE_PRICE" property="besideStonePrice" jdbcType="DECIMAL" />
+    <result column="BESIDE_STONE_TYPE2" property="besideStoneType2" jdbcType="VARCHAR" />
+    <result column="BESIDE_STONE_WEIGHT2" property="besideStoneWeight2" jdbcType="DECIMAL" />
+    <result column="BESIDE_STONE_QUANTITY2" property="besideStoneQuantity2" jdbcType="VARCHAR" />
+    <result column="BESIDE_STONE_GRADE2" property="besideStoneGrade2" jdbcType="VARCHAR" />
+    <result column="BESIDE_STONE_COLOR2" property="besideStoneColor2" jdbcType="VARCHAR" />
+    <result column="BESIDE_STONE_PRICE2" property="besideStonePrice2" jdbcType="DECIMAL" />
+    <result column="IS_GROUP" property="isGroup" jdbcType="CHAR" />
+    <result column="IS_DEFAULT" property="isDefault" jdbcType="CHAR" />
+    <result column="GOODS_NAME" property="goodsName" jdbcType="VARCHAR" />
+    <result column="GOODS_DESC" property="goodsDesc" jdbcType="VARCHAR" />
+    <result column="GOOD_STOCK" property="goodStock" jdbcType="DECIMAL" />
+    <result column="PREPARE_STOCK" property="prepareStock" jdbcType="DECIMAL" />
+    <result column="LOCK_STOCK" property="lockStock" jdbcType="DECIMAL" />
+    <result column="AVAILABLE_STOCK" property="availableStock" jdbcType="DECIMAL" />
+    <result column="RETURN_POINTS" property="returnPoints" jdbcType="INTEGER" />
+    <result column="RECEIVE_TIME" property="receiveTime" jdbcType="VARCHAR" />
+    <result column="IS_CHANGE" property="isChange" jdbcType="CHAR" />
+    <result column="GOODS_EDITION" property="goodsEdition" jdbcType="VARCHAR" />
+    <result column="CLICK_AMOUNT" property="clickAmount" jdbcType="INTEGER" />
+    <result column="SALE_AMOUNT" property="saleAmount" jdbcType="INTEGER" />
+    <result column="IS_ON_SALE" property="isOnSale" jdbcType="CHAR" />
+    <result column="IS_DELETE" property="isDelete" jdbcType="CHAR" />
+    <result column="ADD_USER_ID" property="addUserId" jdbcType="INTEGER" />
+    <result column="ADD_TIME" property="addTime" jdbcType="VARCHAR" />
+    <result column="EDIT_USER_ID" property="editUserId" jdbcType="INTEGER" />
+    <result column="EDIT_TIME" property="editTime" jdbcType="VARCHAR" />
+    <result column="ERP_CATEGORY1" property="erpCategory1" jdbcType="VARCHAR" />
+    <result column="ERP_CATEGORY2" property="erpCategory2" jdbcType="VARCHAR" />
+    <result column="ERP_CATEGORY3" property="erpCategory3" jdbcType="VARCHAR" />
+    <result column="COMMENT_NUMBER" property="commentNumber" jdbcType="INTEGER" />
+    <result column="MODEL_CODE" property="modelCode" jdbcType="VARCHAR" />
+    <result column="PROMOTE_PRICE" property="promotePrice" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    GOODS_ID, PRODUCT_ID, GOODS_NO, FACTORY_NO, TRADEMARK, GOODS_TYPE, USE_MARKER, WEIGHT, 
+    EC_PRICE, BAR_CODE, MATERIAL_GOODS, MATERIAL_TYPE, GOLD_WEIGHT, GRAMS_GOLD_PRICE, 
+    GOLD_SELLING_PRICE, PROCESSING_FEE, COST_PRICE, PRICE_FACTOR, CERTIFICATE_NO, FINGER_RING, 
+    COMMODITY_TECHNOLOGY, COMMODITY_COLOR, MAIN_STONE, MAIN_ROCK_TYPE, MAIN_ORE_WEIGHT, 
+    MAIN_ORE_QUANTITY, MAIN_ORE_GRADE, MAIN_ORE_COLOR, MAIN_ORE_PRICE, BESIDE_STONE, 
+    BESIDE_STONE_TYPE, BESIDE_STONE_WEIGHT, BESIDE_STONE_QUANTITY, BESIDE_STONE_CLEANLINESS, 
+    BESIDE_STONE_COLOR, BESIDE_STONE_PRICE, BESIDE_STONE_TYPE2, BESIDE_STONE_WEIGHT2, 
+    BESIDE_STONE_QUANTITY2, BESIDE_STONE_GRADE2, BESIDE_STONE_COLOR2, BESIDE_STONE_PRICE2, 
+    IS_GROUP, IS_DEFAULT, GOODS_NAME, GOODS_DESC, GOOD_STOCK, PREPARE_STOCK, LOCK_STOCK, 
+    AVAILABLE_STOCK, RETURN_POINTS, RECEIVE_TIME, IS_CHANGE, GOODS_EDITION, CLICK_AMOUNT, 
+    SALE_AMOUNT, IS_ON_SALE, IS_DELETE, ADD_USER_ID, ADD_TIME, EDIT_USER_ID, EDIT_TIME, 
+    ERP_CATEGORY1, ERP_CATEGORY2, ERP_CATEGORY3, COMMENT_NUMBER, MODEL_CODE, PROMOTE_PRICE
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ecbusiness.model.GoodsCriteria" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from goods
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from goods
+    where GOODS_ID = #{goodsId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from goods
+    where GOODS_ID = #{goodsId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ecbusiness.model.GoodsCriteria" >
+    delete from goods
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ecbusiness.model.Goods" >
+    insert into goods (GOODS_ID, PRODUCT_ID, GOODS_NO, 
+      FACTORY_NO, TRADEMARK, GOODS_TYPE, 
+      USE_MARKER, WEIGHT, EC_PRICE, 
+      BAR_CODE, MATERIAL_GOODS, MATERIAL_TYPE, 
+      GOLD_WEIGHT, GRAMS_GOLD_PRICE, GOLD_SELLING_PRICE, 
+      PROCESSING_FEE, COST_PRICE, PRICE_FACTOR, 
+      CERTIFICATE_NO, FINGER_RING, COMMODITY_TECHNOLOGY, 
+      COMMODITY_COLOR, MAIN_STONE, MAIN_ROCK_TYPE, 
+      MAIN_ORE_WEIGHT, MAIN_ORE_QUANTITY, MAIN_ORE_GRADE, 
+      MAIN_ORE_COLOR, MAIN_ORE_PRICE, BESIDE_STONE, 
+      BESIDE_STONE_TYPE, BESIDE_STONE_WEIGHT, BESIDE_STONE_QUANTITY, 
+      BESIDE_STONE_CLEANLINESS, BESIDE_STONE_COLOR, 
+      BESIDE_STONE_PRICE, BESIDE_STONE_TYPE2, BESIDE_STONE_WEIGHT2, 
+      BESIDE_STONE_QUANTITY2, BESIDE_STONE_GRADE2, 
+      BESIDE_STONE_COLOR2, BESIDE_STONE_PRICE2, IS_GROUP, 
+      IS_DEFAULT, GOODS_NAME, GOODS_DESC, 
+      GOOD_STOCK, PREPARE_STOCK, LOCK_STOCK, 
+      AVAILABLE_STOCK, RETURN_POINTS, RECEIVE_TIME, 
+      IS_CHANGE, GOODS_EDITION, CLICK_AMOUNT, 
+      SALE_AMOUNT, IS_ON_SALE, IS_DELETE, 
+      ADD_USER_ID, ADD_TIME, EDIT_USER_ID, 
+      EDIT_TIME, ERP_CATEGORY1, ERP_CATEGORY2, 
+      ERP_CATEGORY3, COMMENT_NUMBER, MODEL_CODE, 
+      PROMOTE_PRICE)
+    values (#{goodsId,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER}, #{goodsNo,jdbcType=VARCHAR}, 
+      #{factoryNo,jdbcType=VARCHAR}, #{trademark,jdbcType=VARCHAR}, #{goodsType,jdbcType=INTEGER}, 
+      #{useMarker,jdbcType=CHAR}, #{weight,jdbcType=DECIMAL}, #{ecPrice,jdbcType=DECIMAL}, 
+      #{barCode,jdbcType=VARCHAR}, #{materialGoods,jdbcType=VARCHAR}, #{materialType,jdbcType=VARCHAR}, 
+      #{goldWeight,jdbcType=DECIMAL}, #{gramsGoldPrice,jdbcType=DECIMAL}, #{goldSellingPrice,jdbcType=DECIMAL}, 
+      #{processingFee,jdbcType=DECIMAL}, #{costPrice,jdbcType=DECIMAL}, #{priceFactor,jdbcType=DECIMAL}, 
+      #{certificateNo,jdbcType=VARCHAR}, #{fingerRing,jdbcType=VARCHAR}, #{commodityTechnology,jdbcType=VARCHAR}, 
+      #{commodityColor,jdbcType=VARCHAR}, #{mainStone,jdbcType=VARCHAR}, #{mainRockType,jdbcType=VARCHAR}, 
+      #{mainOreWeight,jdbcType=DECIMAL}, #{mainOreQuantity,jdbcType=VARCHAR}, #{mainOreGrade,jdbcType=VARCHAR}, 
+      #{mainOreColor,jdbcType=VARCHAR}, #{mainOrePrice,jdbcType=DECIMAL}, #{besideStone,jdbcType=VARCHAR}, 
+      #{besideStoneType,jdbcType=VARCHAR}, #{besideStoneWeight,jdbcType=DECIMAL}, #{besideStoneQuantity,jdbcType=VARCHAR}, 
+      #{besideStoneCleanliness,jdbcType=VARCHAR}, #{besideStoneColor,jdbcType=VARCHAR}, 
+      #{besideStonePrice,jdbcType=DECIMAL}, #{besideStoneType2,jdbcType=VARCHAR}, #{besideStoneWeight2,jdbcType=DECIMAL}, 
+      #{besideStoneQuantity2,jdbcType=VARCHAR}, #{besideStoneGrade2,jdbcType=VARCHAR}, 
+      #{besideStoneColor2,jdbcType=VARCHAR}, #{besideStonePrice2,jdbcType=DECIMAL}, #{isGroup,jdbcType=CHAR}, 
+      #{isDefault,jdbcType=CHAR}, #{goodsName,jdbcType=VARCHAR}, #{goodsDesc,jdbcType=VARCHAR}, 
+      #{goodStock,jdbcType=DECIMAL}, #{prepareStock,jdbcType=DECIMAL}, #{lockStock,jdbcType=DECIMAL}, 
+      #{availableStock,jdbcType=DECIMAL}, #{returnPoints,jdbcType=INTEGER}, #{receiveTime,jdbcType=VARCHAR}, 
+      #{isChange,jdbcType=CHAR}, #{goodsEdition,jdbcType=VARCHAR}, #{clickAmount,jdbcType=INTEGER}, 
+      #{saleAmount,jdbcType=INTEGER}, #{isOnSale,jdbcType=CHAR}, #{isDelete,jdbcType=CHAR}, 
+      #{addUserId,jdbcType=INTEGER}, #{addTime,jdbcType=VARCHAR}, #{editUserId,jdbcType=INTEGER}, 
+      #{editTime,jdbcType=VARCHAR}, #{erpCategory1,jdbcType=VARCHAR}, #{erpCategory2,jdbcType=VARCHAR}, 
+      #{erpCategory3,jdbcType=VARCHAR}, #{commentNumber,jdbcType=INTEGER}, #{modelCode,jdbcType=VARCHAR}, 
+      #{promotePrice,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ecbusiness.model.Goods" >
+    insert into goods
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="goodsId != null" >
+        GOODS_ID,
+      </if>
+      <if test="productId != null" >
+        PRODUCT_ID,
+      </if>
+      <if test="goodsNo != null" >
+        GOODS_NO,
+      </if>
+      <if test="factoryNo != null" >
+        FACTORY_NO,
+      </if>
+      <if test="trademark != null" >
+        TRADEMARK,
+      </if>
+      <if test="goodsType != null" >
+        GOODS_TYPE,
+      </if>
+      <if test="useMarker != null" >
+        USE_MARKER,
+      </if>
+      <if test="weight != null" >
+        WEIGHT,
+      </if>
+      <if test="ecPrice != null" >
+        EC_PRICE,
+      </if>
+      <if test="barCode != null" >
+        BAR_CODE,
+      </if>
+      <if test="materialGoods != null" >
+        MATERIAL_GOODS,
+      </if>
+      <if test="materialType != null" >
+        MATERIAL_TYPE,
+      </if>
+      <if test="goldWeight != null" >
+        GOLD_WEIGHT,
+      </if>
+      <if test="gramsGoldPrice != null" >
+        GRAMS_GOLD_PRICE,
+      </if>
+      <if test="goldSellingPrice != null" >
+        GOLD_SELLING_PRICE,
+      </if>
+      <if test="processingFee != null" >
+        PROCESSING_FEE,
+      </if>
+      <if test="costPrice != null" >
+        COST_PRICE,
+      </if>
+      <if test="priceFactor != null" >
+        PRICE_FACTOR,
+      </if>
+      <if test="certificateNo != null" >
+        CERTIFICATE_NO,
+      </if>
+      <if test="fingerRing != null" >
+        FINGER_RING,
+      </if>
+      <if test="commodityTechnology != null" >
+        COMMODITY_TECHNOLOGY,
+      </if>
+      <if test="commodityColor != null" >
+        COMMODITY_COLOR,
+      </if>
+      <if test="mainStone != null" >
+        MAIN_STONE,
+      </if>
+      <if test="mainRockType != null" >
+        MAIN_ROCK_TYPE,
+      </if>
+      <if test="mainOreWeight != null" >
+        MAIN_ORE_WEIGHT,
+      </if>
+      <if test="mainOreQuantity != null" >
+        MAIN_ORE_QUANTITY,
+      </if>
+      <if test="mainOreGrade != null" >
+        MAIN_ORE_GRADE,
+      </if>
+      <if test="mainOreColor != null" >
+        MAIN_ORE_COLOR,
+      </if>
+      <if test="mainOrePrice != null" >
+        MAIN_ORE_PRICE,
+      </if>
+      <if test="besideStone != null" >
+        BESIDE_STONE,
+      </if>
+      <if test="besideStoneType != null" >
+        BESIDE_STONE_TYPE,
+      </if>
+      <if test="besideStoneWeight != null" >
+        BESIDE_STONE_WEIGHT,
+      </if>
+      <if test="besideStoneQuantity != null" >
+        BESIDE_STONE_QUANTITY,
+      </if>
+      <if test="besideStoneCleanliness != null" >
+        BESIDE_STONE_CLEANLINESS,
+      </if>
+      <if test="besideStoneColor != null" >
+        BESIDE_STONE_COLOR,
+      </if>
+      <if test="besideStonePrice != null" >
+        BESIDE_STONE_PRICE,
+      </if>
+      <if test="besideStoneType2 != null" >
+        BESIDE_STONE_TYPE2,
+      </if>
+      <if test="besideStoneWeight2 != null" >
+        BESIDE_STONE_WEIGHT2,
+      </if>
+      <if test="besideStoneQuantity2 != null" >
+        BESIDE_STONE_QUANTITY2,
+      </if>
+      <if test="besideStoneGrade2 != null" >
+        BESIDE_STONE_GRADE2,
+      </if>
+      <if test="besideStoneColor2 != null" >
+        BESIDE_STONE_COLOR2,
+      </if>
+      <if test="besideStonePrice2 != null" >
+        BESIDE_STONE_PRICE2,
+      </if>
+      <if test="isGroup != null" >
+        IS_GROUP,
+      </if>
+      <if test="isDefault != null" >
+        IS_DEFAULT,
+      </if>
+      <if test="goodsName != null" >
+        GOODS_NAME,
+      </if>
+      <if test="goodsDesc != null" >
+        GOODS_DESC,
+      </if>
+      <if test="goodStock != null" >
+        GOOD_STOCK,
+      </if>
+      <if test="prepareStock != null" >
+        PREPARE_STOCK,
+      </if>
+      <if test="lockStock != null" >
+        LOCK_STOCK,
+      </if>
+      <if test="availableStock != null" >
+        AVAILABLE_STOCK,
+      </if>
+      <if test="returnPoints != null" >
+        RETURN_POINTS,
+      </if>
+      <if test="receiveTime != null" >
+        RECEIVE_TIME,
+      </if>
+      <if test="isChange != null" >
+        IS_CHANGE,
+      </if>
+      <if test="goodsEdition != null" >
+        GOODS_EDITION,
+      </if>
+      <if test="clickAmount != null" >
+        CLICK_AMOUNT,
+      </if>
+      <if test="saleAmount != null" >
+        SALE_AMOUNT,
+      </if>
+      <if test="isOnSale != null" >
+        IS_ON_SALE,
+      </if>
+      <if test="isDelete != null" >
+        IS_DELETE,
+      </if>
+      <if test="addUserId != null" >
+        ADD_USER_ID,
+      </if>
+      <if test="addTime != null" >
+        ADD_TIME,
+      </if>
+      <if test="editUserId != null" >
+        EDIT_USER_ID,
+      </if>
+      <if test="editTime != null" >
+        EDIT_TIME,
+      </if>
+      <if test="erpCategory1 != null" >
+        ERP_CATEGORY1,
+      </if>
+      <if test="erpCategory2 != null" >
+        ERP_CATEGORY2,
+      </if>
+      <if test="erpCategory3 != null" >
+        ERP_CATEGORY3,
+      </if>
+      <if test="commentNumber != null" >
+        COMMENT_NUMBER,
+      </if>
+      <if test="modelCode != null" >
+        MODEL_CODE,
+      </if>
+      <if test="promotePrice != null" >
+        PROMOTE_PRICE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="goodsId != null" >
+        #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="productId != null" >
+        #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsNo != null" >
+        #{goodsNo,jdbcType=VARCHAR},
+      </if>
+      <if test="factoryNo != null" >
+        #{factoryNo,jdbcType=VARCHAR},
+      </if>
+      <if test="trademark != null" >
+        #{trademark,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsType != null" >
+        #{goodsType,jdbcType=INTEGER},
+      </if>
+      <if test="useMarker != null" >
+        #{useMarker,jdbcType=CHAR},
+      </if>
+      <if test="weight != null" >
+        #{weight,jdbcType=DECIMAL},
+      </if>
+      <if test="ecPrice != null" >
+        #{ecPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="barCode != null" >
+        #{barCode,jdbcType=VARCHAR},
+      </if>
+      <if test="materialGoods != null" >
+        #{materialGoods,jdbcType=VARCHAR},
+      </if>
+      <if test="materialType != null" >
+        #{materialType,jdbcType=VARCHAR},
+      </if>
+      <if test="goldWeight != null" >
+        #{goldWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="gramsGoldPrice != null" >
+        #{gramsGoldPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="goldSellingPrice != null" >
+        #{goldSellingPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="processingFee != null" >
+        #{processingFee,jdbcType=DECIMAL},
+      </if>
+      <if test="costPrice != null" >
+        #{costPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="priceFactor != null" >
+        #{priceFactor,jdbcType=DECIMAL},
+      </if>
+      <if test="certificateNo != null" >
+        #{certificateNo,jdbcType=VARCHAR},
+      </if>
+      <if test="fingerRing != null" >
+        #{fingerRing,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityTechnology != null" >
+        #{commodityTechnology,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityColor != null" >
+        #{commodityColor,jdbcType=VARCHAR},
+      </if>
+      <if test="mainStone != null" >
+        #{mainStone,jdbcType=VARCHAR},
+      </if>
+      <if test="mainRockType != null" >
+        #{mainRockType,jdbcType=VARCHAR},
+      </if>
+      <if test="mainOreWeight != null" >
+        #{mainOreWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="mainOreQuantity != null" >
+        #{mainOreQuantity,jdbcType=VARCHAR},
+      </if>
+      <if test="mainOreGrade != null" >
+        #{mainOreGrade,jdbcType=VARCHAR},
+      </if>
+      <if test="mainOreColor != null" >
+        #{mainOreColor,jdbcType=VARCHAR},
+      </if>
+      <if test="mainOrePrice != null" >
+        #{mainOrePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="besideStone != null" >
+        #{besideStone,jdbcType=VARCHAR},
+      </if>
+      <if test="besideStoneType != null" >
+        #{besideStoneType,jdbcType=VARCHAR},
+      </if>
+      <if test="besideStoneWeight != null" >
+        #{besideStoneWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="besideStoneQuantity != null" >
+        #{besideStoneQuantity,jdbcType=VARCHAR},
+      </if>
+      <if test="besideStoneCleanliness != null" >
+        #{besideStoneCleanliness,jdbcType=VARCHAR},
+      </if>
+      <if test="besideStoneColor != null" >
+        #{besideStoneColor,jdbcType=VARCHAR},
+      </if>
+      <if test="besideStonePrice != null" >
+        #{besideStonePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="besideStoneType2 != null" >
+        #{besideStoneType2,jdbcType=VARCHAR},
+      </if>
+      <if test="besideStoneWeight2 != null" >
+        #{besideStoneWeight2,jdbcType=DECIMAL},
+      </if>
+      <if test="besideStoneQuantity2 != null" >
+        #{besideStoneQuantity2,jdbcType=VARCHAR},
+      </if>
+      <if test="besideStoneGrade2 != null" >
+        #{besideStoneGrade2,jdbcType=VARCHAR},
+      </if>
+      <if test="besideStoneColor2 != null" >
+        #{besideStoneColor2,jdbcType=VARCHAR},
+      </if>
+      <if test="besideStonePrice2 != null" >
+        #{besideStonePrice2,jdbcType=DECIMAL},
+      </if>
+      <if test="isGroup != null" >
+        #{isGroup,jdbcType=CHAR},
+      </if>
+      <if test="isDefault != null" >
+        #{isDefault,jdbcType=CHAR},
+      </if>
+      <if test="goodsName != null" >
+        #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsDesc != null" >
+        #{goodsDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="goodStock != null" >
+        #{goodStock,jdbcType=DECIMAL},
+      </if>
+      <if test="prepareStock != null" >
+        #{prepareStock,jdbcType=DECIMAL},
+      </if>
+      <if test="lockStock != null" >
+        #{lockStock,jdbcType=DECIMAL},
+      </if>
+      <if test="availableStock != null" >
+        #{availableStock,jdbcType=DECIMAL},
+      </if>
+      <if test="returnPoints != null" >
+        #{returnPoints,jdbcType=INTEGER},
+      </if>
+      <if test="receiveTime != null" >
+        #{receiveTime,jdbcType=VARCHAR},
+      </if>
+      <if test="isChange != null" >
+        #{isChange,jdbcType=CHAR},
+      </if>
+      <if test="goodsEdition != null" >
+        #{goodsEdition,jdbcType=VARCHAR},
+      </if>
+      <if test="clickAmount != null" >
+        #{clickAmount,jdbcType=INTEGER},
+      </if>
+      <if test="saleAmount != null" >
+        #{saleAmount,jdbcType=INTEGER},
+      </if>
+      <if test="isOnSale != null" >
+        #{isOnSale,jdbcType=CHAR},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=CHAR},
+      </if>
+      <if test="addUserId != null" >
+        #{addUserId,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null" >
+        #{addTime,jdbcType=VARCHAR},
+      </if>
+      <if test="editUserId != null" >
+        #{editUserId,jdbcType=INTEGER},
+      </if>
+      <if test="editTime != null" >
+        #{editTime,jdbcType=VARCHAR},
+      </if>
+      <if test="erpCategory1 != null" >
+        #{erpCategory1,jdbcType=VARCHAR},
+      </if>
+      <if test="erpCategory2 != null" >
+        #{erpCategory2,jdbcType=VARCHAR},
+      </if>
+      <if test="erpCategory3 != null" >
+        #{erpCategory3,jdbcType=VARCHAR},
+      </if>
+      <if test="commentNumber != null" >
+        #{commentNumber,jdbcType=INTEGER},
+      </if>
+      <if test="modelCode != null" >
+        #{modelCode,jdbcType=VARCHAR},
+      </if>
+      <if test="promotePrice != null" >
+        #{promotePrice,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ecbusiness.model.GoodsCriteria" resultType="java.lang.Integer" >
+    select count(*) from goods
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update goods
+    <set >
+      <if test="record.goodsId != null" >
+        GOODS_ID = #{record.goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="record.productId != null" >
+        PRODUCT_ID = #{record.productId,jdbcType=INTEGER},
+      </if>
+      <if test="record.goodsNo != null" >
+        GOODS_NO = #{record.goodsNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.factoryNo != null" >
+        FACTORY_NO = #{record.factoryNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.trademark != null" >
+        TRADEMARK = #{record.trademark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodsType != null" >
+        GOODS_TYPE = #{record.goodsType,jdbcType=INTEGER},
+      </if>
+      <if test="record.useMarker != null" >
+        USE_MARKER = #{record.useMarker,jdbcType=CHAR},
+      </if>
+      <if test="record.weight != null" >
+        WEIGHT = #{record.weight,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ecPrice != null" >
+        EC_PRICE = #{record.ecPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.barCode != null" >
+        BAR_CODE = #{record.barCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.materialGoods != null" >
+        MATERIAL_GOODS = #{record.materialGoods,jdbcType=VARCHAR},
+      </if>
+      <if test="record.materialType != null" >
+        MATERIAL_TYPE = #{record.materialType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goldWeight != null" >
+        GOLD_WEIGHT = #{record.goldWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="record.gramsGoldPrice != null" >
+        GRAMS_GOLD_PRICE = #{record.gramsGoldPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.goldSellingPrice != null" >
+        GOLD_SELLING_PRICE = #{record.goldSellingPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.processingFee != null" >
+        PROCESSING_FEE = #{record.processingFee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.costPrice != null" >
+        COST_PRICE = #{record.costPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.priceFactor != null" >
+        PRICE_FACTOR = #{record.priceFactor,jdbcType=DECIMAL},
+      </if>
+      <if test="record.certificateNo != null" >
+        CERTIFICATE_NO = #{record.certificateNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fingerRing != null" >
+        FINGER_RING = #{record.fingerRing,jdbcType=VARCHAR},
+      </if>
+      <if test="record.commodityTechnology != null" >
+        COMMODITY_TECHNOLOGY = #{record.commodityTechnology,jdbcType=VARCHAR},
+      </if>
+      <if test="record.commodityColor != null" >
+        COMMODITY_COLOR = #{record.commodityColor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mainStone != null" >
+        MAIN_STONE = #{record.mainStone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mainRockType != null" >
+        MAIN_ROCK_TYPE = #{record.mainRockType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mainOreWeight != null" >
+        MAIN_ORE_WEIGHT = #{record.mainOreWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="record.mainOreQuantity != null" >
+        MAIN_ORE_QUANTITY = #{record.mainOreQuantity,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mainOreGrade != null" >
+        MAIN_ORE_GRADE = #{record.mainOreGrade,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mainOreColor != null" >
+        MAIN_ORE_COLOR = #{record.mainOreColor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mainOrePrice != null" >
+        MAIN_ORE_PRICE = #{record.mainOrePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.besideStone != null" >
+        BESIDE_STONE = #{record.besideStone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.besideStoneType != null" >
+        BESIDE_STONE_TYPE = #{record.besideStoneType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.besideStoneWeight != null" >
+        BESIDE_STONE_WEIGHT = #{record.besideStoneWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="record.besideStoneQuantity != null" >
+        BESIDE_STONE_QUANTITY = #{record.besideStoneQuantity,jdbcType=VARCHAR},
+      </if>
+      <if test="record.besideStoneCleanliness != null" >
+        BESIDE_STONE_CLEANLINESS = #{record.besideStoneCleanliness,jdbcType=VARCHAR},
+      </if>
+      <if test="record.besideStoneColor != null" >
+        BESIDE_STONE_COLOR = #{record.besideStoneColor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.besideStonePrice != null" >
+        BESIDE_STONE_PRICE = #{record.besideStonePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.besideStoneType2 != null" >
+        BESIDE_STONE_TYPE2 = #{record.besideStoneType2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.besideStoneWeight2 != null" >
+        BESIDE_STONE_WEIGHT2 = #{record.besideStoneWeight2,jdbcType=DECIMAL},
+      </if>
+      <if test="record.besideStoneQuantity2 != null" >
+        BESIDE_STONE_QUANTITY2 = #{record.besideStoneQuantity2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.besideStoneGrade2 != null" >
+        BESIDE_STONE_GRADE2 = #{record.besideStoneGrade2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.besideStoneColor2 != null" >
+        BESIDE_STONE_COLOR2 = #{record.besideStoneColor2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.besideStonePrice2 != null" >
+        BESIDE_STONE_PRICE2 = #{record.besideStonePrice2,jdbcType=DECIMAL},
+      </if>
+      <if test="record.isGroup != null" >
+        IS_GROUP = #{record.isGroup,jdbcType=CHAR},
+      </if>
+      <if test="record.isDefault != null" >
+        IS_DEFAULT = #{record.isDefault,jdbcType=CHAR},
+      </if>
+      <if test="record.goodsName != null" >
+        GOODS_NAME = #{record.goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodsDesc != null" >
+        GOODS_DESC = #{record.goodsDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodStock != null" >
+        GOOD_STOCK = #{record.goodStock,jdbcType=DECIMAL},
+      </if>
+      <if test="record.prepareStock != null" >
+        PREPARE_STOCK = #{record.prepareStock,jdbcType=DECIMAL},
+      </if>
+      <if test="record.lockStock != null" >
+        LOCK_STOCK = #{record.lockStock,jdbcType=DECIMAL},
+      </if>
+      <if test="record.availableStock != null" >
+        AVAILABLE_STOCK = #{record.availableStock,jdbcType=DECIMAL},
+      </if>
+      <if test="record.returnPoints != null" >
+        RETURN_POINTS = #{record.returnPoints,jdbcType=INTEGER},
+      </if>
+      <if test="record.receiveTime != null" >
+        RECEIVE_TIME = #{record.receiveTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isChange != null" >
+        IS_CHANGE = #{record.isChange,jdbcType=CHAR},
+      </if>
+      <if test="record.goodsEdition != null" >
+        GOODS_EDITION = #{record.goodsEdition,jdbcType=VARCHAR},
+      </if>
+      <if test="record.clickAmount != null" >
+        CLICK_AMOUNT = #{record.clickAmount,jdbcType=INTEGER},
+      </if>
+      <if test="record.saleAmount != null" >
+        SALE_AMOUNT = #{record.saleAmount,jdbcType=INTEGER},
+      </if>
+      <if test="record.isOnSale != null" >
+        IS_ON_SALE = #{record.isOnSale,jdbcType=CHAR},
+      </if>
+      <if test="record.isDelete != null" >
+        IS_DELETE = #{record.isDelete,jdbcType=CHAR},
+      </if>
+      <if test="record.addUserId != null" >
+        ADD_USER_ID = #{record.addUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.addTime != null" >
+        ADD_TIME = #{record.addTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.editUserId != null" >
+        EDIT_USER_ID = #{record.editUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.editTime != null" >
+        EDIT_TIME = #{record.editTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.erpCategory1 != null" >
+        ERP_CATEGORY1 = #{record.erpCategory1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.erpCategory2 != null" >
+        ERP_CATEGORY2 = #{record.erpCategory2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.erpCategory3 != null" >
+        ERP_CATEGORY3 = #{record.erpCategory3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.commentNumber != null" >
+        COMMENT_NUMBER = #{record.commentNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.modelCode != null" >
+        MODEL_CODE = #{record.modelCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.promotePrice != null" >
+        PROMOTE_PRICE = #{record.promotePrice,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update goods
+    set GOODS_ID = #{record.goodsId,jdbcType=INTEGER},
+      PRODUCT_ID = #{record.productId,jdbcType=INTEGER},
+      GOODS_NO = #{record.goodsNo,jdbcType=VARCHAR},
+      FACTORY_NO = #{record.factoryNo,jdbcType=VARCHAR},
+      TRADEMARK = #{record.trademark,jdbcType=VARCHAR},
+      GOODS_TYPE = #{record.goodsType,jdbcType=INTEGER},
+      USE_MARKER = #{record.useMarker,jdbcType=CHAR},
+      WEIGHT = #{record.weight,jdbcType=DECIMAL},
+      EC_PRICE = #{record.ecPrice,jdbcType=DECIMAL},
+      BAR_CODE = #{record.barCode,jdbcType=VARCHAR},
+      MATERIAL_GOODS = #{record.materialGoods,jdbcType=VARCHAR},
+      MATERIAL_TYPE = #{record.materialType,jdbcType=VARCHAR},
+      GOLD_WEIGHT = #{record.goldWeight,jdbcType=DECIMAL},
+      GRAMS_GOLD_PRICE = #{record.gramsGoldPrice,jdbcType=DECIMAL},
+      GOLD_SELLING_PRICE = #{record.goldSellingPrice,jdbcType=DECIMAL},
+      PROCESSING_FEE = #{record.processingFee,jdbcType=DECIMAL},
+      COST_PRICE = #{record.costPrice,jdbcType=DECIMAL},
+      PRICE_FACTOR = #{record.priceFactor,jdbcType=DECIMAL},
+      CERTIFICATE_NO = #{record.certificateNo,jdbcType=VARCHAR},
+      FINGER_RING = #{record.fingerRing,jdbcType=VARCHAR},
+      COMMODITY_TECHNOLOGY = #{record.commodityTechnology,jdbcType=VARCHAR},
+      COMMODITY_COLOR = #{record.commodityColor,jdbcType=VARCHAR},
+      MAIN_STONE = #{record.mainStone,jdbcType=VARCHAR},
+      MAIN_ROCK_TYPE = #{record.mainRockType,jdbcType=VARCHAR},
+      MAIN_ORE_WEIGHT = #{record.mainOreWeight,jdbcType=DECIMAL},
+      MAIN_ORE_QUANTITY = #{record.mainOreQuantity,jdbcType=VARCHAR},
+      MAIN_ORE_GRADE = #{record.mainOreGrade,jdbcType=VARCHAR},
+      MAIN_ORE_COLOR = #{record.mainOreColor,jdbcType=VARCHAR},
+      MAIN_ORE_PRICE = #{record.mainOrePrice,jdbcType=DECIMAL},
+      BESIDE_STONE = #{record.besideStone,jdbcType=VARCHAR},
+      BESIDE_STONE_TYPE = #{record.besideStoneType,jdbcType=VARCHAR},
+      BESIDE_STONE_WEIGHT = #{record.besideStoneWeight,jdbcType=DECIMAL},
+      BESIDE_STONE_QUANTITY = #{record.besideStoneQuantity,jdbcType=VARCHAR},
+      BESIDE_STONE_CLEANLINESS = #{record.besideStoneCleanliness,jdbcType=VARCHAR},
+      BESIDE_STONE_COLOR = #{record.besideStoneColor,jdbcType=VARCHAR},
+      BESIDE_STONE_PRICE = #{record.besideStonePrice,jdbcType=DECIMAL},
+      BESIDE_STONE_TYPE2 = #{record.besideStoneType2,jdbcType=VARCHAR},
+      BESIDE_STONE_WEIGHT2 = #{record.besideStoneWeight2,jdbcType=DECIMAL},
+      BESIDE_STONE_QUANTITY2 = #{record.besideStoneQuantity2,jdbcType=VARCHAR},
+      BESIDE_STONE_GRADE2 = #{record.besideStoneGrade2,jdbcType=VARCHAR},
+      BESIDE_STONE_COLOR2 = #{record.besideStoneColor2,jdbcType=VARCHAR},
+      BESIDE_STONE_PRICE2 = #{record.besideStonePrice2,jdbcType=DECIMAL},
+      IS_GROUP = #{record.isGroup,jdbcType=CHAR},
+      IS_DEFAULT = #{record.isDefault,jdbcType=CHAR},
+      GOODS_NAME = #{record.goodsName,jdbcType=VARCHAR},
+      GOODS_DESC = #{record.goodsDesc,jdbcType=VARCHAR},
+      GOOD_STOCK = #{record.goodStock,jdbcType=DECIMAL},
+      PREPARE_STOCK = #{record.prepareStock,jdbcType=DECIMAL},
+      LOCK_STOCK = #{record.lockStock,jdbcType=DECIMAL},
+      AVAILABLE_STOCK = #{record.availableStock,jdbcType=DECIMAL},
+      RETURN_POINTS = #{record.returnPoints,jdbcType=INTEGER},
+      RECEIVE_TIME = #{record.receiveTime,jdbcType=VARCHAR},
+      IS_CHANGE = #{record.isChange,jdbcType=CHAR},
+      GOODS_EDITION = #{record.goodsEdition,jdbcType=VARCHAR},
+      CLICK_AMOUNT = #{record.clickAmount,jdbcType=INTEGER},
+      SALE_AMOUNT = #{record.saleAmount,jdbcType=INTEGER},
+      IS_ON_SALE = #{record.isOnSale,jdbcType=CHAR},
+      IS_DELETE = #{record.isDelete,jdbcType=CHAR},
+      ADD_USER_ID = #{record.addUserId,jdbcType=INTEGER},
+      ADD_TIME = #{record.addTime,jdbcType=VARCHAR},
+      EDIT_USER_ID = #{record.editUserId,jdbcType=INTEGER},
+      EDIT_TIME = #{record.editTime,jdbcType=VARCHAR},
+      ERP_CATEGORY1 = #{record.erpCategory1,jdbcType=VARCHAR},
+      ERP_CATEGORY2 = #{record.erpCategory2,jdbcType=VARCHAR},
+      ERP_CATEGORY3 = #{record.erpCategory3,jdbcType=VARCHAR},
+      COMMENT_NUMBER = #{record.commentNumber,jdbcType=INTEGER},
+      MODEL_CODE = #{record.modelCode,jdbcType=VARCHAR},
+      PROMOTE_PRICE = #{record.promotePrice,jdbcType=DECIMAL}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ecbusiness.model.Goods" >
+    update goods
+    <set >
+      <if test="productId != null" >
+        PRODUCT_ID = #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsNo != null" >
+        GOODS_NO = #{goodsNo,jdbcType=VARCHAR},
+      </if>
+      <if test="factoryNo != null" >
+        FACTORY_NO = #{factoryNo,jdbcType=VARCHAR},
+      </if>
+      <if test="trademark != null" >
+        TRADEMARK = #{trademark,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsType != null" >
+        GOODS_TYPE = #{goodsType,jdbcType=INTEGER},
+      </if>
+      <if test="useMarker != null" >
+        USE_MARKER = #{useMarker,jdbcType=CHAR},
+      </if>
+      <if test="weight != null" >
+        WEIGHT = #{weight,jdbcType=DECIMAL},
+      </if>
+      <if test="ecPrice != null" >
+        EC_PRICE = #{ecPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="barCode != null" >
+        BAR_CODE = #{barCode,jdbcType=VARCHAR},
+      </if>
+      <if test="materialGoods != null" >
+        MATERIAL_GOODS = #{materialGoods,jdbcType=VARCHAR},
+      </if>
+      <if test="materialType != null" >
+        MATERIAL_TYPE = #{materialType,jdbcType=VARCHAR},
+      </if>
+      <if test="goldWeight != null" >
+        GOLD_WEIGHT = #{goldWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="gramsGoldPrice != null" >
+        GRAMS_GOLD_PRICE = #{gramsGoldPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="goldSellingPrice != null" >
+        GOLD_SELLING_PRICE = #{goldSellingPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="processingFee != null" >
+        PROCESSING_FEE = #{processingFee,jdbcType=DECIMAL},
+      </if>
+      <if test="costPrice != null" >
+        COST_PRICE = #{costPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="priceFactor != null" >
+        PRICE_FACTOR = #{priceFactor,jdbcType=DECIMAL},
+      </if>
+      <if test="certificateNo != null" >
+        CERTIFICATE_NO = #{certificateNo,jdbcType=VARCHAR},
+      </if>
+      <if test="fingerRing != null" >
+        FINGER_RING = #{fingerRing,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityTechnology != null" >
+        COMMODITY_TECHNOLOGY = #{commodityTechnology,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityColor != null" >
+        COMMODITY_COLOR = #{commodityColor,jdbcType=VARCHAR},
+      </if>
+      <if test="mainStone != null" >
+        MAIN_STONE = #{mainStone,jdbcType=VARCHAR},
+      </if>
+      <if test="mainRockType != null" >
+        MAIN_ROCK_TYPE = #{mainRockType,jdbcType=VARCHAR},
+      </if>
+      <if test="mainOreWeight != null" >
+        MAIN_ORE_WEIGHT = #{mainOreWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="mainOreQuantity != null" >
+        MAIN_ORE_QUANTITY = #{mainOreQuantity,jdbcType=VARCHAR},
+      </if>
+      <if test="mainOreGrade != null" >
+        MAIN_ORE_GRADE = #{mainOreGrade,jdbcType=VARCHAR},
+      </if>
+      <if test="mainOreColor != null" >
+        MAIN_ORE_COLOR = #{mainOreColor,jdbcType=VARCHAR},
+      </if>
+      <if test="mainOrePrice != null" >
+        MAIN_ORE_PRICE = #{mainOrePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="besideStone != null" >
+        BESIDE_STONE = #{besideStone,jdbcType=VARCHAR},
+      </if>
+      <if test="besideStoneType != null" >
+        BESIDE_STONE_TYPE = #{besideStoneType,jdbcType=VARCHAR},
+      </if>
+      <if test="besideStoneWeight != null" >
+        BESIDE_STONE_WEIGHT = #{besideStoneWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="besideStoneQuantity != null" >
+        BESIDE_STONE_QUANTITY = #{besideStoneQuantity,jdbcType=VARCHAR},
+      </if>
+      <if test="besideStoneCleanliness != null" >
+        BESIDE_STONE_CLEANLINESS = #{besideStoneCleanliness,jdbcType=VARCHAR},
+      </if>
+      <if test="besideStoneColor != null" >
+        BESIDE_STONE_COLOR = #{besideStoneColor,jdbcType=VARCHAR},
+      </if>
+      <if test="besideStonePrice != null" >
+        BESIDE_STONE_PRICE = #{besideStonePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="besideStoneType2 != null" >
+        BESIDE_STONE_TYPE2 = #{besideStoneType2,jdbcType=VARCHAR},
+      </if>
+      <if test="besideStoneWeight2 != null" >
+        BESIDE_STONE_WEIGHT2 = #{besideStoneWeight2,jdbcType=DECIMAL},
+      </if>
+      <if test="besideStoneQuantity2 != null" >
+        BESIDE_STONE_QUANTITY2 = #{besideStoneQuantity2,jdbcType=VARCHAR},
+      </if>
+      <if test="besideStoneGrade2 != null" >
+        BESIDE_STONE_GRADE2 = #{besideStoneGrade2,jdbcType=VARCHAR},
+      </if>
+      <if test="besideStoneColor2 != null" >
+        BESIDE_STONE_COLOR2 = #{besideStoneColor2,jdbcType=VARCHAR},
+      </if>
+      <if test="besideStonePrice2 != null" >
+        BESIDE_STONE_PRICE2 = #{besideStonePrice2,jdbcType=DECIMAL},
+      </if>
+      <if test="isGroup != null" >
+        IS_GROUP = #{isGroup,jdbcType=CHAR},
+      </if>
+      <if test="isDefault != null" >
+        IS_DEFAULT = #{isDefault,jdbcType=CHAR},
+      </if>
+      <if test="goodsName != null" >
+        GOODS_NAME = #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsDesc != null" >
+        GOODS_DESC = #{goodsDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="goodStock != null" >
+        GOOD_STOCK = #{goodStock,jdbcType=DECIMAL},
+      </if>
+      <if test="prepareStock != null" >
+        PREPARE_STOCK = #{prepareStock,jdbcType=DECIMAL},
+      </if>
+      <if test="lockStock != null" >
+        LOCK_STOCK = #{lockStock,jdbcType=DECIMAL},
+      </if>
+      <if test="availableStock != null" >
+        AVAILABLE_STOCK = #{availableStock,jdbcType=DECIMAL},
+      </if>
+      <if test="returnPoints != null" >
+        RETURN_POINTS = #{returnPoints,jdbcType=INTEGER},
+      </if>
+      <if test="receiveTime != null" >
+        RECEIVE_TIME = #{receiveTime,jdbcType=VARCHAR},
+      </if>
+      <if test="isChange != null" >
+        IS_CHANGE = #{isChange,jdbcType=CHAR},
+      </if>
+      <if test="goodsEdition != null" >
+        GOODS_EDITION = #{goodsEdition,jdbcType=VARCHAR},
+      </if>
+      <if test="clickAmount != null" >
+        CLICK_AMOUNT = #{clickAmount,jdbcType=INTEGER},
+      </if>
+      <if test="saleAmount != null" >
+        SALE_AMOUNT = #{saleAmount,jdbcType=INTEGER},
+      </if>
+      <if test="isOnSale != null" >
+        IS_ON_SALE = #{isOnSale,jdbcType=CHAR},
+      </if>
+      <if test="isDelete != null" >
+        IS_DELETE = #{isDelete,jdbcType=CHAR},
+      </if>
+      <if test="addUserId != null" >
+        ADD_USER_ID = #{addUserId,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null" >
+        ADD_TIME = #{addTime,jdbcType=VARCHAR},
+      </if>
+      <if test="editUserId != null" >
+        EDIT_USER_ID = #{editUserId,jdbcType=INTEGER},
+      </if>
+      <if test="editTime != null" >
+        EDIT_TIME = #{editTime,jdbcType=VARCHAR},
+      </if>
+      <if test="erpCategory1 != null" >
+        ERP_CATEGORY1 = #{erpCategory1,jdbcType=VARCHAR},
+      </if>
+      <if test="erpCategory2 != null" >
+        ERP_CATEGORY2 = #{erpCategory2,jdbcType=VARCHAR},
+      </if>
+      <if test="erpCategory3 != null" >
+        ERP_CATEGORY3 = #{erpCategory3,jdbcType=VARCHAR},
+      </if>
+      <if test="commentNumber != null" >
+        COMMENT_NUMBER = #{commentNumber,jdbcType=INTEGER},
+      </if>
+      <if test="modelCode != null" >
+        MODEL_CODE = #{modelCode,jdbcType=VARCHAR},
+      </if>
+      <if test="promotePrice != null" >
+        PROMOTE_PRICE = #{promotePrice,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where GOODS_ID = #{goodsId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ecbusiness.model.Goods" >
+    update goods
+    set PRODUCT_ID = #{productId,jdbcType=INTEGER},
+      GOODS_NO = #{goodsNo,jdbcType=VARCHAR},
+      FACTORY_NO = #{factoryNo,jdbcType=VARCHAR},
+      TRADEMARK = #{trademark,jdbcType=VARCHAR},
+      GOODS_TYPE = #{goodsType,jdbcType=INTEGER},
+      USE_MARKER = #{useMarker,jdbcType=CHAR},
+      WEIGHT = #{weight,jdbcType=DECIMAL},
+      EC_PRICE = #{ecPrice,jdbcType=DECIMAL},
+      BAR_CODE = #{barCode,jdbcType=VARCHAR},
+      MATERIAL_GOODS = #{materialGoods,jdbcType=VARCHAR},
+      MATERIAL_TYPE = #{materialType,jdbcType=VARCHAR},
+      GOLD_WEIGHT = #{goldWeight,jdbcType=DECIMAL},
+      GRAMS_GOLD_PRICE = #{gramsGoldPrice,jdbcType=DECIMAL},
+      GOLD_SELLING_PRICE = #{goldSellingPrice,jdbcType=DECIMAL},
+      PROCESSING_FEE = #{processingFee,jdbcType=DECIMAL},
+      COST_PRICE = #{costPrice,jdbcType=DECIMAL},
+      PRICE_FACTOR = #{priceFactor,jdbcType=DECIMAL},
+      CERTIFICATE_NO = #{certificateNo,jdbcType=VARCHAR},
+      FINGER_RING = #{fingerRing,jdbcType=VARCHAR},
+      COMMODITY_TECHNOLOGY = #{commodityTechnology,jdbcType=VARCHAR},
+      COMMODITY_COLOR = #{commodityColor,jdbcType=VARCHAR},
+      MAIN_STONE = #{mainStone,jdbcType=VARCHAR},
+      MAIN_ROCK_TYPE = #{mainRockType,jdbcType=VARCHAR},
+      MAIN_ORE_WEIGHT = #{mainOreWeight,jdbcType=DECIMAL},
+      MAIN_ORE_QUANTITY = #{mainOreQuantity,jdbcType=VARCHAR},
+      MAIN_ORE_GRADE = #{mainOreGrade,jdbcType=VARCHAR},
+      MAIN_ORE_COLOR = #{mainOreColor,jdbcType=VARCHAR},
+      MAIN_ORE_PRICE = #{mainOrePrice,jdbcType=DECIMAL},
+      BESIDE_STONE = #{besideStone,jdbcType=VARCHAR},
+      BESIDE_STONE_TYPE = #{besideStoneType,jdbcType=VARCHAR},
+      BESIDE_STONE_WEIGHT = #{besideStoneWeight,jdbcType=DECIMAL},
+      BESIDE_STONE_QUANTITY = #{besideStoneQuantity,jdbcType=VARCHAR},
+      BESIDE_STONE_CLEANLINESS = #{besideStoneCleanliness,jdbcType=VARCHAR},
+      BESIDE_STONE_COLOR = #{besideStoneColor,jdbcType=VARCHAR},
+      BESIDE_STONE_PRICE = #{besideStonePrice,jdbcType=DECIMAL},
+      BESIDE_STONE_TYPE2 = #{besideStoneType2,jdbcType=VARCHAR},
+      BESIDE_STONE_WEIGHT2 = #{besideStoneWeight2,jdbcType=DECIMAL},
+      BESIDE_STONE_QUANTITY2 = #{besideStoneQuantity2,jdbcType=VARCHAR},
+      BESIDE_STONE_GRADE2 = #{besideStoneGrade2,jdbcType=VARCHAR},
+      BESIDE_STONE_COLOR2 = #{besideStoneColor2,jdbcType=VARCHAR},
+      BESIDE_STONE_PRICE2 = #{besideStonePrice2,jdbcType=DECIMAL},
+      IS_GROUP = #{isGroup,jdbcType=CHAR},
+      IS_DEFAULT = #{isDefault,jdbcType=CHAR},
+      GOODS_NAME = #{goodsName,jdbcType=VARCHAR},
+      GOODS_DESC = #{goodsDesc,jdbcType=VARCHAR},
+      GOOD_STOCK = #{goodStock,jdbcType=DECIMAL},
+      PREPARE_STOCK = #{prepareStock,jdbcType=DECIMAL},
+      LOCK_STOCK = #{lockStock,jdbcType=DECIMAL},
+      AVAILABLE_STOCK = #{availableStock,jdbcType=DECIMAL},
+      RETURN_POINTS = #{returnPoints,jdbcType=INTEGER},
+      RECEIVE_TIME = #{receiveTime,jdbcType=VARCHAR},
+      IS_CHANGE = #{isChange,jdbcType=CHAR},
+      GOODS_EDITION = #{goodsEdition,jdbcType=VARCHAR},
+      CLICK_AMOUNT = #{clickAmount,jdbcType=INTEGER},
+      SALE_AMOUNT = #{saleAmount,jdbcType=INTEGER},
+      IS_ON_SALE = #{isOnSale,jdbcType=CHAR},
+      IS_DELETE = #{isDelete,jdbcType=CHAR},
+      ADD_USER_ID = #{addUserId,jdbcType=INTEGER},
+      ADD_TIME = #{addTime,jdbcType=VARCHAR},
+      EDIT_USER_ID = #{editUserId,jdbcType=INTEGER},
+      EDIT_TIME = #{editTime,jdbcType=VARCHAR},
+      ERP_CATEGORY1 = #{erpCategory1,jdbcType=VARCHAR},
+      ERP_CATEGORY2 = #{erpCategory2,jdbcType=VARCHAR},
+      ERP_CATEGORY3 = #{erpCategory3,jdbcType=VARCHAR},
+      COMMENT_NUMBER = #{commentNumber,jdbcType=INTEGER},
+      MODEL_CODE = #{modelCode,jdbcType=VARCHAR},
+      PROMOTE_PRICE = #{promotePrice,jdbcType=DECIMAL}
+    where GOODS_ID = #{goodsId,jdbcType=INTEGER}
+  </update>
+  <select resultMap="BaseResultMap" parameterType="com.ecbusiness.model.GoodsCriteria" id="selectByExampleWithRowbounds" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from goods
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <cache />
+</mapper>
